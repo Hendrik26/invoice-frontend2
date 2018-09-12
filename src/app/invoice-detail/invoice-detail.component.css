@@ -1,188 +1,194 @@
 /* table CSS styles */
 
 table, th, td {
-  border: 1px solid black;
+    border: 1px solid black;
 }
 
 table {
-  border-collapse: collapse;
-  width: 100%;
+    border-collapse: collapse;
+    width: 100%;
 }
 
 th {
-  text-align: center;
-  background-color: darkblue;
-  font-weight: bold;
-  color: white;
+    text-align: center;
+    background-color: darkblue;
+    font-weight: bold;
+    color: white;
 }
 
 td {
-  text-align: center;
-  color: black;
+    text-align: center;
+    color: black;
 }
 
 grid-container {
-  display: grid;
-  grid: 150px / auto auto auto;
+    display: grid;
+    grid: 150px / auto auto auto;
 }
 
 /*main sections*/
 
 header, main, footer {
-  position: relative;
+    position: relative;
 }
 
 main {
-  position: absolute;
-  left: 10px;
-  top: 570px;
-  width: 290px;
-  height: 1500px;
+    position: absolute;
+    left: 10px;
+    top: 450px;
+    width: 13000px;
+    /*width: 100%;*/
+    height: 1500px;
 }
 
 footer {
-  position: absolute;
-  left: 10px;
-  top: 3000px;
-  width: 290px;
-  height: 250px;
+    position: absolute;
+    left: 10px;
+    top: 3000px;
+    width: 290px;
+    height: 250px;
 }
 
 div {
-  color: black;
-  background-color: moccasin;
-  border: 3px dashed #F00;
+    color: black;
+    background-color: moccasin;
+    border: 3px dashed #F00;
 }
 
 dl {
-  color: black;
-  background-color: #ff42c9;
-  border: 3px dashed #2417ff;
+    color: black;
+    background-color: #ff42c9;
+    border: 3px dashed #2417ff;
 }
-
 
 /* remainder CSS styles */
 h1 {
-  font-size: 1.2em;
-  color: #999;
-  margin-bottom: 0;
+    font-size: 1.2em;
+    color: #999;
+    margin-bottom: 0;
 }
 
 h2 {
-  font-size: 2em;
-  margin-top: 0;
-  padding-top: 0;
+    font-size: 2em;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 label {
-  display: inline-block;
-  width: 3em;
-  margin: .5em 0;
-  color: #607D8B;
-  font-weight: bold;
+    display: inline-block;
+    width: 3em;
+    margin: .5em 0;
+    color: #607D8B;
+    font-weight: bold;
 }
 
 input {
-  height: 2em;
-  font-size: 1em;
-  padding-left: .4em;
+    height: 2em;
+    font-size: 1em;
+    padding-left: .4em;
 }
 
 button {
-  margin-top: 20px;
-  font-family: Arial;
-  background-color: #eee;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
+    margin-top: 20px;
+    font-family: Arial;
+    background-color: #eee;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 button:hover {
-  background-color: #cfd8dc;
+    background-color: #cfd8dc;
 }
 
 button:disabled {
-  background-color: #eee;
-  color: #ccc;
-  cursor: auto;
+    background-color: #eee;
+    color: #ccc;
+    cursor: auto;
 }
 
 /*own classes*/
 .important {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 /*parts of footer*/
 
 .address {
-  position: absolute;
-  left: 10px;
-  top: 350px;
-  width: 290px;
-  height: 150px;
+    position: absolute;
+    left: 10px;
+    top: 350px;
+    width: 290px;
+    height: 250px;
 }
 
 .contact {
-  position: absolute;
-  left: 310px;
-  top: 350px;
-  width: 290px;
-  height: 150px;
+    position: absolute;
+    left: 310px;
+    top: 350px;
+    width: 290px;
+    height: 250px;
 }
 
 .bankconnection {
-  position: absolute;
-  left: 610px;
-  top: 350px;
-  width: 290px;
-  height: 150px;
+    position: absolute;
+    left: 610px;
+    top: 350px;
+    width: 290px;
+    height: 250px;
 }
 
 .tax-number {
-  position: absolute;
-  left: 910px;
-  top: 350px;
-  width: 290px;
-  height: 150px;
+    position: absolute;
+    left: 910px;
+    top: 350px;
+    width: 290px;
+    height: 250px;
 }
 
 /*parts of header*/
 .logo {
-  color: darkblue;
-  position: absolute;
-  left: 1010px;
-  top: 10px;
-  width: 290px;
-  height: 150px;
+    color: darkblue;
+    position: absolute;
+    left: 840px;
+    top: 10px;
+    width: 290px;
+    height: 120px;
+}
+
+.logoimportant {
+    color: darkblue;
+    font-weight: bold;
+    font-size: 50px;
 }
 
 .adress-window {
-  color: black;
-  position: absolute;
-  left: 10px;
-  top: 10px;
-  width: 390px;
-  height: 550px;
+    color: black;
+    position: absolute;
+    left: 10px;
+    top: 190px;
+    width: 390px;
+    height: 320px;
 }
 
 .contact-block {
-  position: absolute;
-  left: 1010px;
-  top: 210px;
-  width: 290px;
-  height: 150px;
+    position: absolute;
+    left: 840px;
+    top: 190px;
+    width: 290px;
+    height: 350px;
 }
 
 .city-date {
-  position: absolute;
-  left: 1010px;
-  top: 580px;
-  width: 290px;
-  height: 50px;
+    position: absolute;
+    left: 840px;
+    top: 580px;
+    width: 290px;
+    height: 50px;
 }
 
 section {
-  position: absolute;
-  top: 310px;
+    position: absolute;
+    top: 310px;
 }
