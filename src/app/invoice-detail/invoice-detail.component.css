@@ -51,14 +51,6 @@ footer {
 
 div {
     color: black;
-    background-color: moccasin;
-    border: 3px dashed #F00;
-}
-
-dl {
-    color: black;
-    background-color: #ff42c9;
-    border: 3px dashed #2417ff;
 }
 
 /* remainder CSS styles */
