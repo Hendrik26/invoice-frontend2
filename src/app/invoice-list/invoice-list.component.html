@@ -6,19 +6,37 @@
   <h1> Rechnungsübersicht </h1>
   <p>Datum. </p>
 
+  <div class="flex-container">
+    <div>Rechnungsdatum von<br><input type="datetime-local"></div>
+    <div>Rechnungsdatum bis<br><input type="datetime-local"></div>
+
+    <div>Status<br> <input type="search"></div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+  </div>
+
   <div>
 
     <table style="width:100%">
       <tr>
         <th>RechnungsNr</th>
+        <th>Empfänger</th>
+        <th>Rechnungsdatum</th>
+        <th>Rechnungzeitraum</th>
         <th>Status (Entwurf, bezahlt, ...)</th>
         <th>Gesamtpreis</th>
         <th>Anzahl der Mahnungen</th>
-        <th>Gesamtpreis</th>
+
         <th>Ändern</th>
       </tr>
       <tr>
         <td>R2018abc</td>
+        <td>Mustermann GmbH</td>
+        <td>2018-01-01</td>
+        <td>2017-01-01 bis 2017-12-31</td>
         <td>Entwurf</td>
         <td>2000€</td>
         <td>000</td>
@@ -26,6 +44,9 @@
       </tr>
       <tr>
         <td>R2018efg</td>
+        <td>Restaurant Goldbroiler</td>
+        <td>2018-01-01</td>
+        <td>2017-01-01 bis 2017-12-31</td>
         <td>offen</td>
         <td>5000€</td>
         <td>003</td>
@@ -33,6 +54,9 @@
       </tr>
       <tr>
         <td>R2018xyz</td>
+        <td>Carwash GmbH</td>
+        <td>2018-01-01</td>
+        <td>2017-01-01 bis 2017-12-31</td>
         <td>bezahlt</td>
         <td>1500€</td>
         <td>000</td>
