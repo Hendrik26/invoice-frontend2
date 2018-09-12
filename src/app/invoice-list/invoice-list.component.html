@@ -27,6 +27,16 @@
     <br>
     <div>
 
+        <table>
+            <tr *ngFor="invoice in invoices" >
+                <td>{{invoice.id}}</td>
+            </tr>
+
+        </table>
+
+
+
+
         <table style="width:100%">
             <tr>
                 <th>RechnungsNr</th>
