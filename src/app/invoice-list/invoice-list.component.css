@@ -97,12 +97,15 @@ button:disabled {
     cursor: auto;
 }
 
-/* classes */
+/*own classes*/
+.important {
+    font-weight: bold;
+}
 
 .flex-container {
     display: flex;
     flex-wrap: nowrap;
-    background-color: #e4e0ff;
+
 }
 
 .flex-container > div {

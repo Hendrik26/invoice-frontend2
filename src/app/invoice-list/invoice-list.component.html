@@ -1,30 +1,30 @@
 <div>
 
-    <p>
-        invoice-listz works!
-    </p>
     <h1> Rechnungsübersicht </h1>
-    <p>Datum. </p>
+    <p>2018-09-12</p>
 
     <div class="flex-container">
+        <div class="important">Filterkriterien</div>
         <div>Rechnungsdatum von<br><input type="datetime-local"></div>
         <div>Rechnungsdatum bis<br><input type="datetime-local"></div>
-
         <div>Status<br>
+        <select>
+            <option value="template">Entwurf</option>
+            <option value="unpayed">offen</option>
+            <option value="partial payed">teilw. zahlt</option>
+            <option value="payed">bezahlt</option>
+        </select>
+        </div>
+        <div>Emfpänger<br>
             <select>
-                <option value="template">Entwurf</option>
-                <option value="unpayed">offen</option>
-                <option value="partial payed">teilw. zahlt</option>
-                <option value="payed">bezahlt</option>
+                <option value="007">Mustermann GmbH</option>
+                <option value="008">Restaurant Goldbroiler</option>
+                <option value="009">Carwash GmbH</option>
             </select>
         </div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
-        <div>7</div>
-        <div>8</div>
-    </div>
 
+    </div>
+    <br>
     <div>
 
         <table style="width:100%">
