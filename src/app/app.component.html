@@ -1,7 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div>
   <h1>{{title}}</h1>
-  <app-invoice-detail></app-invoice-detail>
+  <!-- app-invoice-detail></app-invoice-detail -->
   <!-- app-item-detail></app-item-detail -->
   <!-- app-invoice-list></app-invoice-list -->
+
+  <h1>Router-Test</h1>
+  <nav >
+    <a routerLink="/invoice-list">invoice-list</a>&nbsp;&nbsp;&nbsp;
+    <a routerLink="/invoice-detail">invoice-detail</a>&nbsp;&nbsp;&nbsp;
+    <a routerLink="/item-detail">item-detail</a>
+  </nav >
+  <router-outlet></router-outlet>
+
 </div>
