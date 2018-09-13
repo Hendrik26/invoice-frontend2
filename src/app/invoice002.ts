@@ -1,4 +1,4 @@
-export class invoice002 {
+export class Invoice002 {
 
     id: number;
     invoiceNumber: string;

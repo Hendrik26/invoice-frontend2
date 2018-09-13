@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {invoice002} from '../invoice002';
+import {Invoice002} from '../invoice002';
 
 @Component({
   selector: 'app-invoice-list',
@@ -17,7 +17,7 @@ export class InvoiceListComponent implements OnInit {
 
     ]; */
 
-  invoices: invoice002[] = [
+  invoices: Invoice002[] = [
 
       {id:1, invoiceNumber: 'DusselGmbH'}
   ];
