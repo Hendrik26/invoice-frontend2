@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { InvoiceListComponent } from './invoice-list/invoice-list.component';
 import { InvoiceDetailComponent } from './invoice-detail/invoice-detail.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
+import { InvoiceRouterModule } from './/invoice-router.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
     ItemDetailComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    InvoiceRouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
