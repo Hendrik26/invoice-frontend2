@@ -50,7 +50,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "invoice-frontend2:build"
+            "browserTarget": "invoice-frontend2:build",
+            "host": "0.0.0.0"
           },
           "configurations": {
             "production": {
