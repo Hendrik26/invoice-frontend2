@@ -1,7 +1,7 @@
 export class Invoice002 {
     // //////////////////////
     id: number; // <th>Ändern</th>
-    invoiceDate: string; // <th>Rechnungsdatum</th>
+    invoiceDate: Date; // <th>Rechnungsdatum</th>
     invoiceNumber: string; // <th>RechnungsNr</th>
     recipient: string; // <th>Empfänger</th>
     invoiceState: string; // <th>Status (Entwurf, bezahlt, ...)</th>
