@@ -4,8 +4,8 @@
     Leistungsbeschreibung:<br>
   <input type="text" name="itemName" [(ngModel)]="currentItem.itemName">
     <br>Postenart:<br>
-    <input type="checkbox" name="hourPayment" [checked]="currentItem.hourPayment" (change)="togglePayment()"> Leistungspostenposten&nbsp;&nbsp;&nbsp;
-
+    <input type="checkbox" name="hourPayment" [checked]="currentItem.hourPayment"
+           (change)="togglePayment()"> Leistungspostenposten
     <br> Stück- / Stundenpreis:<br>
     <input type="number" name="partialCost" [(ngModel)]="currentItem.partialCost">
     <br> Anzahl:<br>
