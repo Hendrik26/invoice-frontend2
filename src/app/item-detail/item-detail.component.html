@@ -2,19 +2,21 @@
 
 <form>
     Leistungsbeschreibung:<br>
-  <input type="text" [(ngModel)]="currentItem.itemName">
+  <input type="text" name="itemName" [(ngModel)]="currentItem.itemName">
     <br>Postenart:<br>
-    <input type="radio" name="hourPayment" [(ngModel)]="currentItem.hourPayment" value="false"> Stückposten&nbsp;&nbsp;&nbsp;
-    <input type="radio" name="hourPayment" [(ngModel)]="currentItem.hourPayment" value="true"> Leistungsposten
+    <input type="checkbox" name="hourPayment" [checked]="currentItem.hourPayment" (change)="togglePayment()"> Leistungspostenposten&nbsp;&nbsp;&nbsp;
+
     <br> Stück- / Stundenpreis:<br>
-    <input type="text" [(ngModel)]="currentItem.partialCost">
+    <input type="text" name="partialCost" [(ngModel)]="currentItem.partialCost">
     <br> Anzahl:<br>
-    <input type="text" [(ngModel)]="currentItem.count">
+    <input type="text" name="count" [(ngModel)]="currentItem.count">
     <br> Leistungsdatum:<br>
-    <input type="text" [(ngModel)]="currentItem.itemDate">
+    <input type="text" name="itemDate" [(ngModel)]="currentItem.itemDate">
     <br><br>
     <input type="submit" value="speichern">
 </form>
+
+<pre>{{currentItem | json}}</pre>
 
 
 

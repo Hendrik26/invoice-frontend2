@@ -8,12 +8,16 @@ import {Item002} from '../item002';
 })
 export class ItemDetailComponent implements OnInit {
 
-  currentItem: Item002 = {hourPayment: true, itemDate: new Date("July 4, 2016 10:13:00"), count: 1, partialCost: 30,
+  currentItem: Item002 = {hourPayment: true, itemDate: "2016-04-01", count: 1, partialCost: 30,
     itemName: 'C#-Entwicklung', currency: '€', wholeCost: 10, id: 1};
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  togglePayment(){
+    this.currentItem.hourPayment = ! this.currentItem.hourPayment;
   }
 
 }
