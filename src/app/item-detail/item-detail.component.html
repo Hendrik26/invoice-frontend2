@@ -1,17 +1,17 @@
 <h2>Posten003:</h2>
 
-<form action="/action_page.php">
+<form>
     Leistungsbeschreibung:<br>
-    <input type="text">
+  <input type="text" [(ngModel)]="currentItem.itemName">
     <br>Postenart:<br>
-    <input type="radio" name="itemtype" value="hour" checked> Stückposten&nbsp;&nbsp;&nbsp;
-    <input type="radio" name="itemtype" value="piece"> Leistungsposten
+    <input type="radio" name="hourPayment" [(ngModel)]="currentItem.hourPayment" value="false"> Stückposten&nbsp;&nbsp;&nbsp;
+    <input type="radio" name="hourPayment" [(ngModel)]="currentItem.hourPayment" value="true"> Leistungsposten
     <br> Stück- / Stundenpreis:<br>
-    <input type="text">
+    <input type="text" [(ngModel)]="currentItem.partialCost">
     <br> Anzahl:<br>
-    <input type="text">
+    <input type="text" [(ngModel)]="currentItem.count">
     <br> Leistungsdatum:<br>
-    <input type="text">
+    <input type="text" [(ngModel)]="currentItem.itemDate">
     <br><br>
     <input type="submit" value="speichern">
 </form>

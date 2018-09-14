@@ -9,6 +9,8 @@ export class Item002 {
     partialCost: number; // <th>Stückpreis</th>
     count: number; // <th>Anzahl</th>
     wholeCost: number; // <th>Gesamtpreis</th>
+    hourPayment = false;
+    currency = '€';
 
 }
 

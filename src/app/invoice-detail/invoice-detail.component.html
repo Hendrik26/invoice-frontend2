@@ -57,48 +57,26 @@
                         <th>Ändern</th>
                     </tr -->
                     <tr>
-                        <th>Leistungsdatum</th>
-                        <th>Leistungsbeschreibung</th>
-                        <th>Stückpreis</th>
-                        <th>Anzahl</th>
-                        <th>Gesamtpreis</th>
-                        <th>Ändern</th>
+                      <th>Leistungsbeschreibung</th>
+                      <th>Leistungsdatum</th>
+                      <th>Anzahl</th>
+                      <th>Stückpreis</th>
+                      <th>Gesamtpreis</th>
+                      <th>Ändern</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Posten001:</td>
-                        <td>Nein</td>
-                        <td>150€</td>
-                        <td>3</td>
-                        <td>450€</td>
-                        <td>01.01.2001</td>
-                        <td>
-                            <button type="button">Posten bearbeiten</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Posten002:</td>
-                        <td>Ja</td>
-                        <td>25€/Stunde</td>
-                        <td>35Stunden40Minuten</td>
-                        <td>891,67€</td>
-                        <td>02.02.2002</td>
-                        <td>
-                            <button type="button">Posten bearbeiten</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Posten003:</td>
-                        <td>Nein</td>
-                        <td>70€</td>
-                        <td>5</td>
-                        <td>350€</td>
-                        <td>03.03.2003</td>
-                        <td>
-                            <button type="button">Posten bearbeiten</button>
-                        </td>
-                    </tr>
+                  <tr *ngFor="let item of items">
+                    <td>{{item.itemName}}</td>
+                    <td>{{item.itemDate}}</td>
+                    <td>{{item.count}}</td>
+                    <td>{{item.partialCost}}{{item.currency}}</td>
+                    <td>{{item.wholeCost}}{{item.currency}}</td>
+                    <td>
+                      <button type="button">Rechnung bearbeiten</button>
+                    </td>
+                  </tr>
+
                     <tr>
                         <td class="tablefooter" colspan="3"></td>
                         <td class="tablefooter">Summe Netto</td>
@@ -109,7 +87,7 @@
                         <td class="tablefooter" colspan="3"></td>
                         <td class="tablefooter">19% MwSt.</td>
                         <td class="tablefooter">700€</td>
-                        <td class="tablefooter"></td>
+                        <!-- td class="tablefooter"></td -->
                         <td class="tablefooter">
                             <button type="button">Mehrwertsteuer ändern</button>
                         </td>

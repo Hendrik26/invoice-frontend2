@@ -8,6 +8,7 @@ export class Invoice002 {
     wholeCost: number; // <th>Gesamtpreis</th>
     countReminders: number; // <th>Anzahl der Mahnungen</th>
     timeSpan: string; // <th>Rechnungzeitraum</th>
+    currency = '€';
 
 
 }

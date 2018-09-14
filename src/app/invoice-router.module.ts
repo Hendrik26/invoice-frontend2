@@ -17,9 +17,3 @@ const routes: Routes = [
 })
 export class InvoiceRouterModule {
 }
-
-const routes: Routes = [
-  {path: 'invoice-list', component: InvoiceListComponent},
-  {path: 'invoice-detail', component: InvoiceDetailComponent},
-  {path: 'item-detail', component: ItemDetailComponent}
-];
