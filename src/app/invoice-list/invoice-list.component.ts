@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Invoice002} from '../invoice002';
+import {Invoice} from '../invoice';
+import {Item} from '../item';
 
 @Component({
   selector: 'app-invoice-list',
@@ -8,12 +9,16 @@ import {Invoice002} from '../invoice002';
 })
 export class InvoiceListComponent implements OnInit {
 
-  hhInvoice: Invoice002 = {
+  standardItem: Item = {id: -1, count: 1, currency: '€', hourPayment: false, itemDate: '03. Oktober 1990',
+    itemName: 'Treiberprogrammierung', partialCost: 30, wholeCost: 10};
+
+  standardInvoice: Invoice = {
     id: 1, invoiceDate: new Date('04. Februar 2016'), invoiceNumber: '2018abcd', recipient: 'DusselGmbH',
-    invoiceState: 'Entwurf', wholeCost: 1111.11, countReminders: 0, timeSpan: '2017-01-01 bis 2017-12-31', currency: '€'
+    invoiceState: 'Entwurf', wholeCost: 1111.11, countReminders: 0, timeSpan: '2017-01-01 bis 2017-12-31',
+    currency: '€', items: [{...this.standardItem}]
   };
 
-  invoices: Invoice002[] = [
+  invoices: Invoice[] = [
 
     {
       id: 1, invoiceDate: new Date('04. February 2016'), invoiceNumber: '2018abcd', recipient: 'DusselGmbH',

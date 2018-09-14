@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Item002} from '../item002';
+import {Item} from '../item';
 
 @Component({
   selector: 'app-item-detail',
@@ -8,7 +8,7 @@ import {Item002} from '../item002';
 })
 export class ItemDetailComponent implements OnInit {
 
-  currentItem: Item002 = {hourPayment: true, itemDate: "2016-04-01", count: 1, partialCost: 30,
+  currentItem: Item = {hourPayment: true, itemDate: "2016-04-01", count: 1, partialCost: 30,
     itemName: 'C#-Entwicklung', currency: '€', wholeCost: 10, id: 1};
 
   constructor() { }

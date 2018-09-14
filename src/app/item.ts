@@ -1,6 +1,6 @@
-import {Invoice002} from './invoice002';
+import {Invoice} from './invoice';
 
-export class Item002 {
+export class Item{
 
 
     id: number; // <th>Ändern</th>

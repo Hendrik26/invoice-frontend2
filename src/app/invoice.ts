@@ -1,4 +1,6 @@
-export class Invoice002 {
+import {Item} from './item';
+
+export class Invoice {
     // //////////////////////
     id: number; // <th>Ändern</th>
     invoiceDate: Date; // <th>Rechnungsdatum</th>
@@ -9,6 +11,7 @@ export class Invoice002 {
     countReminders: number; // <th>Anzahl der Mahnungen</th>
     timeSpan: string; // <th>Rechnungzeitraum</th>
     currency = '€';
+    items: Item[];
 
 
 }

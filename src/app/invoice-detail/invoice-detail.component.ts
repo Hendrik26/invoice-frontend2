@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Item002} from '../item002';
+import {Item} from '../item';
 
 @Component({
   selector: 'app-invoice-detail',
@@ -8,7 +8,7 @@ import {Item002} from '../item002';
 })
 export class InvoiceDetailComponent implements OnInit {
 
-    items: Item002[] = [
+    items: Item[] = [
 
         {id: 1, itemDate: '2016-04-01', itemName: 'Programmieren',
             partialCost: 60.00, count: 5, wholeCost: 300, hourPayment: false, currency: '€'},
@@ -20,6 +20,11 @@ export class InvoiceDetailComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  openItemDetail(methID){
+
+
   }
 
 }
