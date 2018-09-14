@@ -1,16 +1,13 @@
 export class Invoice002 {
-
-  //id: number;
-  //invoiceNumber: string;
-
-  id: number;
-  invoiceDate: Date;
-  invoiceNumber: string;
-  recipient: string;
-  invoiceState: string;
-  wholeCost: number;
-  countReminders: number;
-  timeSpan: string;
+    // //////////////////////
+    id: number; // <th>Ändern</th>
+    invoiceDate: Date; // <th>Rechnungsdatum</th>
+    invoiceNumber: string; // <th>RechnungsNr</th>
+    recipient: string; // <th>Empfänger</th>
+    invoiceState: string; // <th>Status (Entwurf, bezahlt, ...)</th>
+    wholeCost: number; // <th>Gesamtpreis</th>
+    countReminders: number; // <th>Anzahl der Mahnungen</th>
+    timeSpan: string; // <th>Rechnungzeitraum</th>
 
 
 }
