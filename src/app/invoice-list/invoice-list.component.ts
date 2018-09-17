@@ -18,7 +18,9 @@ export class InvoiceListComponent implements OnInit {
     currency: '€', items: [{...this.standardItem}]
   };
 
-  invoices: Invoice[] = [
+    invoices: Invoice[] = [{...this.standardInvoice}];
+
+  invoicesOld: Invoice[] = [
 
     {
       id: 1, invoiceDate: new Date('04. February 2016'), invoiceNumber: '2018abcd', recipient: 'DusselGmbH',
