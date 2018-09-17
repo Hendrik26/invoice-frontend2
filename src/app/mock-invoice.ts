@@ -1,6 +1,6 @@
 import { Invoice } from './invoice';
 
-export const INVOICE: Invoice[] = [
+export const INVOICES: Invoice[] = [
 
       {
         id: 1, invoiceDate: new Date('04. February 2016'), invoiceNumber: '2018abcd', recipient: 'DusselGmbH',
