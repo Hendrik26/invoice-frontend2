@@ -34,7 +34,7 @@ export class InvoiceListComponent implements OnInit {
       id: 3, invoiceDate: new Date('06. February 2016'), invoiceNumber: '2018ijkl', recipient: 'Schweizer Käse&Socken GmbH',
       invoiceState: 'Entwurf', wholeCost: 333.3321, countReminders: 0, timeSpan: '2015-01-01 bis 2015-12-31', currency: '€',
         items: [{...this.standardItem}]},
-      this.standardInvoice
+      {...this.standardInvoice}
   ];
 
   constructor() {
