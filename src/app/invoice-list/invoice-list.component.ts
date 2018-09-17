@@ -29,10 +29,10 @@ export class InvoiceListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getInvoices();
+        this.receiveInvoices();
     }
 
-    getInvoices(): void {
+    receiveInvoices(): void {
         this.invoices = this.invoiceService.getInvoices();
     }
 

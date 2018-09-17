@@ -41,10 +41,10 @@ export class InvoiceDetailComponent implements OnInit {
 
     ngOnInit() {
         this.receiveInvoiceId();
-        this.getInvoices();
+        this.receiveInvoices();
     }
 
-    getInvoices(): void {
+    receiveInvoices(): void {
         this.invoices = this.invoiceService.getInvoices();
     }
 
