@@ -3,6 +3,7 @@
     <header>
 
         <div class="test">invoiceID: {{invoiceId}}</div>
+        <!-- shows invoiceId for testCases -->
 
         <div class="logo">
             <div class="logoimportant">SednaSoft</div>
@@ -47,7 +48,8 @@
         <section>
                 <h1 class="invoice-number">Rechnungsnummer 201800xx</h1>
                 <p>Zeitraum: 2018-01-01 bis 2018-12-31 (12 Monate)</p>
-            <table>
+            <table *ngFor="let invoice of invoices">
+                <!-- loop for all invoice - filter needed!!! -->
                 <thead>
                     <!-- tr>
                         <th>Leistungsbeschreibung</th>
@@ -68,8 +70,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of items">
-                  <!--tr *ngFor="let invoice of in"-->
+                  <tr *ngFor="let item of invoice.items">
+                      <!-- loop for all items -->
                     <td>{{item.itemName}}</td>
                     <td>{{item.itemDate}}</td>
                     <td>{{item.count}}</td>
