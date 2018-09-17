@@ -34,11 +34,11 @@ export class InvoiceDetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getInvoice();
+        this.getInvoiceId();
 
     }
 
-    getInvoice(): void {
+    getInvoiceId(): void {
         this.invoiceId = +this.route.snapshot.paramMap.get('invoiceId');
     }
 
