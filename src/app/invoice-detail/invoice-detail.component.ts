@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Item} from '../item';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
+import {InvoiceListComponent} from '../invoice-list/invoice-list.component';
 
 @Component({
     selector: 'app-invoice-detail',
@@ -23,6 +24,8 @@ export class InvoiceDetailComponent implements OnInit {
 
     ];
 
+    invoiceId: number;
+
 
     constructor(
         private route: ActivatedRoute,
@@ -32,10 +35,11 @@ export class InvoiceDetailComponent implements OnInit {
 
     ngOnInit() {
         this.getInvoice();
+
     }
 
     getInvoice(): void {
-        const id = +this.route.snapshot.paramMap.get('id');
+        this.invoiceId = +this.route.snapshot.paramMap.get('invoiceId');
     }
 
     openItemDetail(methID) {
