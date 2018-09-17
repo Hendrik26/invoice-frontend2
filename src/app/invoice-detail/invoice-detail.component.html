@@ -48,7 +48,8 @@
         <section>
                 <h1 class="invoice-number">Rechnungsnummer 201800xx</h1>
                 <p>Zeitraum: 2018-01-01 bis 2018-12-31 (12 Monate)</p>
-            <table *ngFor="let invoice of invoices">
+            <span *ngFor="let invoice of invoices">
+            <table *ngIf="invoice.id === invoiceId">
                 <!-- loop for all invoice - filter needed!!! -->
                 <thead>
                     <!-- tr>
@@ -105,6 +106,7 @@
                     </tr>
                 </tbody>
             </table>
+            </span>
             <button type="button" (click)="openItemDetail(0)">Posten hinzufuegen</button>
             <button>Speichern</button>
             <button>Zurück</button>
