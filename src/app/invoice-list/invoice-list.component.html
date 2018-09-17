@@ -53,7 +53,10 @@
         <td>{{invoice.countReminders}}</td>
         <td>{{invoice.timeSpan}}</td>
         <td>
-          <button type="button">Rechnung bearbeiten</button>
+          <!-- button type="button">Rechnung bearbeiten</button -->
+
+          <a routerLink="/invoice-detail/{{invoice.id}}">Rechnung bearbeiten</a>
+
         </td>
       </tr>
       <!-- ///////////////////////////// -->

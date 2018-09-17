@@ -5,9 +5,9 @@ import {InvoiceDetailComponent} from './invoice-detail/invoice-detail.component'
 import {ItemDetailComponent} from './item-detail/item-detail.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/invoice-list', pathMatch: 'full' },
+    {path: '', redirectTo: '/invoice-list', pathMatch: 'full' },
     {path: 'invoice-list', component: InvoiceListComponent},
-    {path: 'invoice-detail', component: InvoiceDetailComponent},
+    {path: 'invoice-detail/:invoiceId', component: InvoiceDetailComponent},
     {path: 'item-detail', component: ItemDetailComponent}
 ];
 
