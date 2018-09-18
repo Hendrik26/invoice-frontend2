@@ -26,4 +26,20 @@ export class InvoiceService {
         }
         return methInvoice;
     }
+
+    calculateNettoSum(methId: number): number {
+        var methInvoice: Invoice;
+        methInvoice = this.getInvoiceById(methId);
+        methSum = 0;
+        for (var i = 0; i < methInvoice.items.length; i++) {
+            methSum += methInvoice.items[i].wholeCost;
+        }
+        return methSum;
+    }
+
+    calculateBruttoSum(methId: number) {
+        var methInvoice: Invoice;
+        methInvoice = this.getInvoiceById(methId);
+        return this.calculateNettoSum(methId) * methInvoice.salesTaxPercentage / 100;
+    }
 }
