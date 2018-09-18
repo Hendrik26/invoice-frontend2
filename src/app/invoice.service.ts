@@ -7,10 +7,22 @@ import {INVOICES} from './mock-invoice';
 })
 export class InvoiceService {
 
+    id: number;
+
     constructor() {
     }
 
     getInvoices(): Invoice[] { // Returns the whole array of all Invoices
         return INVOICES;
+    }
+
+    getInvoiceById(methId: number): Invoice {
+        var methInvoice: Invoice;
+        for (var i = 0; i < INVOICES.length; i++) {
+            if (INVOICES[i].id == methId) {
+                methInvoice = INVOICES[i];
+            }
+        }
+        return methInvoice;
     }
 }
