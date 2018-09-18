@@ -29,10 +29,12 @@ export class InvoiceDetailComponent implements OnInit {
      ]; */
 
     invoiceId: number;
-
     invoice: Invoice;
+    nettoSum: number;
+    percentageString: string;
+    bruttoSum: number;
 
-    invoices: Invoice[];
+    //invoices: Invoice[];
 
     constructor(
         private route: ActivatedRoute,
@@ -43,13 +45,16 @@ export class InvoiceDetailComponent implements OnInit {
 
     ngOnInit() {
         this.receiveInvoiceId();
-        this.receiveInvoices();
+        //this.receiveInvoices();
         this.receiveInvoiceById(this.invoiceId);
+        this.nettoSum = this.invoiceService.calculateNettoSum(this.invoiceId);
+        this.percentageString = this.invoiceService.getSalesTaxPercentageString(this.invoiceId);
+        this.bruttoSum = this.invoiceService.calculateNettoSum(this.invoiceId);
     }
 
-    receiveInvoices(): void {
+    /* receiveInvoices(): void {
         this.invoices = this.invoiceService.getInvoices();
-    }
+    } */
 
     receiveInvoiceById(methId): void {
         this.invoice = this.invoiceService.getInvoiceById(methId);
