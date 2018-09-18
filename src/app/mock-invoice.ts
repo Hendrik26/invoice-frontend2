@@ -30,7 +30,7 @@ export const INVOICES: Invoice[] = [
                         },
                         {
                             id: 2, itemDate: '2016-04-30', itemName: 'Datenbank-Design',
-                            partialCost: 60.00, count: 5, wholeCost: 300, hourPayment: false, currency: '€'
+                            partialCost: 60.00, count: 5, wholeCost: 500, hourPayment: false, currency: '€'
                         }
 
                     ]},
@@ -42,11 +42,11 @@ export const INVOICES: Invoice[] = [
 
                         {
                             id: 1, itemDate: '2016-04-01', itemName: 'Programmieren',
-                            partialCost: 60.00, count: 5, wholeCost: 300, hourPayment: false, currency: '€'
+                            partialCost: 60.00, count: 5, wholeCost: 700, hourPayment: false, currency: '€'
                         },
                         {
                             id: 2, itemDate: '2016-04-30', itemName: 'Datenbank-Design',
-                            partialCost: 60.00, count: 5, wholeCost: 300, hourPayment: false, currency: '€'
+                            partialCost: 60.00, count: 5, wholeCost: 900, hourPayment: false, currency: '€'
                         }
 
                     ]},

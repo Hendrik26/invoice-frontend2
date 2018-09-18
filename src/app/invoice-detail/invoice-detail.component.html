@@ -77,13 +77,13 @@
                     <tr>
                         <td class="tablefooter" colspan="3"></td>
                         <td class="tablefooter">Summe Netto</td>
-                        <td class="tablefooter">3500€</td>
+                        <td class="tablefooter">{{nettoSum}}</td>
                         <td class="tablefooter" colspan="2"></td>
                     </tr>
                     <tr>
                         <td class="tablefooter" colspan="3"></td>
-                        <td class="tablefooter">19% MwSt.</td>
-                        <td class="tablefooter">700€</td>
+                        <td class="tablefooter">{{percentageString}} MwSt.</td>
+                        <td class="tablefooter"> {{salesTax}} </td>
                         <!-- td class="tablefooter"></td -->
                         <td class="tablefooter">
                             <button type="button">Mehrwertsteuer ändern</button>
@@ -92,7 +92,7 @@
                     <tr>
                         <td class="tablefooter" colspan="3"></td>
                         <td class="tablefooter">Rechnungsbetrag</td>
-                        <td class="tablefooter">4200€</td>
+                        <td class="tablefooter"> {{bruttoSum}} </td>
                         <td class="tablefooter" colspan="2"></td>
                     </tr>
                 </tbody>

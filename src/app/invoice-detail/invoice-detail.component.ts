@@ -32,6 +32,7 @@ export class InvoiceDetailComponent implements OnInit {
     invoice: Invoice;
     nettoSum: number;
     percentageString: string;
+    salesTax: number;
     bruttoSum: number;
 
     //invoices: Invoice[];
@@ -49,7 +50,8 @@ export class InvoiceDetailComponent implements OnInit {
         this.receiveInvoiceById(this.invoiceId);
         this.nettoSum = this.invoiceService.calculateNettoSum(this.invoiceId);
         this.percentageString = this.invoiceService.getSalesTaxPercentageString(this.invoiceId);
-        this.bruttoSum = this.invoiceService.calculateNettoSum(this.invoiceId);
+        this.salesTax = this.invoiceService.calculateSalesTax(this.invoiceId);
+        this.bruttoSum = this.invoiceService.calculateBruttoSum(this.invoiceId);
     }
 
     /* receiveInvoices(): void {

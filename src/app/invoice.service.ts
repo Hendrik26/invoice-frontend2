@@ -37,15 +37,21 @@ export class InvoiceService {
         return methSum;
     }
 
-    calculateBruttoSum(methId: number): number {
+    calculateSalesTax(methId: number): number {
         var methInvoice: Invoice;
         methInvoice = this.getInvoiceById(methId);
         return this.calculateNettoSum(methId) * methInvoice.salesTaxPercentage / 100;
     }
 
+    calculateBruttoSum(methId: number): number {
+        var methInvoice: Invoice;
+        methInvoice = this.getInvoiceById(methId);
+        return this.calculateNettoSum(methId) + this.calculateSalesTax(methId);
+    }
+
     getSalesTaxPercentageString(methId: number): string {
         var methInvoice: Invoice;
         methInvoice = this.getInvoiceById(methId);
-        return methInvoice.salesTaxPercentage + "Prozent";
+        return methInvoice.salesTaxPercentage + 'Prozent';
     }
 }
