@@ -30,6 +30,8 @@ export class InvoiceDetailComponent implements OnInit {
 
     invoiceId: number;
 
+    invoice: Invoice;
+
     invoices: Invoice[];
 
     constructor(
@@ -42,20 +44,20 @@ export class InvoiceDetailComponent implements OnInit {
     ngOnInit() {
         this.receiveInvoiceId();
         this.receiveInvoices();
+        this.receiveInvoiceById(this.invoiceId);
     }
 
     receiveInvoices(): void {
         this.invoices = this.invoiceService.getInvoices();
     }
 
-    receiveInvoiceId(): void {
-        this.invoiceId = +this.route.snapshot.paramMap.get('invoiceId');  // get invoiceID from URL
+    receiveInvoiceById(methId): void {
+        this.invoice = this.invoiceService.getInvoiceById(methId);
     }
 
-
-    openItemDetail(methID) {
-
-
+    receiveInvoiceId():
+        void {
+        this.invoiceId = +this.route.snapshot.paramMap.get('invoiceId');  // get invoiceID from URL
     }
 
 }
