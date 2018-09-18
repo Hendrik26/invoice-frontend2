@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Invoice} from './invoice';
-import { INVOICES } from './mock-invoice';
+import {INVOICES} from './mock-invoice';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class InvoiceService {
 
-  constructor() { }
+    constructor() {
+    }
 
-    getInvoices(): Invoice[] {
+    getInvoices(): Invoice[] { // Returns the whole array of all Invoices
         return INVOICES;
     }
 }
