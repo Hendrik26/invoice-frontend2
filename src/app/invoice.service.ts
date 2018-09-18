@@ -29,8 +29,8 @@ export class InvoiceService {
 
     calculateNettoSum(methId: number): number {
         var methInvoice: Invoice;
+        var methSum = 0;
         methInvoice = this.getInvoiceById(methId);
-        methSum = 0;
         for (var i = 0; i < methInvoice.items.length; i++) {
             methSum += methInvoice.items[i].wholeCost;
         }

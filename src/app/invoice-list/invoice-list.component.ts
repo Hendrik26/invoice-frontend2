@@ -18,7 +18,7 @@ export class InvoiceListComponent implements OnInit {
     standardInvoice: Invoice = {
         id: 1, invoiceDate: new Date('04. Februar 2016'), invoiceNumber: '2018abcd', recipient: 'DusselGmbH',
         invoiceState: 'Entwurf', wholeCost: 1111.11, countReminders: 0, timeSpan: '2017-01-01 bis 2017-12-31',
-        currency: '€', items: [{...this.standardItem}]
+        currency: '€', salesTaxPercentage: 19, items: [{...this.standardItem}]
     };
 
     invoicesNew: Invoice[] = [{...this.standardInvoice}]; // clones this.standardInvoice

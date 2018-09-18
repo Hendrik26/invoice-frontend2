@@ -11,20 +11,6 @@ export class Invoice {
     countReminders: number; // <th>Anzahl der Mahnungen</th>
     timeSpan: string; // <th>Rechnungzeitraum</th>
     currency = '€';
+    salesTaxPercentage: number;
     items: Item[];
-    salesTaxPercentage = 19;
-
-   /* calculateNettoSum(): number {
-        var methSum = 0;
-        for (var i = 0; i < this.items.length; i++) {
-            methSum += this.items[i].wholeCost;
-        }
-        return methSum;
-    }
-
-    calculateBruttoSum() {
-        return this.calculateNettoSum() * this.salesTaxPercentage / 100;
-    } */
-
-
 }
