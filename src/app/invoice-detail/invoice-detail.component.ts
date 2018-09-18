@@ -58,13 +58,17 @@ export class InvoiceDetailComponent implements OnInit {
         this.invoices = this.invoiceService.getInvoices();
     } */
 
-    receiveInvoiceById(methId): void {
+    /* receiveInvoiceById(methId): void {
         this.invoice = this.invoiceService.getInvoiceById(methId);
-    }
+    } */
 
     receiveInvoiceId():
         void {
         this.invoiceId = +this.route.snapshot.paramMap.get('invoiceId');  // get invoiceID from URL
     }
 
+    receiveInvoiceById(methId): void {
+        this.invoiceService.getInvoiceObservableById(methId)
+            .subscribe(invoice => this.invoice = invoice);
+    }
 }

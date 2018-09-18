@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Invoice} from './invoice';
 import {INVOICES} from './mock-invoice';
 import {forEach} from '@angular/router/src/utils/collection';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -13,8 +14,12 @@ export class InvoiceService {
     constructor() {
     }
 
-    getInvoices(): Invoice[] { // Returns the whole array of all Invoices
+    /* getInvoices(): Invoice[] { // Returns the whole array of all Invoices
         return INVOICES;
+    } */
+
+    getInvoices(): Observable<Invoice[]> {
+        return of(INVOICES);
     }
 
     getInvoiceById(methId: number): Invoice {
@@ -26,6 +31,17 @@ export class InvoiceService {
         }
         return methInvoice;
     }
+
+    getInvoiceObservableById(methId: number): Observable<Invoice> {
+        var methInvoice: Invoice;
+        for (var i = 0; i < INVOICES.length; i++) {
+            if (INVOICES[i].id == methId) {
+                methInvoice = INVOICES[i];
+            }
+        }
+        return of(methInvoice);
+    }
+
 
     calculateNettoSum(methId: number): number {
         var methInvoice: Invoice;

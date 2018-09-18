@@ -32,8 +32,13 @@ export class InvoiceListComponent implements OnInit {
         this.receiveInvoices();
     }
 
-    receiveInvoices(): void {
+    /* receiveInvoices(): void {
         this.invoices = this.invoiceService.getInvoices();
+    } */
+
+    receiveInvoices(): void {
+        this.invoiceService.getInvoices()
+            .subscribe(invoices => this.invoices = invoices);
     }
 
 }
