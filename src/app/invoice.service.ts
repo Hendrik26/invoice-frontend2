@@ -22,7 +22,7 @@ export class InvoiceService {
         return of(INVOICES);
     }
 
-    getInvoiceById(methId: number): Invoice {
+     getInvoiceById(methId: number): Invoice {
         var methInvoice: Invoice;
         for (var i = 0; i < INVOICES.length; i++) {
             if (INVOICES[i].id == methId) {
