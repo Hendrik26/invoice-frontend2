@@ -46,7 +46,7 @@ export class InvoiceDetailComponent implements OnInit {
 
     ngOnInit() {
         this.receiveInvoiceId();
-        //this.receiveInvoices();
+        // this.receiveInvoices();
         this.receiveInvoiceById(this.invoiceId);
         this.nettoSum = this.calculateNettoSum(this.invoiceId);
         this.percentageString = this.invoiceService.getSalesTaxPercentageString(this.invoiceId);

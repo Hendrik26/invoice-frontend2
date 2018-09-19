@@ -26,6 +26,7 @@ export class ItemDetailComponent implements OnInit {
     percentageString: string;
     salesTax: number;
     bruttoSum: number;
+    backUrl: string;
 
     constructor(
         private route: ActivatedRoute,
@@ -39,6 +40,7 @@ export class ItemDetailComponent implements OnInit {
         this.receiveInvoiceId();
         this.receiveItemId();
         this.receiveItemByIds(this.invoiceId, this.itemId);
+        this.backUrl = '/invoice-detail/' + this.invoiceId;
     }
 
     receiveInvoiceId():
@@ -60,5 +62,6 @@ export class ItemDetailComponent implements OnInit {
     togglePayment() {
         this.currentItem.hourPayment = !this.currentItem.hourPayment;
     }
+
 
 }
