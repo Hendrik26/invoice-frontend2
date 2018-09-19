@@ -8,7 +8,7 @@ const routes: Routes = [
     {path: '', redirectTo: '/invoice-list', pathMatch: 'full' },
     {path: 'invoice-list', component: InvoiceListComponent},
     {path: 'invoice-detail/:invoiceId', component: InvoiceDetailComponent}, // routing to the details of a dedicated invoice by ID
-    {path: 'item-detail', component: ItemDetailComponent}
+    {path: 'item-detail/:invoiceId/:itemId', component: ItemDetailComponent}
 ];
 
 @NgModule({
