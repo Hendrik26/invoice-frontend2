@@ -50,7 +50,7 @@ export class InvoiceDetailComponent implements OnInit {
         this.receiveInvoiceById(this.invoiceId);
         this.nettoSum = this.calculateNettoSum(this.invoiceId);
         this.percentageString = this.invoiceService.getSalesTaxPercentageString(this.invoiceId);
-        this.salesTax = this.calculateSalesTax(this.invoiceId);
+        this.salesTax = this.calculateSalesTax(this.invoiceId); // hier
         this.bruttoSum = this.calculateBruttoSum(this.invoiceId);
     }
 

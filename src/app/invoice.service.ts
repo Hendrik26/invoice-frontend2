@@ -74,6 +74,6 @@ export class InvoiceService {
     getSalesTaxPercentageString(methId: number): string {
         var methInvoice: Invoice;
         methInvoice = this.getInvoiceById(methId);
-        return methInvoice.salesTaxPercentage + 'Prozent';
+        return methInvoice.salesTaxPercentage  + 'Prozent';
     }
 }

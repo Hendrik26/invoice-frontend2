@@ -63,5 +63,8 @@ export class ItemDetailComponent implements OnInit {
         this.currentItem.hourPayment = !this.currentItem.hourPayment;
     }
 
+    goBack(): void {
+        this.location.back();
+    }
 
 }
