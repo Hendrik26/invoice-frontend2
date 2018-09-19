@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Item} from '../item';
 import {Invoice} from '../invoice';
+import {ItemService} from '../item.service';
+import {InvoiceService} from '../invoice.service';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 
@@ -26,7 +28,9 @@ export class ItemDetailComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private location: Location
+        private location: Location,
+        private invoiceService: InvoiceService,
+        private itemService: ItemService
     ) {
     }
 
@@ -43,6 +47,12 @@ export class ItemDetailComponent implements OnInit {
     receiveItemId():
         void {
         this.itemId = +this.route.snapshot.paramMap.get('itemId');  // get invoiceID from URL
+    }
+
+    receiveItemByIds(methInvoiceId: number, methItemId: number): void {
+        this.itemService.getItemByItemId(methInvoiceId, methItemId)
+            .subscribe(item => this.item = item);
+        // Empfängt Daten aus einem Datenstream, d.h. wenn sich invoice ändert übernimmt this.invoice die Daten von invoice
     }
 
     togglePayment() {
