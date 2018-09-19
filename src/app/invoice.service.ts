@@ -65,6 +65,12 @@ export class InvoiceService {
         return this.calculateNettoSum(methId) + this.calculateSalesTax(methId);
     }
 
+    getSalesTaxPercentage(methId: number): number {
+        var methInvoice: Invoice;
+        methInvoice = this.getInvoiceById(methId);
+        return methInvoice.salesTaxPercentage;
+    }
+
     getSalesTaxPercentageString(methId: number): string {
         var methInvoice: Invoice;
         methInvoice = this.getInvoiceById(methId);

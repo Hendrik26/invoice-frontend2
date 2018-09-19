@@ -48,10 +48,10 @@ export class InvoiceDetailComponent implements OnInit {
         this.receiveInvoiceId();
         //this.receiveInvoices();
         this.receiveInvoiceById(this.invoiceId);
-        this.nettoSum = this.invoiceService.calculateNettoSum(this.invoiceId);
+        this.nettoSum = this.calculateNettoSum(this.invoiceId);
         this.percentageString = this.invoiceService.getSalesTaxPercentageString(this.invoiceId);
-        this.salesTax = this.invoiceService.calculateSalesTax(this.invoiceId);
-        this.bruttoSum = this.invoiceService.calculateBruttoSum(this.invoiceId);
+        this.salesTax = this.calculateSalesTax(this.invoiceId);
+        this.bruttoSum = this.calculateBruttoSum(this.invoiceId);
     }
 
     /* receiveInvoices(): void {
@@ -70,5 +70,29 @@ export class InvoiceDetailComponent implements OnInit {
     receiveInvoiceById(methId): void {
         this.invoiceService.getInvoiceObservableById(methId)
             .subscribe(invoice => this.invoice = invoice);
+        // Empfängt Daten aus einem Datenstream, d.h. wenn sich invoice ändert übernimmt this.invoice die Daten von invoice
     }
+
+    calculateNettoSum(methId: number): number {
+        var methInvoice: Invoice;
+        var methSum = 0;
+        methInvoice = this.invoice;
+        for (var i = 0; i < methInvoice.items.length; i++) {
+            methSum += methInvoice.items[i].wholeCost;
+        }
+        return methSum;
+    }
+
+    calculateSalesTax(methId: number): number {
+        var methInvoice: Invoice;
+        methInvoice = this.invoice;
+        return this.calculateNettoSum(methId) * methInvoice.salesTaxPercentage / 100;
+    }
+
+    calculateBruttoSum(methId: number): number {
+        var methInvoice: Invoice;
+        methInvoice = this.invoice;
+        return this.calculateNettoSum(methId) + this.calculateSalesTax(methId);
+    }
+
 }
