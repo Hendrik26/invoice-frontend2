@@ -13,7 +13,7 @@ import {Location} from '@angular/common';
 })
 export class ItemDetailComponent implements OnInit {
 
-    currentItem: Item = {
+    currentItemOld: Item = {
         hourPayment: true, itemDate: '2016-04-01', count: 1, partialCost: 30,
         itemName: 'C#-Entwicklung', currency: '€', wholeCost: 10, id: 1
     };
@@ -21,6 +21,7 @@ export class ItemDetailComponent implements OnInit {
     invoiceId: number;
     itemId: number;
     item: Item;
+    currentItem: Item;
     nettoSum: number;
     percentageString: string;
     salesTax: number;
@@ -36,7 +37,8 @@ export class ItemDetailComponent implements OnInit {
 
     ngOnInit() {
         this.receiveInvoiceId();
-        this.receiveItemId()
+        this.receiveItemId();
+        this.receiveItemByIds(this.invoiceId, this.itemId);
     }
 
     receiveInvoiceId():
@@ -51,7 +53,7 @@ export class ItemDetailComponent implements OnInit {
 
     receiveItemByIds(methInvoiceId: number, methItemId: number): void {
         this.itemService.getItemByItemId(methInvoiceId, methItemId)
-            .subscribe(item => this.item = item);
+            .subscribe(item => this.currentItem = item);
         // Empfängt Daten aus einem Datenstream, d.h. wenn sich invoice ändert übernimmt this.invoice die Daten von invoice
     }
 
