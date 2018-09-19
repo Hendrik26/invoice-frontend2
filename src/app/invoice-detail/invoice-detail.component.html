@@ -67,8 +67,8 @@
                     <td>{{item.itemName}}</td>
                     <td>{{item.itemDate}}</td>
                     <td>{{item.count}}</td>
-                    <td>{{item.partialCost}}{{item.currency}}</td>
-                    <td>{{item.wholeCost}}{{item.currency}}</td>
+                    <td>{{item.partialCost | number:'1.2-2'}}{{item.currency}}</td>
+                    <td>{{item.wholeCost | number:'1.2-2'}}{{item.currency}}</td>
                     <td>
                       <!--button type="button">Rechnung bearbeiten</button-->
                         <a routerLink="/item-detail/{{invoiceId}}/{{item.id}}">Posten bearbeiten</a>
@@ -78,13 +78,13 @@
                     <tr>
                         <td class="tablefooter" colspan="3"></td>
                         <td class="tablefooter">Summe Netto</td>
-                        <td class="tablefooter">{{nettoSum}}</td>
+                        <td class="tablefooter">{{nettoSum | number:'1.2-2'}}{{currency}}</td>
                         <td class="tablefooter" colspan="2"></td>
                     </tr>
                     <tr>
                         <td class="tablefooter" colspan="3"></td>
                         <td class="tablefooter">{{percentageString}} MwSt.</td>
-                        <td class="tablefooter"> {{salesTax | number:'1.2-2'}} </td>
+                        <td class="tablefooter"> {{salesTax | number:'1.2-2'}}{{currency}} </td>
                         <!-- td class="tablefooter"></td -->
                         <td class="tablefooter">
                             <button type="button">Mehrwertsteuer ändern</button>
@@ -93,7 +93,7 @@
                     <tr>
                         <td class="tablefooter" colspan="3"></td>
                         <td class="tablefooter">Rechnungsbetrag</td>
-                        <td class="tablefooter"> {{bruttoSum}} </td>
+                        <td class="tablefooter"> {{bruttoSum | number:'1.2-2'}}{{currency}} </td>
                         <td class="tablefooter" colspan="2"></td>
                     </tr>
                 </tbody>
