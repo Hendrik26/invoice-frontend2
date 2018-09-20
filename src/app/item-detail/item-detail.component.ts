@@ -81,4 +81,13 @@ export class ItemDetailComponent implements OnInit {
     this.location.back();
   }
 
+  saveItem(): void {
+    this.itemService.saveItemByIds(this.invoiceId, this.itemId, this.count, this.currency, this.hourPayment,
+      this.itemDate, this.itemName, this.partialCost);
+  }
+
+  cancelItem(): void {
+    this.receiveItemByIds(this.invoiceId, this.itemId);
+  }
+
 }
