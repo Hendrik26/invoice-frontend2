@@ -5,16 +5,16 @@
 
 <form>
     Leistungsbeschreibung:<br>
-  <input type="text" name="itemName" [(ngModel)]="currentItem.itemName">
+  <input type="text" name="itemName" [(ngModel)]="itemName">
     <br>Postenart:<br>
-    <input type="checkbox" name="hourPayment" [checked]="currentItem.hourPayment"
+    <input type="checkbox" name="hourPayment" [checked]="hourPayment"
            (change)="togglePayment()"> Leistungspostenposten
     <br> Stück- / Stundenpreis:<br>
-    <input type="number" name="partialCost" [(ngModel)]="currentItem.partialCost">
+    <input type="number" name="partialCost" [(ngModel)]="partialCost">
     <br> Anzahl:<br>
-    <input type="number" name="count" [(ngModel)]="currentItem.count">
+    <input type="number" name="count" [(ngModel)]="count">
     <br> Leistungsdatum:<br>
-    <input type="text" name="itemDate" [(ngModel)]="currentItem.itemDate">
+    <input type="text" name="itemDate" [(ngModel)]="itemDate">
     <br><br>
     <input type="submit" value="speichern">
     <a routerLink="{{backUrl}}">cancel</a> <!-- button (click)="goBack()">go back</button -->

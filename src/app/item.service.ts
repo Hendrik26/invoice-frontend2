@@ -12,14 +12,13 @@ import { Observable, of } from 'rxjs';
 })
 export class ItemService {
 
-    itemId: number;
-    ivoiceId: number;
+
 
   constructor() { }
 
     getItemsByInvoiceId(methInvoiceId: number): Observable<Item[]> {
-        var methInvoice: Invoice;
-        for (var i = 0; i < INVOICES.length; i++) {
+        let methInvoice: Invoice;
+        for (let i = 0; i < INVOICES.length; i++) {
             if (INVOICES[i].id == methInvoiceId) {
                 methInvoice = INVOICES[i];
             }
@@ -28,14 +27,14 @@ export class ItemService {
     }
 
     getItemByItemId(methInvoiceId: number, methItemId: number): Observable<Item> {
-        var methInvoice: Invoice;
-        var methItem: Item;
-        for (var i = 0; i < INVOICES.length; i++) { // identifies the correct invpice
+        let methInvoice: Invoice;
+        let methItem: Item;
+        for (let i = 0; i < INVOICES.length; i++) { // identifies the correct invpice
             if (INVOICES[i].id == methInvoiceId) {
                 methInvoice = INVOICES[i];
             }
         }
-        for (var i = 0; i < methInvoice.items.length; i++) { // identifies the correct item
+        for (let i = 0; i < methInvoice.items.length; i++) { // identifies the correct item
             if (methInvoice.items[i].id == methItemId) {
                 methItem = methInvoice.items[i];
             }
