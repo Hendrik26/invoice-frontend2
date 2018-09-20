@@ -13,6 +13,7 @@ import {Location} from '@angular/common';
 })
 export class ItemDetailComponent implements OnInit {
 
+  wholeCost: number;
   hourPayment: boolean;
   currency: string;
   count: number;
@@ -69,6 +70,7 @@ export class ItemDetailComponent implements OnInit {
         this.partialCost = itemReceived.partialCost;
         this.count = itemReceived.count;
         this.currency = itemReceived.currency;
+        this.wholeCost = itemReceived.wholeCost;
       });
     // Empfängt Daten aus einem Datenstream, d.h. wenn sich invoice ändert übernimmt this.invoice die Daten von invoice
   }
@@ -82,6 +84,7 @@ export class ItemDetailComponent implements OnInit {
   }
 
   saveItem(): void {
+    this.wholeCost = this.count * this.partialCost;
     this.itemService.saveItemByIds(this.invoiceId, this.itemId, this.count, this.currency, this.hourPayment,
       this.itemDate, this.itemName, this.partialCost);
   }
