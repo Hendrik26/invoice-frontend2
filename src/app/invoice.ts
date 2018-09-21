@@ -3,7 +3,7 @@ import {InvoiceType} from './invoice-type';
 
 export class Invoice implements InvoiceType {
   // //////////////////////
-  id: string; // <th>Ändern</th>
+  private id: string; // <th>Ändern</th>
   invoiceDate: Date; // <th>Rechnungsdatum</th>
   invoiceNumber: string; // <th>RechnungsNr</th>
   recipient: string; // <th>Empfänger</th>
