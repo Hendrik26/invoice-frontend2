@@ -26,6 +26,7 @@ export class Item implements ItemType{
     this.currency = data.currency || '€';
   }
 
+
   getId(): number {
       return this.id;
     }
