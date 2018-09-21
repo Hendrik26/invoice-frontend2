@@ -10,5 +10,4 @@ export interface InvoiceType {
   timeSpan: string;
   currency?: string; // Fragezeichen ? heisst optional
   salesTaxPercentage: number;
-  items: Item[];
 }

@@ -28,12 +28,11 @@ export class Invoice implements InvoiceType {
     this.timeSpan = data.timeSpan;
     this.currency = data.currency || '€';
     this.salesTaxPercentage = data.salesTaxPercentage;
-    this.items = data.items;
   }
 
   public addNewItem(item: ItemType): Item {
     // TODO add new Item
-    return new Item(1, item);
+    return new Item(this, item);
   }
 
   public getID(): string {

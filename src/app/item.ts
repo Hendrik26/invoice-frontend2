@@ -15,8 +15,8 @@ export class Item implements ItemType{
     currency = '€';
 
 
-  constructor(id: number, data: ItemType) {
-    this.id = id;
+  constructor(invoice: Invoice, data: ItemType) {
+    this.id = invoice.getMaxItemId() + 1;
     this.itemDate = data.itemDate;
     this.itemName = data.itemName;
     this.partialCost = data.partialCost;
