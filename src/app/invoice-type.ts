@@ -1,7 +1,6 @@
 import {Item} from './item';
 
 export interface InvoiceType {
-  id: number;
   invoiceDate: Date;
   invoiceNumber: string;
   recipient: string;

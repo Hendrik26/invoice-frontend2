@@ -17,7 +17,6 @@ export class InvoiceListComponent implements OnInit {
   };
 
   standardInvoice: InvoiceType = {
-    id: 1,
     invoiceDate: new Date('04. Februar 2016'),
     invoiceNumber: '2018abcd',
     recipient: 'DusselGmbH',
@@ -32,7 +31,7 @@ export class InvoiceListComponent implements OnInit {
   // invoicesNew: Invoice[] = [{...this.standardInvoice}]; // clones this.standardInvoice
 
 
-   invoicesNew: Invoice[] = [new Invoice(this.standardInvoice)]; // clones this.standardInvoice
+   invoicesNew: Invoice[] = [new Invoice('In001', this.standardInvoice)]; // clones this.standardInvoice
 
   invoices: Invoice[];
 

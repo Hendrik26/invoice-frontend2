@@ -25,7 +25,7 @@ export class ItemDetailComponent implements OnInit {
     itemName: 'C#-Entwicklung', currency: '€', wholeCost: 10, id: 1
   };
 
-  invoiceId: number;
+  invoiceId: string;
   itemId: number;
   item: Item;
   currentItem: Item;
@@ -52,15 +52,16 @@ export class ItemDetailComponent implements OnInit {
 
   receiveInvoiceId():
     void {
-    this.invoiceId = +this.route.snapshot.paramMap.get('invoiceId');  // get invoiceID from URL
+    this.invoiceId = this.route.snapshot.paramMap.get('invoiceId');  // get invoiceID from URL
   }
 
   receiveItemId():
     void {
-    this.itemId = +this.route.snapshot.paramMap.get('itemId');  // get invoiceID from URL
+    this.itemId = +this.route.snapshot.paramMap.get('itemId');  // get itemID from URL
+    // this.itemId = +this.route.snapshot.paramMap.get('itemId');  // + converts string to number here
   }
 
-  receiveItemByIds(methInvoiceId: number, methItemId: number): void {
+  receiveItemByIds(methInvoiceId: string, methItemId: number): void {
     this.itemService.getItemByItemId(methInvoiceId, methItemId)
       .subscribe((itemReceived: Item) => { // Lambda-Expression
         this.currentItem = itemReceived;
@@ -85,8 +86,7 @@ export class ItemDetailComponent implements OnInit {
 
   saveItem(): void {
     this.wholeCost = this.count * this.partialCost;
-    this.itemService.saveItemByIds(this.invoiceId, this.itemId, this.count, this.currency, this.hourPayment,
-      this.itemDate, this.itemName, this.partialCost);
+    this.itemService.saveItemByIds(this.invoiceId, this.itemId, this.count, this.currency, this.hourPayment, this.itemDate, this.itemName, this.partialCost);
   }
 
   cancelItem(): void {

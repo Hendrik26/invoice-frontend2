@@ -3,7 +3,7 @@ import {InvoiceType} from './invoice-type';
 
 export class Invoice implements InvoiceType {
   // //////////////////////
-  id: number; // <th>Ändern</th>
+  id: string; // <th>Ändern</th>
   invoiceDate: Date; // <th>Rechnungsdatum</th>
   invoiceNumber: string; // <th>RechnungsNr</th>
   recipient: string; // <th>Empfänger</th>
@@ -16,8 +16,8 @@ export class Invoice implements InvoiceType {
   items: Item[];
 
 
-  constructor(data: InvoiceType) {
-    this.id = data.id;
+  constructor(id: string, data: InvoiceType) {
+    this.id = id;
     this.invoiceDate = data.invoiceDate;
     this.invoiceNumber = data.invoiceNumber;
     this.recipient = data.recipient;
@@ -30,7 +30,7 @@ export class Invoice implements InvoiceType {
     this.items = data.items;
   }
 
-  public getID(): number {
+  public getID(): string {
     return this.id;
   }
 }

@@ -28,7 +28,7 @@ export class InvoiceDetailComponent implements OnInit {
 
      ]; */
 
-    invoiceId: number;
+    invoiceId: string;
     invoice: Invoice;
     nettoSum: number;
     percentageString: string;
@@ -67,16 +67,17 @@ export class InvoiceDetailComponent implements OnInit {
 
     receiveInvoiceId():
         void {
-        this.invoiceId = +this.route.snapshot.paramMap.get('invoiceId');  // get invoiceID from URL
+        this.invoiceId = this.route.snapshot.paramMap.get('invoiceId');  // get invoiceID from URL
+        // this.invoiceId = +this.route.snapshot.paramMap.get('invoiceId');  // + converts string to number
     }
 
-    receiveInvoiceById(methId): void {
+  receiveInvoiceById(methId: string): void {
         this.invoiceService.getInvoiceObservableById(methId)
             .subscribe(invoice => this.invoice = invoice);
         // Empfängt Daten aus einem Datenstream, d.h. wenn sich invoice ändert übernimmt this.invoice die Daten von invoice
     }
 
-    calculateNettoSum(methId: number): number {
+  calculateNettoSum(methId: string): number {
         var methInvoice: Invoice;
         var methSum = 0;
         methInvoice = this.invoice;
@@ -86,13 +87,13 @@ export class InvoiceDetailComponent implements OnInit {
         return methSum;
     }
 
-    calculateSalesTax(methId: number): number {
+  calculateSalesTax(methId: string): number {
         var methInvoice: Invoice;
         methInvoice = this.invoice;
         return this.calculateNettoSum(methId) * methInvoice.salesTaxPercentage / 100;
     }
 
-    calculateBruttoSum(methId: number): number {
+  calculateBruttoSum(methId: string): number {
         var methInvoice: Invoice;
         methInvoice = this.invoice;
         return this.calculateNettoSum(methId) + this.calculateSalesTax(methId);

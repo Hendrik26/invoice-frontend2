@@ -16,7 +16,7 @@ export class ItemService {
 
   constructor() { }
 
-    getItemsByInvoiceId(methInvoiceId: number): Observable<Item[]> {
+  getItemsByInvoiceId(methInvoiceId: string): Observable<Item[]> {
         let methInvoice: Invoice;
         for (let i = 0; i < INVOICES.length; i++) {
             if (INVOICES[i].id == methInvoiceId) {
@@ -26,7 +26,7 @@ export class ItemService {
         return of(methInvoice.items);
     }
 
-    getItemByItemId(methInvoiceId: number, methItemId: number): Observable<Item> {
+  getItemByItemId(methInvoiceId: string, methItemId: number): Observable<Item> {
         let methInvoice: Invoice;
         let methItem: Item;
         for (let i = 0; i < INVOICES.length; i++) { // identifies the correct invpice
@@ -42,8 +42,8 @@ export class ItemService {
         return of(methItem);
     }
 
-    saveItemByIds(methInvoiceId: number, methItemId: number, count: number, currency: string,
-                  hourPayment: boolean, itemDate: string, itemName: string, partialCost: number): void {
+  saveItemByIds(methInvoiceId: string, methItemId: number, count: number, currency: string,
+                hourPayment: boolean, itemDate: string, itemName: string, partialCost: number): void {
       let methInvoice: Invoice;
       let methItem: Item;
       for (let i = 0; i < INVOICES.length; i++) { // identifies the correct invpice
