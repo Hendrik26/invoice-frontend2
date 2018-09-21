@@ -37,7 +37,7 @@ export class Invoice implements InvoiceType {
 
   public getMaxItemId(): number {
     return this.items.reduce<number>((a: number, x: Item) => {
-      return Math.max(a, x.id);
+      return Math.max(a, x.getId());
     }, -1); // lambda-expression
   }
 }

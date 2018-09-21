@@ -5,7 +5,7 @@ import {ItemType} from './item-type';
 export class Item implements ItemType{
 
 
-    id: number; // <th>Ändern</th>
+    private id: number; // <th>Ändern</th>
     itemDate: string; /// <th>Leistungsdatum</th>
     itemName: string;  // <th>Leistungsbeschreibung</th>
     partialCost: number; // <th>Stückpreis</th>

@@ -30,12 +30,12 @@ export class ItemService {
         let methInvoice: Invoice;
         let methItem: Item;
         for (let i = 0; i < INVOICES.length; i++) { // identifies the correct invpice
-            if (INVOICES[i].getID() == methInvoiceId) {
+            if (INVOICES[i].getID() === methInvoiceId) {
                 methInvoice = INVOICES[i];
             }
         }
         for (let i = 0; i < methInvoice.items.length; i++) { // identifies the correct item
-            if (methInvoice.items[i].id == methItemId) {
+            if (methInvoice.items[i].getId() === methItemId) {
                 methItem = methInvoice.items[i];
             }
         }
@@ -47,12 +47,12 @@ export class ItemService {
       let methInvoice: Invoice;
       let methItem: Item;
       for (let i = 0; i < INVOICES.length; i++) { // identifies the correct invpice
-        if (INVOICES[i].getID() == methInvoiceId) {
+        if (INVOICES[i].getID() === methInvoiceId) {
           methInvoice = INVOICES[i];
         }
       }
       for (let i = 0; i < methInvoice.items.length; i++) { // identifies the correct item
-        if (methInvoice.items[i].id == methItemId) {
+        if (methInvoice.items[i].getId() == methItemId) {
           methItem = methInvoice.items[i];
         }
       }
