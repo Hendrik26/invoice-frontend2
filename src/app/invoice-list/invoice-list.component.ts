@@ -12,27 +12,11 @@ import {ItemType} from '../item-type';
 })
 export class InvoiceListComponent implements OnInit {
 
-  standardItem: ItemType = {
-     count: 1, currency: '€', hourPayment: false, itemDate: '03. Oktober 1990',
-    itemName: 'Treiberprogrammierung', partialCost: 30
-  };
 
-  standardInvoice: InvoiceType =  {
-    invoiceDate: new Date('04. Februar 2016'),
-    invoiceNumber: '2018abcd',
-    recipient: 'DusselGmbH',
-    invoiceState: 'Entwurf',
-    wholeCost: 1111.11,
-    countReminders: 0,
-    timeSpan: '2017-01-01 bis 2017-12-31',
-    salesTaxPercentage: 19,
-    items: [new Item(1, {...this.standardItem})]
-  };
-
-  // invoicesNew: Invoice[] = [{...this.standardInvoice}]; // clones this.standardInvoice
+   // invoicesNew: Invoice[] = [{...this.invoiceService.standardInvoice}]; // clones this.standardInvoice
 
 
-   invoicesNew: Invoice[] = [new Invoice('In001', this.standardInvoice)]; // clones this.standardInvoice
+   //invoicesNew: Invoice[] = [new Invoice('In001', this.)]; // clones this.standardInvoice
 
   invoices: Invoice[];
 

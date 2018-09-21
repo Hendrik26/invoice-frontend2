@@ -23,7 +23,7 @@ export class Item implements ItemType{
     this.count = data.count;
     this.wholeCost = data.count * data.partialCost;
     this.hourPayment = data.hourPayment;
-    this.currency = data.currency;
+    this.currency = data.currency || '€';
   }
 
   getId(): number {

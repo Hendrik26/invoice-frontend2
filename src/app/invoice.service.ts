@@ -3,13 +3,33 @@ import {Invoice} from './invoice';
 import {INVOICES} from './mock-invoice';
 import {forEach} from '@angular/router/src/utils/collection';
 import {Observable, of} from 'rxjs';
+import {ItemType} from './item-type';
+import {InvoiceType} from './invoice-type';
+import {Item} from './item';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InvoiceService {
-
   id: number;
+
+  standardItem: ItemType = {
+    count: 1, currency: '€', hourPayment: false, itemDate: '03. Oktober 1990',
+    itemName: 'Treiberprogrammierung', partialCost: 30
+  };
+
+  standardInvoice: InvoiceType =  {
+    invoiceDate: new Date('04. Februar 2016'),
+    invoiceNumber: '2018abcd',
+    recipient: 'DusselGmbH',
+    invoiceState: 'Entwurf',
+    wholeCost: 1111.11,
+    countReminders: 0,
+    timeSpan: '2017-01-01 bis 2017-12-31',
+    salesTaxPercentage: 19,
+    items: [new Item(1, {...this.standardItem})]
+  };
+
 
   constructor() {
   }
