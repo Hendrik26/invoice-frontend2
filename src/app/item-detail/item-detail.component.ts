@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Item} from '../item';
+import {ItemType} from '../item-type';
 import {Invoice} from '../invoice';
 import {ItemService} from '../item.service';
 import {InvoiceService} from '../invoice.service';
@@ -20,10 +21,6 @@ export class ItemDetailComponent implements OnInit {
   partialCost: number;
   itemDate: string;
   itemName: string;
-  currentItemOld: Item = {
-    hourPayment: true, itemDate: '2016-04-01', count: 1, partialCost: 30,
-    itemName: 'C#-Entwicklung', currency: '€', wholeCost: 10, id: 1
-  };
 
   invoiceId: string;
   itemId: number;
@@ -86,7 +83,8 @@ export class ItemDetailComponent implements OnInit {
 
   saveItem(): void {
     this.wholeCost = this.count * this.partialCost;
-    this.itemService.saveItemByIds(this.invoiceId, this.itemId, this.count, this.currency, this.hourPayment, this.itemDate, this.itemName, this.partialCost);
+    this.itemService.saveItemByIds(this.invoiceId, this.itemId, this.count, this.currency,
+      this.hourPayment, this.itemDate, this.itemName, this.partialCost);
   }
 
   cancelItem(): void {

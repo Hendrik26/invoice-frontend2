@@ -3,6 +3,7 @@ import {Invoice} from '../invoice';
 import {Item} from '../item';
 import {InvoiceService} from '../invoice.service';
 import {InvoiceType} from '../invoice-type';
+import {ItemType} from '../item-type';
 
 @Component({
   selector: 'app-invoice-list',
@@ -11,12 +12,12 @@ import {InvoiceType} from '../invoice-type';
 })
 export class InvoiceListComponent implements OnInit {
 
-  standardItem: Item = {
-    id: -1, count: 1, currency: '€', hourPayment: false, itemDate: '03. Oktober 1990',
-    itemName: 'Treiberprogrammierung', partialCost: 30, wholeCost: 10
+  standardItem: ItemType = {
+     count: 1, currency: '€', hourPayment: false, itemDate: '03. Oktober 1990',
+    itemName: 'Treiberprogrammierung', partialCost: 30
   };
 
-  standardInvoice: InvoiceType = {
+  standardInvoice: InvoiceType =  {
     invoiceDate: new Date('04. Februar 2016'),
     invoiceNumber: '2018abcd',
     recipient: 'DusselGmbH',
@@ -25,7 +26,7 @@ export class InvoiceListComponent implements OnInit {
     countReminders: 0,
     timeSpan: '2017-01-01 bis 2017-12-31',
     salesTaxPercentage: 19,
-    items: [{...this.standardItem}]
+    items: [new Item(1, {...this.standardItem})]
   };
 
   // invoicesNew: Invoice[] = [{...this.standardInvoice}]; // clones this.standardInvoice

@@ -1,5 +1,6 @@
 import {Item} from './item';
 import {InvoiceType} from './invoice-type';
+import {ItemType} from './item-type';
 
 export class Invoice implements InvoiceType {
   // //////////////////////
