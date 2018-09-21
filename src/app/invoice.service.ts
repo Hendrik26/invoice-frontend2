@@ -25,7 +25,7 @@ export class InvoiceService {
   getInvoiceById(methId: string): Invoice {
     var methInvoice: Invoice;
     for (var i = 0; i < INVOICES.length; i++) {
-      if (INVOICES[i].id === methId) {
+      if (INVOICES[i].getID() === methId) {
         methInvoice = INVOICES[i];
       }
     }
@@ -35,7 +35,7 @@ export class InvoiceService {
   getInvoiceObservableById(methId: string): Observable<Invoice> {
     var methInvoice: Invoice;
     for (var i = 0; i < INVOICES.length; i++) {
-      if (INVOICES[i].id === methId) {
+      if (INVOICES[i].getID() === methId) {
         methInvoice = INVOICES[i];
       }
     }

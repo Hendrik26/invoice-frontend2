@@ -19,7 +19,7 @@ export class ItemService {
   getItemsByInvoiceId(methInvoiceId: string): Observable<Item[]> {
         let methInvoice: Invoice;
         for (let i = 0; i < INVOICES.length; i++) {
-            if (INVOICES[i].id == methInvoiceId) {
+            if (INVOICES[i].getID() == methInvoiceId) {
                 methInvoice = INVOICES[i];
             }
         }
@@ -30,7 +30,7 @@ export class ItemService {
         let methInvoice: Invoice;
         let methItem: Item;
         for (let i = 0; i < INVOICES.length; i++) { // identifies the correct invpice
-            if (INVOICES[i].id == methInvoiceId) {
+            if (INVOICES[i].getID() == methInvoiceId) {
                 methInvoice = INVOICES[i];
             }
         }
@@ -47,7 +47,7 @@ export class ItemService {
       let methInvoice: Invoice;
       let methItem: Item;
       for (let i = 0; i < INVOICES.length; i++) { // identifies the correct invpice
-        if (INVOICES[i].id == methInvoiceId) {
+        if (INVOICES[i].getID() == methInvoiceId) {
           methInvoice = INVOICES[i];
         }
       }
