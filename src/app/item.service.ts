@@ -5,6 +5,7 @@ import {Item} from './item';
 import {INVOICES} from './mock-invoice';
 import {forEach} from '@angular/router/src/utils/collection';
 import { Observable, of } from 'rxjs';
+import {ItemType} from './item-type';
 
 
 @Injectable({

@@ -2,7 +2,7 @@ import {Invoice} from './invoice';
 import {Item} from './item';
 
 let invoice01 = new Invoice('In001', {
-  invoiceDate: new Date('04. February 2016'), invoiceNumber: '2018abcd', recipient: 'DusselGmbH',
+  invoiceDate: new Date('04. February 2016'), invoiceNumber: '2018abcd', recipient: 'DumpfbackeGmbH',
   invoiceState: 'Entwurf', wholeCost: 1111.11, countReminders: 0, timeSpan: '2017-01-01 bis 2017-12-31',
   currency: '€', salesTaxPercentage: 19
 });

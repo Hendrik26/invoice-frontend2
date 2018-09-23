@@ -16,7 +16,7 @@ export class InvoiceListComponent implements OnInit {
    // invoicesNew: Invoice[] = [{...this.invoiceService.standardInvoice}]; // clones this.standardInvoice
 
 
-   //invoicesNew: Invoice[] = [new Invoice('In001', this.)]; // clones this.standardInvoice
+   // invoicesNew: Invoice[] = [new Invoice('In001', this.)]; // clones this.standardInvoice
 
   invoices: Invoice[];
 
@@ -25,9 +25,12 @@ export class InvoiceListComponent implements OnInit {
 
   ngOnInit() {
     this.receiveInvoices();
+    /* if (this.invoices.length < 1) {
+      this.invoices.push(new Invoice('Inn1', this.invoiceService.standardInvoice))
+    } */
   }
 
-  /* receiveInvoices(): void {
+  /* receiveInvoices(): void {ce
       this.invoices = this.invoiceService.getInvoices();
   } */
 
