@@ -16,7 +16,7 @@ export class Item implements ItemType{
 
 
   constructor(invoice: Invoice, data: ItemType) {
-    this.id = invoice.getMaxItemId() + 1;
+    this.id = invoice.getMaxItemId() + 1; // logical error here
     this.itemDate = data.itemDate;
     this.itemName = data.itemName;
     this.partialCost = data.partialCost;
