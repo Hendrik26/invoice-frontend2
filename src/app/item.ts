@@ -17,8 +17,7 @@ export class Item implements ItemType{
 
 
   constructor(invoice: Invoice, data: ItemType) {
-    // TODO replace method invoice.getMaxItermId by invoice.computeNextItemId
-    this.itemId = invoice.getMaxItemId() + 1; // item needs itemId and invoiceId to be unique.
+    this.itemId = invoice.computeNextItemId(); // item needs itemId and invoiceId to be unique.
     this.invoiceId = invoice.getID(); // item needs itemId and invoiceId to be unique.
     this.itemDate = data.itemDate;
     this.itemName = data.itemName;

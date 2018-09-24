@@ -44,7 +44,7 @@ export class Invoice implements InvoiceType {
         return this.id;
     }
 
-    public getMaxItemId(): number {
+    private getMaxItemId(): number {
         console.log("invoice.getMaxItemId")
         if (this.items === undefined) {
             return -1;
@@ -53,5 +53,9 @@ export class Invoice implements InvoiceType {
                 return Math.max(a, x.getId());
             }, -1); // lambda-expression
         }
+    }
+
+    public computeNextItemId(): number {
+      return this.getMaxItemId() + 1;
     }
 }
