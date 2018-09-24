@@ -18,7 +18,7 @@ export class Invoice implements InvoiceType {
 
 
     constructor(id: string, data: InvoiceType) {
-        this.id = id;
+        this.id = id; // New Commit after problems with merging
         this.invoiceDate = data.invoiceDate;
         this.invoiceNumber = data.invoiceNumber;
         this.recipient = data.recipient;
