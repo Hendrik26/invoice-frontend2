@@ -5,7 +5,8 @@ import {ItemType} from './item-type';
 export class Item implements ItemType{
 
 
-    private id: number; // <th>Ändern</th>
+    private itemId: number; // <th>Ändern</th>
+    private invoiceId: string;
     itemDate: string; /// <th>Leistungsdatum</th>
     itemName: string;  // <th>Leistungsbeschreibung</th>
     partialCost: number; // <th>Stückpreis</th>
@@ -16,7 +17,8 @@ export class Item implements ItemType{
 
 
   constructor(invoice: Invoice, data: ItemType) {
-    this.id = invoice.getMaxItemId() + 1; // logical error here
+    this.itemId = invoice.getMaxItemId() + 1; // item needs itemId and invoiceId to be unique
+    this.invoiceId = invoice.getID(); // item needs itemId and invoiceId to be unique
     this.itemDate = data.itemDate;
     this.itemName = data.itemName;
     this.partialCost = data.partialCost;
@@ -28,7 +30,7 @@ export class Item implements ItemType{
 
 
   getId(): number {
-      return this.id;
+      return this.itemId;
     }
 
 }
