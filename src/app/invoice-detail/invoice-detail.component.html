@@ -71,7 +71,7 @@
                     <td>{{item.wholeCost | number:'1.2-2'}}{{item.currency}}</td>
                     <td>
                       <!--button type="button">Rechnung bearbeiten</button-->
-                        <a routerLink="/item-detail/{{invoiceId}}/{{item.id}}">Posten bearbeiten</a>
+                        <a routerLink="/item-detail/{{invoiceId}}/{{item.getId()}}">Posten bearbeiten</a>
                     </td>
                   </tr>
 
@@ -98,7 +98,8 @@
                     </tr>
                 </tbody>
             </table>
-            <button type="button">Posten hinzufuegen</button>
+            <!-- button type="button">Posten hinzufuegen</button -->
+          <a routerLink="/item-create/{{invoiceId}}">Posten hinzufügen</a>
             <button>Speichern</button>
             <button>Zurück</button>
             <a routerLink="/invoice-list/">cancel  '/invoice-detail/' </a>
