@@ -14,6 +14,8 @@ import {Location} from '@angular/common';
 })
 export class ItemDetailComponent implements OnInit {
 
+  creatingItem: boolean;
+
   wholeCost: number;
   hourPayment: boolean;
   currency: string;
@@ -42,8 +44,10 @@ export class ItemDetailComponent implements OnInit {
 
   ngOnInit() {
     this.receiveInvoiceId();
-    this.receiveItemId();
-    this.receiveItemByIds(this.invoiceId, this.itemId);
+    this.creatingItem = !this.hasReceivedItemId();
+    if (!this.creatingItem) {
+      this.receiveItemByIds(this.invoiceId, this.itemId);
+    }
     this.backUrl = '/invoice-detail/' + this.invoiceId;
   }
 
@@ -52,11 +56,19 @@ export class ItemDetailComponent implements OnInit {
     this.invoiceId = this.route.snapshot.paramMap.get('invoiceId');  // get invoiceID from URL
   }
 
-  receiveItemId():
-    void {
-    this.itemId = +this.route.snapshot.paramMap.get('itemId');  // get itemID from URL
-    // this.itemId = +this.route.snapshot.paramMap.get('itemId');  // + converts string to number here
-  }
+  hasReceivedItemId():
+    boolean {
+      if (this.route.snapshot.paramMap.has('itemId')) {
+        this.itemId = +this.route.snapshot.paramMap.get('itemId');  // get itemID from URL
+        // this.itemId = +this.route.snapshot.paramMap.get('itemId');  // + converts string to number here
+        return true;
+      } else {
+        this.itemId = null; // stands for the creation of a new item
+        return false;
+      }
+   }
+
+
 
   receiveItemByIds(methInvoiceId: string, methItemId: number): void {
     this.itemService.getItemByItemId(methInvoiceId, methItemId)
@@ -73,6 +85,18 @@ export class ItemDetailComponent implements OnInit {
     // Empfängt Daten aus einem Datenstream, d.h. wenn sich invoice ändert übernimmt this.invoice die Daten von invoice
   }
 
+  createItemByInvoiceId(methInvoiceId: string): void {
+        //  this.currentItem = itemReceived;
+        this.itemName = '';
+        this.itemDate = new Date().getDate().toString();
+        this.hourPayment = true;
+        this.partialCost = 0;
+        this.count = 0;
+        this.currency = '€';
+        this.wholeCost = 0;
+    // Empfängt Daten aus einem Datenstream, d.h. wenn sich invoice ändert übernimmt this.invoice die Daten von invoice
+  }
+
   togglePayment() {
     this.currentItem.hourPayment = !this.currentItem.hourPayment;
   }
@@ -83,8 +107,14 @@ export class ItemDetailComponent implements OnInit {
 
   saveItem(): void {
     this.wholeCost = this.count * this.partialCost;
-    this.itemService.saveItemByIds(this.invoiceId, this.itemId, this.count, this.currency,
-      this.hourPayment, this.itemDate, this.itemName, this.partialCost);
+    if (this.creatingItem) {
+      this.itemService.saveNewItemByInvoiceId(this.invoiceId, this.count, this.currency,
+        this.hourPayment, this.itemDate, this.itemName, this.partialCost);
+      this.creatingItem = false;
+    } else {
+      this.itemService.saveItemByIds(this.invoiceId, this.itemId, this.count, this.currency,
+        this.hourPayment, this.itemDate, this.itemName, this.partialCost);
+    }
   }
 
   cancelItem(): void {

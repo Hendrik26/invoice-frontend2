@@ -17,7 +17,7 @@
     <input type="text" name="itemDate" [(ngModel)]="itemDate">
     <br><br>
   <p>total Cost: {{wholeCost}}</p>
-  <button (click)="saveItem()">Save</button>
+  <button (click)="saveItem()">{{creatingItem ? 'Create' : 'Save'}}</button>
     <!-- input type="submit" value="speichern" -->
   <button (click)="cancelItem()">cancel</button>
     <a routerLink="{{backUrl}}">back</a>

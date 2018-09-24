@@ -31,11 +31,13 @@ export class Invoice implements InvoiceType {
         this.items = [];
     }
 
-    public addNewItem(item: ItemType): void {
+    public addNewItem(itemType: ItemType): number {
         // TODO add new Item
-        console.log("invoice.addNewItem");
-        this.items.push(new Item(this, item));
+        console.log('invoice.addNewItem');
+        const createdItem = new Item(this, itemType);
+        this.items.push(createdItem);
         // return new Item(this, item);
+        return createdItem.getId();
     }
 
     public getID(): string {
