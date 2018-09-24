@@ -36,6 +36,16 @@ export class InvoiceDetailComponent implements OnInit {
     bruttoSum: number;
     currency: string;
 
+    customerFirm = 'BspFirma';
+    customerContactPerson = 'Ansprechpartner';
+    customerStreet = 'Straße + HausNr.';
+    customerPostCode = '123';
+    customerCity = 'Ort';
+    customerCountry = 'Land';
+
+    invoiceNumber: string;
+
+
     // invoices: Invoice[];
 
     constructor(

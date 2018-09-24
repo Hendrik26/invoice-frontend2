@@ -14,11 +14,11 @@
             <div class="postage-info">
                 SednaSoft GbR, Biesnitzer Straße 8, 02826 Görlitz
             </div><!-- class="postage-info" -->
-            <input type="text">Firma</input>
-            <p>Ansprechpartner</p>
-            <p>Straße und Hausnummer</p>
-            <p>PLZ Ort</p>
-            <p>LAND</p>
+            <input type="text">{{customerFirm}}</input><br>
+            <input type="text">{{customerContactPerson}}</input><br>
+            <input type="text">{{customerStreet}}</input><br>
+            <input type=""text>{{customerPostCode}} </input> <input type="text">{{customerCity}} </input><br>
+            <input type=""text>{{customerCountry}}</input>
             <button type="button">Kundendaten ändern</button>
         </div><!-- class="adress-window" -->
 
@@ -46,7 +46,8 @@
 
     <main>
         <section>
-                <h1 class="invoice-number">Rechnungsnummer 201800xx</h1>
+                <!-- h1 class="invoice-number">Rechnungsnummer 201800xx</h1 -->
+                <h1 class="invoice-number">{{invoiceNumber}} 201800xx</h1>
                 <p>Zeitraum: 2018-01-01 bis 2018-12-31 (12 Monate)</p>
             <!-- span *ngFor="let invoice of invoices" *ngIf="invoice.id === invoiceId" -->
             <table>
