@@ -43,7 +43,10 @@ export class InvoiceDetailComponent implements OnInit {
     customerCity = 'Ort';
     customerCountry = 'Land';
 
-    invoiceNumber: string;
+    invoiceNumber = '201800xx';
+    invoiceTimeSpan = '2018-01-01 bis 2018-12-31';
+    invoiceState: string; // <th>Status (Entwurf, bezahlt, ...)</th>
+    invoiceCurrency: string; Waehrungsssss
 
 
     // invoices: Invoice[];

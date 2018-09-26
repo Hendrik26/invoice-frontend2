@@ -14,11 +14,11 @@
             <div class="postage-info">
                 SednaSoft GbR, Biesnitzer Straße 8, 02826 Görlitz
             </div><!-- class="postage-info" -->
-            <input type="text">{{customerFirm}}</input><br>
-            <input type="text">{{customerContactPerson}}</input><br>
-            <input type="text">{{customerStreet}}</input><br>
-            <input type=""text>{{customerPostCode}} </input> <input type="text">{{customerCity}} </input><br>
-            <input type=""text>{{customerCountry}}</input>
+            <input type="text" [(ngModel)]="customerFirm"><br>
+            <input type="text" [(ngModel)]="customerContactPerson"><br>
+            <input type="text" [(ngModel)]="customerStreet"> <br>
+            <input type="text" [(ngModel)]="customerPostCode"> <input type="text" [(ngModel)]="customerCity"> <br>
+            <input type="text" [(ngModel)]="customerCountry"> <br>
             <button type="button">Kundendaten ändern</button>
         </div><!-- class="adress-window" -->
 
@@ -46,9 +46,29 @@
 
     <main>
         <section>
-                <!-- h1 class="invoice-number">Rechnungsnummer 201800xx</h1 -->
-                <h1 class="invoice-number">{{invoiceNumber}} 201800xx</h1>
+                <h1 class="invoice-number">Rechnungsnummer 201800xx</h1>
+                <input class="invoice-number" [(ngModel)]="invoiceNumber">
                 <p>Zeitraum: 2018-01-01 bis 2018-12-31 (12 Monate)</p>
+                <input class="timeSpan" [(ngModel)]="invoiceTimeSpan">
+                <div class="flex-input">
+                    <select name="invoiceState" [(ngModel)]="invoice.invoiceState">
+                        <option value="template">Entwurf</option>
+                        <option value="unpayed">offen</option>
+                        <option value="partial payed">teilw. zahlt</option>
+                        <option value="payed">bezahlt</option>
+                    </select>
+                </div>
+            <p>///////////////////////////////////////////////////////////////////////////</p>
+            <div class="flex-input">
+                <select name="invoiceCurrency" [(ngModel)]="invoiceCurrency">
+                    <option value="EUR">€</option>
+                    <option value="USD">$</option>
+                    <option value="CZK">Kč</option>
+                    <option value="PLN">Zł</option>
+                    <option value="CHF">CHF</option>
+                </select>
+            </div>
+            <p>///////////////////////////////////////////////////////////////////////////</p>
             <!-- span *ngFor="let invoice of invoices" *ngIf="invoice.id === invoiceId" -->
             <table>
                 <!-- loop for all invoice - filter needed!!! -->
