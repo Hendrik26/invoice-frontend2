@@ -65,7 +65,9 @@ export class InvoiceDetailComponent implements OnInit {
         // this.receiveInvoices();
         this.receiveInvoiceById(this.invoiceId);
         this.invoiceDate = new Date();
-        this.invoiceDate = Date.prototype.setDate(Date.now());
+        // this.invoiceDate = new Date('01.01.2001');
+        // this.invoiceDate = Date.prototype.setDate(Date.now());
+        console.log('Date: ' + this.invoiceDate.toString());
         this.nettoSum = this.calculateNettoSum(this.invoiceId);
         this.percentageString = this.invoiceService.getSalesTaxPercentageString(this.invoiceId);
         this.salesTax = this.calculateSalesTax(this.invoiceId); // hier
