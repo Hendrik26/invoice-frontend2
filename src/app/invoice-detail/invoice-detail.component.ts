@@ -76,9 +76,9 @@ export class InvoiceDetailComponent implements OnInit {
         this.currency = this.invoice.currency;
     }
 
-    invoiceDateChange(methDateStrin: string) {
+    invoiceDateChange(methDateString: string) {
         let methDateArray: string[];
-        methDateArray = methDateArray.split('.');
+        methDateArray = methDateString.split('.');
     }
 
     /* receiveInvoices(): void {
