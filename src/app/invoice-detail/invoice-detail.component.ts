@@ -39,11 +39,13 @@ export class InvoiceDetailComponent implements OnInit {
     customerFirm = 'BspFirma';
     customerContactPerson = 'Ansprechpartner';
     customerStreet = 'Straße + HausNr.';
-    customerPostCode = '123';
+    customerPostCode = 'PLZ';
     customerCity = 'Ort';
     customerCountry = 'Land';
+    customerAdress = 'BspFirma\nAnsprechpartner\nStraße + HausNr.\nPLZ\nOrt\Land';
 
     invoiceNumber = '201800xx';
+    invoiceDate: Date;
     invoiceTimeSpan = '2018-01-01 bis 2018-12-31';
     invoiceState: string; // <th>Status (Entwurf, bezahlt, ...)</th>
     invoiceCurrency: string; Waehrungsssss
@@ -62,6 +64,8 @@ export class InvoiceDetailComponent implements OnInit {
         this.receiveInvoiceId();
         // this.receiveInvoices();
         this.receiveInvoiceById(this.invoiceId);
+        this.invoiceDate = new Date();
+        this.invoiceDate = Date.prototype.setDate(Date.now());
         this.nettoSum = this.calculateNettoSum(this.invoiceId);
         this.percentageString = this.invoiceService.getSalesTaxPercentageString(this.invoiceId);
         this.salesTax = this.calculateSalesTax(this.invoiceId); // hier
