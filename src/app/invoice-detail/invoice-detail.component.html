@@ -19,7 +19,7 @@
             <input type="text" [(ngModel)]="customerStreet"> <br>
             <input type="text" [(ngModel)]="customerPostCode"> <input type="text" [(ngModel)]="customerCity"> <br>
             <input type="text" [(ngModel)]="customerCountry"> <br -->
-          <textarea name="message" rows="5" cols="100" [(ngModel)]="customerAdress">
+          <textarea name="message" rows="7" cols="100" [(ngModel)]="customerAdress">
             The cat was playing in the garden.
           </textarea><br>
           <!-- button type="button">Kundendaten ändern</button -->
@@ -43,7 +43,10 @@
             </dl>
         </div><!-- class="contact-block" -->
 
-        <div class="city-date">Görlitz, <input type="date" [(ngModel)]="invoiceDate"></div>
+        <!-- div class="city-date">Görlitz, <input type="date" [ngModel]="invoiceDate  | date:'yyyy-MM-dd'"></div -->
+        <div class="city-date">Görlitz,
+            <input type="date" [ngModel]="invoiceDate | date:'yyyy-MM-dd'">
+        </div>
     </header>
 
 

@@ -42,7 +42,7 @@ export class InvoiceDetailComponent implements OnInit {
     customerPostCode = 'PLZ';
     customerCity = 'Ort';
     customerCountry = 'Land';
-    customerAdress = 'BspFirma\nAnsprechpartner\nStraße + HausNr.\nPLZ\nOrt\Land';
+    customerAdress = 'BspFirma\nAnsprechpartner\nStraße + HausNr.\nPLZ Ort\nLand';
 
     invoiceNumber = '201800xx';
     invoiceDate: Date;
@@ -58,22 +58,27 @@ export class InvoiceDetailComponent implements OnInit {
         private location: Location,
         private invoiceService: InvoiceService
     ) {
+        this.invoiceDate = new Date();
+        // this.invoiceDate = new Date('01.01.2001');
+        // this.invoiceDate = Date.prototype.setDate(Date.now());
+        console.log('Date: ' + this.invoiceDate.toString());
     }
 
     ngOnInit() {
         this.receiveInvoiceId();
         // this.receiveInvoices();
         this.receiveInvoiceById(this.invoiceId);
-        this.invoiceDate = new Date();
-        // this.invoiceDate = new Date('01.01.2001');
-        // this.invoiceDate = Date.prototype.setDate(Date.now());
-        console.log('Date: ' + this.invoiceDate.toString());
         this.nettoSum = this.calculateNettoSum(this.invoiceId);
         this.percentageString = this.invoiceService.getSalesTaxPercentageString(this.invoiceId);
         this.salesTax = this.calculateSalesTax(this.invoiceId); // hier
         this.bruttoSum = this.calculateBruttoSum(this.invoiceId);
         this.invoice.wholeCost = this.bruttoSum;
         this.currency = this.invoice.currency;
+    }
+
+    invoiceDateChange(methDateStrin: string) {
+        let methDateArray: string[];
+        methDateArray = methDateArray.split('.');
     }
 
     /* receiveInvoices(): void {
