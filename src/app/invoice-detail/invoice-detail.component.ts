@@ -46,6 +46,7 @@ export class InvoiceDetailComponent implements OnInit {
 
     invoiceNumber = '201800xx';
     invoiceDate: Date;
+    invoiceDueDate: Date;
     invoiceTimeSpan = '2018-01-01 bis 2018-12-31';
     invoiceState: string; // <th>Status (Entwurf, bezahlt, ...)</th>
     invoiceCurrency: string; Waehrungsssss
@@ -76,9 +77,8 @@ export class InvoiceDetailComponent implements OnInit {
         this.currency = this.invoice.currency;
     }
 
-    invoiceDateChange(methDateString: string) {
-        let methDateArray: string[];
-        methDateArray = methDateString.split('.');
+    invoiceDateChange(methEvent: Event) {
+        this.invoiceDate = methEvent;
     }
 
     /* receiveInvoices(): void {
