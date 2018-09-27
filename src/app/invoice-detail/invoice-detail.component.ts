@@ -84,7 +84,8 @@ export class InvoiceDetailComponent implements OnInit {
         console.log(typeof this.testNumber);
         console.log(typeof this.invoiceDate);
         console.log('Neuer Wert invoiceDate: ' + this.invoiceDate.toString());
-        this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(), this.invoiceDate.getDay() + 14, 12);
+        // this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(), this.invoiceDate.getDay() + 14, 12);
+        this.invoiceDueDate = new Date(this.invoiceDate.getTime() + 14 * 24 * 3600 * 1000);
     }
 
     /* receiveInvoices(): void {
