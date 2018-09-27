@@ -53,6 +53,7 @@ export class InvoiceDetailComponent implements OnInit {
 
 
     // invoices: Invoice[];
+    testNumber = 100;
 
     constructor(
         private route: ActivatedRoute,
@@ -62,7 +63,7 @@ export class InvoiceDetailComponent implements OnInit {
         this.invoiceDate = new Date();
         // this.invoiceDate = new Date('01.01.2001');
         // this.invoiceDate = Date.prototype.setDate(Date.now());
-        console.log('Date: ' + this.invoiceDate.toString());
+        console.log('constDate: ' + this.invoiceDate.toString());
     }
 
     ngOnInit() {
@@ -77,8 +78,13 @@ export class InvoiceDetailComponent implements OnInit {
         this.currency = this.invoice.currency;
     }
 
-    invoiceDateChange(methEvent: Event) {
-        this.invoiceDate = methEvent;
+    invoiceDateChange(methEvent: string) {
+        this.invoiceDate = new Date(methEvent);
+        console.log('Methode invoiceDateChange(...) aufgerufen mit: ' + methEvent);
+        console.log(typeof this.testNumber);
+        console.log(typeof this.invoiceDate);
+        console.log('Neuer Wert invoiceDate: ' + this.invoiceDate.toString());
+        this.invoiceDueDate = new Date(this.invoiceDueDate.getFullYear(), this.invoiceDate.getMonth(), this.invoiceDate.getDay() + 14, 12);
     }
 
     /* receiveInvoices(): void {
