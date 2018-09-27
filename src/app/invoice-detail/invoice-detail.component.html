@@ -43,12 +43,9 @@
             </dl>
         </div><!-- class="contact-block" -->
 
-        <!-- div class="city-date">Görlitz, <input type="date" [ngModel]="invoiceDate  | date:'yyyy-MM-dd'"></div -->
         <div class="city-date">Görlitz,
-            <!-- input type="date" [ngModel]="invoiceDate | date:'yyyy-MM-dd'" -->
             <input type="date" name="inDate" [ngModel]="invoiceDate | date:'yyyy-MM-dd'"
                    (ngModelChange)="invoiceDateChange($event)">
-            <p>DateTest{{invoiceDate}}</p>
         </div>
     </header>
 
@@ -142,11 +139,10 @@
             </dl>
             <p>Steuerschuldnerschaft des Leistungsempfängers (Reverse Charge)</p>
             <p></p>
-            <p>Bittte überweisen Sie den Rechnungsbetrag bis zum</p>
+            <p>Bittte überweisen Sie den Rechnungsbetrag bis zum
                 <input type="date" name="inDueDate" [ngModel]="invoiceDueDate | date:'yyyy-MM-dd'"
                        (ngModelChange)="invoiceDueDate = $event">
-            <p>DueDateTest{{invoiceDueDate}}</p>
-                auf das unten angegebene Konto.
+                auf das unten angegebene Konto.</p>
                <p> Als Verwendungszweck geben Sie bitte die Rechnungsnummer 201800xx an.</p>
         </section>
     </main>

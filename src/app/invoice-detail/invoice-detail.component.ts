@@ -14,19 +14,7 @@ import {Invoice} from '../invoice';
     styleUrls: ['./invoice-detail.component.css']
 })
 export class InvoiceDetailComponent implements OnInit {
-    /* invoices: Invoice[];
-    * items: Item[] = [
 
-         {
-             id: 1, itemDate: '2016-04-01', itemName: 'Programmieren',
-             partialCost: 60.00, count: 5, wholeCost: 300, hourPayment: false, currency: '€'
-         },
-         {
-             id: 2, itemDate: '2016-04-30', itemName: 'Datenbank-Design',
-             partialCost: 60.00, count: 5, wholeCost: 300, hourPayment: false, currency: '€'
-         }
-
-     ]; */
 
     invoiceId: string;
     invoice: Invoice;
@@ -61,8 +49,6 @@ export class InvoiceDetailComponent implements OnInit {
         private invoiceService: InvoiceService
     ) {
         this.invoiceDate = new Date();
-        // this.invoiceDate = new Date('01.01.2001');
-        // this.invoiceDate = Date.prototype.setDate(Date.now());
         console.log('constDate: ' + this.invoiceDate.toString());
     }
 
@@ -76,6 +62,7 @@ export class InvoiceDetailComponent implements OnInit {
         this.bruttoSum = this.calculateBruttoSum(this.invoiceId);
         this.invoice.wholeCost = this.bruttoSum;
         this.currency = this.invoice.currency;
+        this.invoiceDueDate = new Date(this.invoiceDate.getTime() + 14 * 24 * 3600 * 1000);
     }
 
     invoiceDateChange(methEvent: string) {
@@ -88,13 +75,6 @@ export class InvoiceDetailComponent implements OnInit {
         this.invoiceDueDate = new Date(this.invoiceDate.getTime() + 14 * 24 * 3600 * 1000);
     }
 
-    /* receiveInvoices(): void {
-        this.invoices = this.invoiceService.getInvoices();
-    } */
-
-    /* receiveInvoiceById(methId): void {
-        this.invoice = this.invoiceService.getInvoiceById(methId);
-    } */
 
     receiveInvoiceId():
         void {
