@@ -46,7 +46,8 @@
         <!-- div class="city-date">Görlitz, <input type="date" [ngModel]="invoiceDate  | date:'yyyy-MM-dd'"></div -->
         <div class="city-date">Görlitz,
             <!-- input type="date" [ngModel]="invoiceDate | date:'yyyy-MM-dd'" -->
-            <input [ngModel]="invoiceDate | date:'yyyy-MM-dd'" (ngModelChange)="invoiceDate = $event" type="date" name="startDate"/>
+            <input [ngModel]="invoiceDate | date:'yyyy-MM-dd'" (ngModelChange)="invoiceDate = $event" type="date" name="inDate"/>
+            <p>DateTest{{invoiceDate}}</p>
         </div>
     </header>
 
