@@ -20,7 +20,7 @@
             <input type="text" [(ngModel)]="customerPostCode"> <input type="text" [(ngModel)]="customerCity"> <br>
             <input type="text" [(ngModel)]="customerCountry"> <br -->
           <textarea name="message" rows="7" cols="100" [(ngModel)]="customerAdress">
-            The cat was playing in the garden.
+
           </textarea><br>
           <!-- button type="button">Kundendaten ändern</button -->
         </div><!-- class="adress-window" -->
@@ -52,10 +52,10 @@
 
     <main>
         <section>
-                <h1 class="invoice-number">Rechnungsnummer 201800xx</h1>
-                <input class="invoice-number" [(ngModel)]="invoiceNumber">
+                <h1 class="invoice-number">Rechnungsnummer {{invoiceNumber}}</h1>
+                <input class="invoice-number" [(ngModel)]="invoiceNumber" (ngModelChange)="invoiceNumberChange()">
                 <p>Zeitraum: 2018-01-01 bis 2018-12-31 (12 Monate)</p>
-                <input class="timeSpan" [(ngModel)]="invoiceTimeSpan">
+                <input class="timeSpan" class="inputLarge" [(ngModel)]="invoiceTimeSpan">
                 <div class="flex-input">
                     <select name="invoiceState" [(ngModel)]="invoice.invoiceState">
                         <option value="template">Entwurf</option>
@@ -143,7 +143,13 @@
                 <input type="date" name="inDueDate" [ngModel]="invoiceDueDate | date:'yyyy-MM-dd'"
                        (ngModelChange)="invoiceDueDate = $event">
                 auf das unten angegebene Konto.</p>
-               <p> Als Verwendungszweck geben Sie bitte die Rechnungsnummer 201800xx an.</p>
+               <p> Als Verwendungszweck geben Sie bitte die
+                   <!-- Rechnungsnummer 201800xx -->
+                   <input type="text" class="inputLarge" name="intendedUse" [(ngModel)]="invoiceIntendedUse">
+                   an.</p>
+            <p>
+                <input type="text" class="inputLarge" name="intendedUse" placeholder=invoiceIntendedUse>
+            </p>
         </section>
     </main>
     <footer>

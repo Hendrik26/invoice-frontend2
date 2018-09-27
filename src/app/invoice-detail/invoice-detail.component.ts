@@ -33,11 +33,13 @@ export class InvoiceDetailComponent implements OnInit {
     customerAdress = 'BspFirma\nAnsprechpartner\nStraße + HausNr.\nPLZ Ort\nLand';
 
     invoiceNumber = '201800xx';
+    invoiceIntendedUse = 'RechnungsNr. 201800xx';
     invoiceDate: Date;
     invoiceDueDate: Date;
     invoiceTimeSpan = '2018-01-01 bis 2018-12-31';
     invoiceState: string; // <th>Status (Entwurf, bezahlt, ...)</th>
-    invoiceCurrency: string; Waehrungsssss
+    invoiceCurrency: string;
+    Waehrungsssss;
 
 
     // invoices: Invoice[];
@@ -75,6 +77,10 @@ export class InvoiceDetailComponent implements OnInit {
         this.invoiceDueDate = new Date(this.invoiceDate.getTime() + 14 * 24 * 3600 * 1000);
     }
 
+    invoiceNumberChange() {
+        this.invoiceIntendedUse = 'RechnungsNr. ' + this.invoiceNumber;
+    }
+
 
     receiveInvoiceId():
         void {
@@ -82,13 +88,13 @@ export class InvoiceDetailComponent implements OnInit {
         // this.invoiceId = +this.route.snapshot.paramMap.get('invoiceId');  // + converts string to number
     }
 
-  receiveInvoiceById(methId: string): void {
+    receiveInvoiceById(methId: string): void {
         this.invoiceService.getInvoiceObservableById(methId)
             .subscribe(invoice => this.invoice = invoice);
         // Empfängt Daten aus einem Datenstream, d.h. wenn sich invoice ändert übernimmt this.invoice die Daten von invoice
     }
 
-  calculateNettoSum(methId: string): number {
+    calculateNettoSum(methId: string): number {
         var methInvoice: Invoice;
         var methSum = 0;
         methInvoice = this.invoice;
@@ -98,13 +104,13 @@ export class InvoiceDetailComponent implements OnInit {
         return methSum;
     }
 
-  calculateSalesTax(methId: string): number {
+    calculateSalesTax(methId: string): number {
         var methInvoice: Invoice;
         methInvoice = this.invoice;
         return this.calculateNettoSum(methId) * methInvoice.salesTaxPercentage / 100;
     }
 
-  calculateBruttoSum(methId: string): number {
+    calculateBruttoSum(methId: string): number {
         var methInvoice: Invoice;
         methInvoice = this.invoice;
         return this.calculateNettoSum(methId) + this.calculateSalesTax(methId);

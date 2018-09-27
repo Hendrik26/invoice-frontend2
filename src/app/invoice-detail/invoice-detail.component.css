@@ -105,6 +105,10 @@ button:disabled {
 }
 
 /*own classes*/
+.inputLarge {
+   width: 500px;
+}
+
 .important {
   font-weight: bold;
 }
