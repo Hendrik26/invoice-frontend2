@@ -39,7 +39,6 @@ export class InvoiceDetailComponent implements OnInit {
     invoiceTimeSpan = '2018-01-01 bis 2018-12-31';
     invoiceState: string; // <th>Status (Entwurf, bezahlt, ...)</th>
     invoiceCurrency: string;
-    Waehrungsssss;
 
 
     // invoices: Invoice[];
