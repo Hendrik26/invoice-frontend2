@@ -30,10 +30,6 @@ export class InvoiceListComponent implements OnInit {
     } */
   }
 
-  /* receiveInvoices(): void {ce
-      this.invoices = this.invoiceService.getInvoices();
-  } */
-
   receiveInvoices(): void {
     this.invoiceService.getInvoices()
       .subscribe(invoices => this.invoices = invoices);

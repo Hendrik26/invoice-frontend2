@@ -15,12 +15,10 @@ import {Invoice} from '../invoice';
 })
 export class InvoiceDetailComponent implements OnInit {
 
-
+    // IDs
     invoiceId: string;
-    invoice: Invoice;
-    nettoSum: number;
-    percentageString: string;
-    salesTax: number;
+    // other Propetrties
+
     bruttoSum: number;
     currency: string;
 
@@ -32,6 +30,7 @@ export class InvoiceDetailComponent implements OnInit {
     customerCountry = 'Land';
     customerAdress: string;
 
+    invoice: Invoice;
     invoiceNumber = '201800xx';
     invoiceIntendedUse = 'die RechnungsNr. 201800xx';
     invoiceDate: Date;
@@ -39,6 +38,10 @@ export class InvoiceDetailComponent implements OnInit {
     invoiceTimeSpan = '2018-01-01 bis 2018-12-31';
     invoiceState = 'template'; // <th>Status (Entwurf, bezahlt, ...)</th>
     invoiceCurrency = '€';
+
+    nettoSum: number;
+    percentageString: string;
+    salesTax: number;
 
 
     // invoices: Invoice[];
@@ -64,6 +67,28 @@ export class InvoiceDetailComponent implements OnInit {
         this.invoice.wholeCost = this.bruttoSum;
         this.currency = this.invoice.currency;
         this.invoiceDueDate = new Date(this.invoiceDate.getTime() + 14 * 24 * 3600 * 1000);
+    }
+
+    calculateBruttoSum(methId: string): number {
+        var methInvoice: Invoice;
+        methInvoice = this.invoice;
+        return this.calculateNettoSum(methId) + this.calculateSalesTax(methId);
+    }
+
+    calculateNettoSum(methId: string): number {
+        var methInvoice: Invoice;
+        var methSum = 0;
+        methInvoice = this.invoice;
+        for (var i = 0; i < methInvoice.items.length; i++) {
+            methSum += methInvoice.items[i].wholeCost;
+        }
+        return methSum;
+    }
+
+    calculateSalesTax(methId: string): number {
+        var methInvoice: Invoice;
+        methInvoice = this.invoice;
+        return this.calculateNettoSum(methId) * methInvoice.salesTaxPercentage / 100;
     }
 
     invoiceDateChange(methEvent: string) {
@@ -93,26 +118,5 @@ export class InvoiceDetailComponent implements OnInit {
         // Empfängt Daten aus einem Datenstream, d.h. wenn sich invoice ändert übernimmt this.invoice die Daten von invoice
     }
 
-    calculateNettoSum(methId: string): number {
-        var methInvoice: Invoice;
-        var methSum = 0;
-        methInvoice = this.invoice;
-        for (var i = 0; i < methInvoice.items.length; i++) {
-            methSum += methInvoice.items[i].wholeCost;
-        }
-        return methSum;
-    }
-
-    calculateSalesTax(methId: string): number {
-        var methInvoice: Invoice;
-        methInvoice = this.invoice;
-        return this.calculateNettoSum(methId) * methInvoice.salesTaxPercentage / 100;
-    }
-
-    calculateBruttoSum(methId: string): number {
-        var methInvoice: Invoice;
-        methInvoice = this.invoice;
-        return this.calculateNettoSum(methId) + this.calculateSalesTax(methId);
-    }
 
 }
