@@ -30,15 +30,15 @@ export class InvoiceDetailComponent implements OnInit {
     customerPostCode = 'PLZ';
     customerCity = 'Ort';
     customerCountry = 'Land';
-    customerAdress = 'BspFirma\nAnsprechpartner\nStraße + HausNr.\nPLZ Ort\nLand';
+    customerAdress: string;
 
     invoiceNumber = '201800xx';
     invoiceIntendedUse = 'RechnungsNr. 201800xx';
     invoiceDate: Date;
     invoiceDueDate: Date;
     invoiceTimeSpan = '2018-01-01 bis 2018-12-31';
-    invoiceState: string; // <th>Status (Entwurf, bezahlt, ...)</th>
-    invoiceCurrency: string;
+    invoiceState = 'template'; // <th>Status (Entwurf, bezahlt, ...)</th>
+    invoiceCurrency = '€';
 
 
     // invoices: Invoice[];
@@ -72,8 +72,8 @@ export class InvoiceDetailComponent implements OnInit {
         console.log(typeof this.testNumber);
         console.log(typeof this.invoiceDate);
         console.log('Neuer Wert invoiceDate: ' + this.invoiceDate.toString());
-        // this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(), this.invoiceDate.getDay() + 14, 12);
-        this.invoiceDueDate = new Date(this.invoiceDate.getTime() + 14 * 24 * 3600 * 1000);
+        this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(), this.invoiceDate.getDate() + 14, 12);
+        // this.invoiceDueDate = new Date(this.invoiceDate.getTime() + 14 * 24 * 3600 * 1000);
     }
 
     invoiceNumberChange() {
