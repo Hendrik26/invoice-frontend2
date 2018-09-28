@@ -52,7 +52,7 @@
 
     <main>
         <section>
-                <h1 class="invoice-number">Rechnungsnummer:
+                <h1 class="invoice-number">Rechnungsnummer
                     <input class="invoice-number" [(ngModel)]="invoiceNumber" (ngModelChange)="invoiceNumberChange()">
                 </h1>
                   <!-- p>Zeitraum: 2018-01-01 bis 2018-12-31 (12 Monate)</p>
@@ -143,12 +143,9 @@
                 <input type="date" name="inDueDate" [ngModel]="invoiceDueDate | date:'yyyy-MM-dd'"
                        (ngModelChange)="invoiceDueDate = $event">
                 auf das unten angegebene Konto.</p>
-               <p> Als Verwendungszweck geben Sie bitte die
+               <p> Als Verwendungszweck geben Sie bitte
                    <input type="text" class="inputLarge" name="intendedUse" [(ngModel)]="invoiceIntendedUse">
                    an.</p>
-            <p>
-                <input type="text" class="inputLarge" name="intendedUse" placeholder=invoiceIntendedUse>
-            </p>
         </section>
     </main>
     <footer>
