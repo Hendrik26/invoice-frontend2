@@ -36,7 +36,7 @@ export class ItemService {
             }
         }
         for (let i = 0; i < methInvoice.items.length; i++) { // identifies the correct item
-            if (methInvoice.items[i].getId() === methItemId) {
+            if (methInvoice.items[i].getItemId() === methItemId) {
                 methItem = methInvoice.items[i];
             }
         }
@@ -53,7 +53,7 @@ export class ItemService {
         }
       }
       for (let i = 0; i < methInvoice.items.length; i++) { // identifies the correct item
-        if (methInvoice.items[i].getId() == methItemId) {
+        if (methInvoice.items[i].getItemId() == methItemId) {
           methItem = methInvoice.items[i];
         }
       }
