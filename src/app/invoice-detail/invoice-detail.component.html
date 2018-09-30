@@ -2,8 +2,13 @@
 
     <header>
 
-        <div class="test">invoiceID: {{invoiceId}}</div>
-        <!-- shows invoiceId for testCases -->
+        <div class="test">
+            invoiceID: {{invoiceId}}
+            <!-- shows invoiceId for testCases -->
+            invoice-detail.component.currency: {{this.currency}}
+            invoice.currency: {{this.invoice.currency}}
+
+        </div>
 
         <div class="logo">
             <div class="logoimportant">SednaSoft</div>
@@ -128,7 +133,7 @@
                 </tbody>
             </table>
           <a routerLink="/item-create/{{invoiceId}}">Posten hinzufügen</a>
-            <button>Speichern</button>
+            <button (click)="saveInvoice()">{{creatingInvoice ? 'Create' : 'Save'}}</button>
             <button>Zurück</button>
             <a routerLink="/invoice-list/">cancel  '/invoice-detail/' </a>
             <p></p>

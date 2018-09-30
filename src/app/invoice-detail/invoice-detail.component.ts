@@ -20,6 +20,8 @@ export class InvoiceDetailComponent implements OnInit {
     // other Propetrties
 
     bruttoSum: number;
+    countReminders: number;
+    creatingInvoice: boolean;
     currency: string;
 
     customerFirm = 'BspFirma';
@@ -42,6 +44,9 @@ export class InvoiceDetailComponent implements OnInit {
     nettoSum: number;
     percentageString: string;
     salesTax: number;
+    salesTaxPercentage = 19;
+
+    timespan: string;
 
 
     // invoices: Invoice[];
@@ -59,14 +64,22 @@ export class InvoiceDetailComponent implements OnInit {
     ngOnInit() {
         this.receiveInvoiceId();
         // this.receiveInvoices();
+        this.creatingInvoice = false;
         this.receiveInvoiceById(this.invoiceId);
+        this.calculateInitialData();
+    }
+
+    calculateInitialData() {
         this.nettoSum = this.calculateNettoSum(this.invoiceId);
         this.percentageString = this.invoiceService.getSalesTaxPercentageString(this.invoiceId);
         this.salesTax = this.calculateSalesTax(this.invoiceId); // hier
         this.bruttoSum = this.calculateBruttoSum(this.invoiceId);
         this.invoice.wholeCost = this.bruttoSum;
         this.currency = this.invoice.currency;
-        this.invoiceDueDate = new Date(this.invoiceDate.getTime() + 14 * 24 * 3600 * 1000);
+        this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(),
+            this.invoiceDate.getDate() + 14, 12);
+        // this.invoiceDueDate = new Date(this.invoiceDate.getTime() + 14 * 24 * 3600 * 1000);
+
     }
 
     calculateBruttoSum(methId: string): number {
@@ -97,7 +110,8 @@ export class InvoiceDetailComponent implements OnInit {
         console.log(typeof this.testNumber);
         console.log(typeof this.invoiceDate);
         console.log('Neuer Wert invoiceDate: ' + this.invoiceDate.toString());
-        this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(), this.invoiceDate.getDate() + 14, 12);
+        this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(),
+            this.invoiceDate.getDate() + 14, 12);
         // this.invoiceDueDate = new Date(this.invoiceDate.getTime() + 14 * 24 * 3600 * 1000);
     }
 
@@ -116,6 +130,27 @@ export class InvoiceDetailComponent implements OnInit {
         this.invoiceService.getInvoiceObservableById(methId)
             .subscribe(invoice => this.invoice = invoice);
         // Empfängt Daten aus einem Datenstream, d.h. wenn sich invoice ändert übernimmt this.invoice die Daten von invoice
+        this.countReminders = this.invoice.countReminders;
+        this.currency = this.invoice.currency;
+        this.invoiceDate = this.invoice.invoiceDate;
+        this.invoiceNumber = this.invoice.invoiceNumber;
+        this.invoiceState = this.invoice.invoiceState;
+        this.customerAdress = this.invoice.recipient;
+        this.salesTaxPercentage = this.invoice.salesTaxPercentage;
+        this.timespan = this.invoice.timeSpan;
+    }
+
+    saveInvoice(): void {
+        // this.wholeCost = this.count * this.partialCost;
+        this.calculateInitialData();
+        if (this.creatingInvoice) {
+            /* this.invoiceService.saveNewItemByInvoiceId(this.invoiceId, this.count, this.currency,
+                this.hourPayment, this.itemDate, this.itemName, this.partialCost); */
+            this.creatingInvoice = false;
+        } else {
+            this.invoiceService.saveInvoiceGlobalsByInvoiceId(this.invoiceId, this.countReminders, this.currency, this.invoiceDate,
+                this.invoiceNumber, this.invoiceState, this.customerAdress, this.salesTaxPercentage, 'unknown', this.bruttoSum);
+        }
     }
 
 

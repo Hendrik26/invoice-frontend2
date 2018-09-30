@@ -4,12 +4,14 @@ import {INVOICES} from './mock-invoice';
 import {Observable, of} from 'rxjs';
 import {ItemType} from './item-type';
 import {InvoiceType} from './invoice-type';
+import {Item} from './item';
 
 @Injectable({
     providedIn: 'root'
 })
 export class InvoiceService {
     id: number;
+    currency: string; // for test-Cases
 
     standardItem: ItemType = {
         count: 1, currency: '€', hourPayment: false, itemDate: '03. Oktober 1990',
@@ -96,6 +98,30 @@ export class InvoiceService {
         var methInvoice: Invoice;
         methInvoice = this.getInvoiceById(methId);
         return this.calculateNettoSum(methId) * methInvoice.salesTaxPercentage / 100;
+    }
+
+    saveInvoiceGlobalsByInvoiceId(methInvoiceId: string, countReminders: number, currency: string,
+                                  invoiceDate: Date, invoiceNumber: string, invoiceState: string, recipient: string,
+                                  salesTaxPercentage: number, timeSpan: string, wholeCost: number): void {
+        let methInvoice: Invoice;
+
+        for (let i = 0; i < INVOICES.length; i++) { // identifies the correct invpice
+            if (INVOICES[i].getID() === methInvoiceId) {
+                methInvoice = INVOICES[i];
+            }
+        }
+
+        methInvoice.countReminders = countReminders;
+        methInvoice.currency = currency;
+        this.currency = methInvoice.currency:
+        console.log('invoice.service.currency: ' + this.currency);
+        methInvoice.invoiceDate = invoiceDate;
+        methInvoice.invoiceNumber = invoiceNumber;
+        methInvoice.invoiceState = invoiceState;
+        methInvoice.recipient = recipient;
+        methInvoice.salesTaxPercentage = salesTaxPercentage;
+        methInvoice.timeSpan = timeSpan;
+        methInvoice.wholeCost = wholeCost;
     }
 
 
