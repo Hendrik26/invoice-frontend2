@@ -11,6 +11,7 @@ export class Invoice implements InvoiceType {
     countReminders: number; // <th>Anzahl der Mahnungen</th>
     currency = '€';
     invoiceDate: Date; // <th>Rechnungsdatum</th>
+    invoiceDueDate: Date; // Faelligkeitsdatum
     invoiceNumber: string; // <th>RechnungsNr</th>
     invoiceState: string; // <th>Status (Entwurf, bezahlt, ...)</th>
     items: Item[];
