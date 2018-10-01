@@ -16,6 +16,7 @@ a, button {
 table {
     border-collapse: collapse;
     width: 100%;
+    margin-bottom: 20px;
 }
 
 th, td {
@@ -29,7 +30,7 @@ th {
     color: #fff;
 }
 
-tr:nth-child(even) {
+tbody tr:nth-child(even) {
     background-color: rgba(0,175,196,.15);
 }
 
@@ -59,7 +60,6 @@ a:hover {
 }
 
 button {
-    margin-top: 20px;
     background-color: #eee;
     border: none;
     padding: 5px 10px;
