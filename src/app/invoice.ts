@@ -4,6 +4,7 @@ import {ItemType} from './item-type';
 
 export class Invoice implements InvoiceType {
   // //////////////////////
+  // static properties
   private static emptyData: InvoiceType = {
     invoiceDate: new Date(),
     invoiceNumber: '2018axbycz',
@@ -48,6 +49,7 @@ export class Invoice implements InvoiceType {
     this.items = [];
   }
 
+  // static methods
   private static createNewInvoiceId(): string {
     const methDate: Date = new Date();
     return 'Inv' + methDate.getTime();
