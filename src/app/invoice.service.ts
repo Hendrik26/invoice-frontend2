@@ -125,6 +125,31 @@ export class InvoiceService {
         methInvoice.wholeCost = wholeCost;
     }
 
+  saveNewInvoice(countReminders: number, currency: string,
+                                invoiceDate: Date, invoiceDueDate: Date, invoiceNumber: string, invoiceState: string, recipient: string,
+                                salesTaxPercentage: number, timeSpan: string, wholeCost: number): void {
+    let methInvoice: Invoice;
+    /* console.log('invoice.service.ts: method saveInvoiceGlobalsByInvoiceId((...){...}');
+    for (let i = 0; i < INVOICES.length; i++) { // identifies the correct invpice
+      if (INVOICES[i].getID() === methInvoiceId) {
+        methInvoice = INVOICES[i];
+      }
+    } */
+
+    methInvoice.countReminders = countReminders;
+    methInvoice.currency = currency;
+    this.currency = methInvoice.currency;
+    console.log('invoice.service.currency: ' + this.currency);
+    methInvoice.invoiceDate = invoiceDate;
+    methInvoice.invoiceDueDate = invoiceDueDate;
+    methInvoice.invoiceNumber = invoiceNumber;
+    methInvoice.invoiceState = invoiceState;
+    methInvoice.recipient = recipient;
+    methInvoice.salesTaxPercentage = salesTaxPercentage;
+    methInvoice.timeSpan = timeSpan;
+    methInvoice.wholeCost = wholeCost;
+  }
+
 
 
 }
