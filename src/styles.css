@@ -1,6 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 * {
     font-family: Corbel, "Liberation Sans", sans-serif;
+    font-size: 16px;
+    line-height: 120%;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+a, button {
+    font-size: 13.33px;
 }
 
 table {
@@ -9,7 +19,7 @@ table {
 }
 
 th, td {
-    padding: 5px;
+    padding: 8px;
     text-align: left;
 }
 
@@ -35,6 +45,18 @@ label {
     font-weight: bold;
 }
 
+a {
+    background-color: #eee;
+    padding: 5px 10px;
+    margin-right: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    background-color: #cfd8dc;
+}
 
 button {
     margin-top: 20px;
@@ -68,4 +90,9 @@ button:disabled {
     margin: 10px;
     text-align: center;
 
+}
+
+dt {
+    display: inline-block;
+    float: left;
 }
