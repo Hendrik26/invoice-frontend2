@@ -46,7 +46,7 @@ tbody tr:last-child {
 th:nth-child(n+3), td:nth-child(n+3), tfoot td {
     text-align: right;
 }
-th:last-child, td:last-child, tfoot td:nth-child(n+3) {
+th:last-child, td:last-child, tfoot td:nth-child(n+4) {
     text-align: left;
 }
 
