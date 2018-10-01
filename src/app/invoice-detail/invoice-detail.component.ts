@@ -22,7 +22,7 @@ export class InvoiceDetailComponent implements OnInit {
     bruttoSum: number;
     countReminders: number;
     creatingInvoice: boolean;
-    currency: string;
+    // currency: string;
 
     customerFirm = 'BspFirma';
     customerContactPerson = 'Ansprechpartner';
@@ -33,13 +33,13 @@ export class InvoiceDetailComponent implements OnInit {
     customerAdress: string;
 
     invoice: Invoice;
+    invoiceCurrency = '€';
     invoiceNumber = '201800xx';
     invoiceIntendedUse = 'die RechnungsNr. 201800xx';
     invoiceDate: Date;
     invoiceDueDate: Date;
     invoiceTimeSpan = '2018-01-01 bis 2018-12-31';
     invoiceState = 'template'; // <th>Status (Entwurf, bezahlt, ...)</th>
-    invoiceCurrency = '€';
 
     nettoSum: number;
     percentageString: string;
@@ -75,7 +75,7 @@ export class InvoiceDetailComponent implements OnInit {
         this.salesTax = this.calculateSalesTax(this.invoiceId); // hier
         this.bruttoSum = this.calculateBruttoSum(this.invoiceId);
         this.invoice.wholeCost = this.bruttoSum;
-        this.currency = this.invoice.currency;
+        this.invoiceCurrency = this.invoice.currency;
         this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(),
             this.invoiceDate.getDate() + 14, 12);
         // this.invoiceDueDate = new Date(this.invoiceDate.getTime() + 14 * 24 * 3600 * 1000);
@@ -131,7 +131,7 @@ export class InvoiceDetailComponent implements OnInit {
             .subscribe(invoice => this.invoice = invoice);
         // Empfängt Daten aus einem Datenstream, d.h. wenn sich invoice ändert übernimmt this.invoice die Daten von invoice
         this.countReminders = this.invoice.countReminders;
-        this.currency = this.invoice.currency;
+        this.invoiceCurrency = this.invoice.currency;
         this.invoiceDate = this.invoice.invoiceDate;
         this.invoiceNumber = this.invoice.invoiceNumber;
         this.invoiceState = this.invoice.invoiceState;
@@ -148,7 +148,7 @@ export class InvoiceDetailComponent implements OnInit {
                 this.hourPayment, this.itemDate, this.itemName, this.partialCost); */
             this.creatingInvoice = false;
         } else {
-            this.invoiceService.saveInvoiceGlobalsByInvoiceId(this.invoiceId, this.countReminders, this.currency, this.invoiceDate,
+            this.invoiceService.saveInvoiceGlobalsByInvoiceId(this.invoiceId, this.countReminders, this.invoiceCurrency, this.invoiceDate,
                 this.invoiceNumber, this.invoiceState, this.customerAdress, this.salesTaxPercentage, 'unknown', this.bruttoSum);
         }
     }
