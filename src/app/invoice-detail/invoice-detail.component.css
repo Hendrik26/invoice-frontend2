@@ -1,189 +1,73 @@
-/* table CSS styles */
-
-table, th, td {
-  border: 1px solid black;
+.invoice-detail {
+    margin: 50px;
 }
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th {
-  text-align: center;
-  background-color: darkblue;
-  font-weight: bold;
-  color: white;
-}
-
-td {
-  text-align: center;
-  color: black;
-}
-
-grid-container {
-  display: grid;
-  grid: 150px / auto auto auto;
-}
-
-/*main sections*/
-
-header, main, footer {
-  position: relative;
+header, main {
+    margin-bottom: 30px;
 }
 
 header {
-  height: 620px;
+    display: flex;
+    justify-content: space-between;
 }
 
-/*main {*/
-/*position: absolute;*/
-/*left: 10px;*/
-/*top: 450px;*/
-/*width: 13000px;*/
-/*!*width: 100%;*!*/
-/*height: 1500px;*/
-/*}*/
-
-/*footer {*/
-/*position: absolute;*/
-/*left: 10px;*/
-/*top: 3000px;*/
-/*width: 290px;*/
-/*height: 250px;*/
-/*}*/
-
-div {
-  color: black;
-}
-
-/* remainder CSS styles */
-h1 {
-  font-size: 1.2em;
-  color: #999;
-  margin-bottom: 0;
-}
-
-h2 {
-  font-size: 2em;
-  margin-top: 0;
-  padding-top: 0;
-}
-
-label {
-  display: inline-block;
-  width: 3em;
-  margin: .5em 0;
-  color: #607D8B;
-  font-weight: bold;
-}
-
-input {
-  height: 2em;
-  font-size: 1em;
-  padding-left: .4em;
-}
-
-button {
-  margin-top: 20px;
-  font-family: Arial;
-  background-color: #eee;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #cfd8dc;
-}
-
-button:disabled {
-  background-color: #eee;
-  color: #ccc;
-  cursor: auto;
-}
-
-/*own classes*/
-.inputLarge {
-   width: 500px;
-}
-
-.important {
-  font-weight: bold;
-}
-
-/*parts of footer*/
-
-.address {
-  position: absolute;
-  left: 10px;
-  top: 350px;
-  width: 290px;
-  height: 250px;
-}
-
-.contact {
-  position: absolute;
-  left: 310px;
-  top: 350px;
-  width: 290px;
-  height: 250px;
-}
-
-.bankconnection {
-  position: absolute;
-  left: 610px;
-  top: 350px;
-  width: 290px;
-  height: 250px;
-}
-
-.tax-number {
-  position: absolute;
-  left: 910px;
-  top: 350px;
-  width: 290px;
-  height: 250px;
-}
-
-/*parts of header*/
 .logo {
-  color: darkblue;
-  position: absolute;
-  left: 840px;
-  top: 10px;
-  width: 290px;
-  height: 120px;
+    margin-bottom: 20px;
 }
 
-.logoimportant {
-  color: darkblue;
-  font-weight: bold;
-  font-size: 50px;
+.logo img {
+    width: 300px;
 }
 
-.adress-window {
-  color: black;
-  position: absolute;
-  left: 10px;
-  top: 190px;
-  width: 390px;
-  height: 320px;
+.adress-window textarea {
+    width: 450px;
 }
 
-.contact-block {
-  position: absolute;
-  left: 840px;
-  top: 190px;
-  width: 290px;
-  height: 350px;
+.contact-block p {
+    margin: 0;
 }
 
 .city-date {
-  position: absolute;
-  left: 840px;
-  top: 580px;
-  width: 290px;
-  height: 50px;
+    text-align: right;
+}
+
+.invoice-number {
+    margin-top: 0;
+}
+
+.invoice-number input {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+tbody tr:last-child {
+    border-bottom: 1px solid #000;
+}
+
+th:nth-child(n+3), td:nth-child(n+3), tfoot td {
+    text-align: right;
+}
+th:last-child, td:last-child, tfoot td:nth-child(n+4) {
+    text-align: left;
+}
+
+tfoot tr:last-child td:nth-child(n+2) {
+    border-top: 1px solid #000;
+    border-bottom: 2px solid #000;
+}
+
+tfoot tr:last-child td:last-child {
+    border: 0 none;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.address p:first-of-type, .contact p:first-of-type, .bankconnection p:first-of-type, .tax-number p:first-of-type {
+    margin-bottom: 3px;
+}
+
+.address p, .contact dl, .bankconnection dl, .tax-number p {
+    margin: 0;
 }

@@ -1,10 +1,8 @@
-<div>
+<div class="invoice-list">
 
   <h1> Rechnungsübersicht </h1>
-  <p>2018-09-12</p>
 
   <div class="flex-container">
-    <div class="important">Filterkriterien</div>
     <div>Rechnungsdatum von<br><input type="date"></div>
     <div>Rechnungsdatum bis<br><input type="date"></div>
     <div>Status<br>
@@ -24,22 +22,17 @@
     </div>
 
   </div>
-  <br>
-  <div>
-
-
-
-
+  <div class="mobile-style">
     <table style="width:100%">
       <thead>
       <tr>
         <th>Rechnungsdatum</th>
-        <th>RechnungsNr</th>
+        <th>Rechnungsnr</th>
         <th>Empfänger</th>
         <th>Status (Entwurf, bezahlt, ...)</th>
         <th>Gesamtpreis</th>
         <th>Anzahl der Mahnungen</th>
-        <th>Rechnungzeitraum</th>
+        <!--th>Rechnungzeitraum</th-->
         <th>Ändern</th>
       </tr>
       </thead>
@@ -51,7 +44,7 @@
         <td>{{invoice.invoiceState}}</td>
         <td>{{invoice.wholeCost}}{{invoice.currency}}</td>
         <td>{{invoice.countReminders}}</td>
-        <td>{{invoice.timeSpan}}</td>
+        <!--td>{{invoice.timeSpan}}</td-->
         <td>
           <!-- button type="button">Rechnung bearbeiten</button -->
 
