@@ -4,9 +4,7 @@
 
         <div class="test">
             invoiceID: {{invoiceId}}
-            <!-- shows invoiceId for testCases -->
-            invoice-detail.component.currency: {{this.invoiceCurrency}}
-            invoice.currency: {{this.invoice.currency}}
+}
 
         </div>
 
@@ -59,7 +57,7 @@
     <main>
         <section>
                 <h1 class="invoice-number">Rechnungsnummer
-                    <input class="invoice-number" [(ngModel)]="invoiceNumber" (ngModelChange)="invoiceNumberChange()">
+                    <input class="invoice-number" [ngModel]="invoiceNumber" (ngModelChange)="invoiceNumberChange($event)">
                 </h1>
                   <!-- p>Zeitraum: 2018-01-01 bis 2018-12-31 (12 Monate)</p>
                 <input class="timeSpan" class="inputLarge" [(ngModel)]="invoiceTimeSpan" -->
@@ -78,7 +76,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of invoice.items">
+                  <tr *ngFor="let item of items">
                       <!-- loop for all items -->
                     <td>{{item.itemName}}</td>
                     <td>{{item.itemDate}}</td>

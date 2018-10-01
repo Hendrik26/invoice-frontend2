@@ -4,6 +4,7 @@ import {InvoiceService} from '../invoice.service';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 import {Invoice} from '../invoice';
+import {Item} from '../item';
 
 @Component({
   selector: 'app-invoice-detail',
@@ -38,6 +39,8 @@ export class InvoiceDetailComponent implements OnInit {
   invoiceTimeSpan = '2018-01-01 bis 2018-12-31';
   invoiceState = 'template'; // <th>Status (Entwurf, bezahlt, ...)</th>
 
+  items: Item[];
+
   nettoSum: number;
   percentageString: string;
   salesTax: number;
@@ -59,11 +62,12 @@ export class InvoiceDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.receiveInvoiceId();
-    // this.receiveInvoices();
-    this.creatingInvoice = false;
-    this.receiveInvoiceById(this.invoiceId);
-    this.calculateInitialData();
+    this.creatingInvoice = !this.hasReceivedInvoiceId();
+    if (!this.creatingInvoice) {
+      this.receiveInvoiceById(this.invoiceId);
+      this.calculateInitialData();
+    }
+
   }
 
 
@@ -111,6 +115,17 @@ export class InvoiceDetailComponent implements OnInit {
     return this.calculateNettoSum(methId) * methInvoice.salesTaxPercentage / 100;
   }
 
+  hasReceivedInvoiceId():
+    boolean {
+    if (this.route.snapshot.paramMap.has('invoiceId')) {
+      this.invoiceId = this.route.snapshot.paramMap.get('invoiceId');  // get itemID from URL
+      return true;
+    } else {
+      this.invoiceId = null; // stands for the creation of a new item
+      return false;
+    }
+  }
+
   invoiceDateChange(methEvent: string) {
     this.invoiceDate = new Date(methEvent);
     console.log('Methode invoiceDateChange(...) aufgerufen mit: ' + methEvent);
@@ -119,10 +134,10 @@ export class InvoiceDetailComponent implements OnInit {
     console.log('Neuer Wert invoiceDate: ' + this.invoiceDate.toString());
     this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(),
       this.invoiceDate.getDate() + 14, 12);
-    // this.invoiceDueDate = new Date(this.invoiceDate.getTime() + 14 * 24 * 3600 * 1000);
   }
 
-  invoiceNumberChange() {
+  invoiceNumberChange(e: string) {
+    this.invoiceNumber = e;
     this.invoiceIntendedUse = 'die RechnungsNr. ' + this.invoiceNumber;
   }
 
@@ -135,16 +150,23 @@ export class InvoiceDetailComponent implements OnInit {
 
   receiveInvoiceById(methId: string): void {
     this.invoiceService.getInvoiceObservableById(methId)
-      .subscribe(invoice => this.invoice = invoice);
+      .subscribe(invoice => {
+        // TODO remove this.invoice.....
+        this.countReminders = invoice.countReminders;
+        this.invoiceCurrency = invoice.currency;
+        this.invoiceDate = invoice.invoiceDate;
+        this.invoiceDueDate = invoice.invoiceDueDate;
+        this.invoiceNumber = invoice.invoiceNumber;
+        this.invoiceState = invoice.invoiceState;
+        this.customerAdress = invoice.recipient;
+        this.salesTaxPercentage = invoice.salesTaxPercentage;
+        this.timespan = invoice.timeSpan;
+
+        this.items = [];
+        this.invoice.items.forEach((item) => {this.items.push({...item})});
+      });
     // Empfängt Daten aus einem Datenstream, d.h. wenn sich invoice ändert übernimmt this.invoice die Daten von invoice
-    this.countReminders = this.invoice.countReminders;
-    this.invoiceCurrency = this.invoice.currency;
-    this.invoiceDate = this.invoice.invoiceDate;
-    this.invoiceNumber = this.invoice.invoiceNumber;
-    this.invoiceState = this.invoice.invoiceState;
-    this.customerAdress = this.invoice.recipient;
-    this.salesTaxPercentage = this.invoice.salesTaxPercentage;
-    this.timespan = this.invoice.timeSpan;
+
   }
 
   saveInvoice(): void {
@@ -153,6 +175,9 @@ export class InvoiceDetailComponent implements OnInit {
     if (this.creatingInvoice) {
       /* this.invoiceService.saveNewItemByInvoiceId(this.invoiceId, this.count, this.currency,
           this.hourPayment, this.itemDate, this.itemName, this.partialCost); */
+      this.invoiceService.saveNewInvoice(this.countReminders, this.invoiceCurrency, this.invoiceDate,
+        this.invoiceDueDate, this.invoiceNumber, this.invoiceState, this.customerAdress, this.salesTaxPercentage, 'unknown',
+        this.bruttoSum);
       this.creatingInvoice = false;
     } else {
       console.log('invoice-detail.component.ts this.invoiceCurrency: ' + this.invoiceCurrency);

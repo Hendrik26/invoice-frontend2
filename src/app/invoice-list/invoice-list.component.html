@@ -5,8 +5,8 @@
 
   <div class="flex-container">
     <div class="important">Filterkriterien</div>
-    <div>Rechnungsdatum von<br><input type="datetime-local"></div>
-    <div>Rechnungsdatum bis<br><input type="datetime-local"></div>
+    <div>Rechnungsdatum von<br><input type="date"></div>
+    <div>Rechnungsdatum bis<br><input type="date"></div>
     <div>Status<br>
       <select>
         <option value="template">Entwurf</option>
@@ -65,7 +65,8 @@
     </table>
   </div>
 
-  <button type="button">Neuer Rechnungsentwurf</button>
+  <!-- button type="button">Neuer Rechnungsentwurf</button -->
+  <a routerLink="/invoice-create">Neuer Rechnungsentwurf</a>
   <button>Speichern</button>
   <button>Zurück</button>
 
