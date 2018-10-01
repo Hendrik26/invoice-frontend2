@@ -1,70 +1,73 @@
-/*main sections*/
-
-header, main, footer {
-  position: relative;
+.invoice-detail {
+    margin: 50px;
+}
+header, main {
+    margin-bottom: 30px;
 }
 
 header {
-  height: 570px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .logo {
-  color: darkblue;
-  position: absolute;
-  left: 840px;
-  top: 10px;
-  width: 290px;
-  height: 120px;
+    margin-bottom: 20px;
 }
 
-.logoimportant {
-  font-size: 50px;
+.logo img {
+    width: 300px;
 }
 
-.adress-window {
-  position: absolute;
-  left: 10px;
-  top: 190px;
+.adress-window textarea {
+    width: 450px;
 }
 
-.contact-block {
-  position: absolute;
-  left: 840px;
-  top: 190px;
-  width: 290px;
+.contact-block p {
+    margin: 0;
 }
 
 .city-date {
-  position: absolute;
-  left: 840px;
-  top: 520px;
-  width: 290px;
+    text-align: right;
 }
 
-.address {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-  width: 290px;
+.invoice-number {
+    margin-top: 0;
 }
 
-.contact {
-  position: absolute;
-  left: 310px;
-  top: 10px;
-  width: 290px;
+.invoice-number input {
+    font-size: 32px;
+    font-weight: bold;
 }
 
-.bankconnection {
-  position: absolute;
-  left: 610px;
-  top: 10px;
-  width: 290px;
+tbody tr:last-child {
+    border-bottom: 1px solid #000;
 }
 
-.tax-number {
-  position: absolute;
-  left: 910px;
-  top: 10px;
-  width: 290px;
+th:nth-child(n+3), td:nth-child(n+3), tfoot td {
+    text-align: right;
+}
+th:last-child, td:last-child, tfoot td:nth-child(n+3) {
+    text-align: left;
+}
+
+tfoot tr:last-child td:nth-child(n+2) {
+    border-top: 1px solid #000;
+    border-bottom: 2px solid #000;
+}
+
+tfoot tr:last-child td:last-child {
+    border: 0 none;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.address p:first-of-type, .contact p:first-of-type, .bankconnection p:first-of-type, .tax-number p:first-of-type {
+    margin-bottom: 3px;
+}
+
+.address p, .contact dl, .bankconnection dl, .tax-number p {
+    margin: 0;
 }
