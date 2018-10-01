@@ -113,7 +113,7 @@ export class InvoiceService {
 
         methInvoice.countReminders = countReminders;
         methInvoice.currency = currency;
-        this.currency = methInvoice.currency:
+        this.currency = methInvoice.currency;
         console.log('invoice.service.currency: ' + this.currency);
         methInvoice.invoiceDate = invoiceDate;
         methInvoice.invoiceNumber = invoiceNumber;
