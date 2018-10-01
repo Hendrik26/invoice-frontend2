@@ -60,7 +60,7 @@
                 </h1>
                   <!-- p>Zeitraum: 2018-01-01 bis 2018-12-31 (12 Monate)</p>
                 <input class="timeSpan" class="inputLarge" [(ngModel)]="invoiceTimeSpan" -->
-
+        <div class="mobile-style">
             <!-- span *ngFor="let invoice of invoices" *ngIf="invoice.id === invoiceId" -->
             <table>
                 <!-- loop for all invoice - filter needed!!! -->
@@ -127,6 +127,7 @@
                     </tr>
                 </tfoot>
             </table>
+        </div>
           <a routerLink="/item-create/{{invoiceId}}">Posten hinzufügen</a>
             <button (click)="saveInvoice()">{{creatingInvoice ? 'Create' : 'Save'}}</button>
             <button>Zurück</button>
