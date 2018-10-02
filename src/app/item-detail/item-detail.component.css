@@ -1,0 +1,37 @@
+.item-detail {
+    margin: 50px;
+}
+
+label {
+    display: block;
+    padding: 4px;
+}
+
+label:nth-child(even) {
+    background-color: rgba(0,175,196,.15);
+}
+
+label span, p span {
+    display: inline-block;
+    width: 10%;
+}
+
+input[type=text] {
+    width: 89%;
+}
+
+input[type=checkbox] {
+    margin-left: 10%;
+}
+
+input[type=date], input[type=number] {
+    width: 6%;
+}
+
+p {
+    background-color: rgba(0,175,196,.15);
+    padding: 4px;
+    margin: 0 0 20px 0;
+    border-bottom: 1px solid #000;
+    font-weight: bold;
+}
