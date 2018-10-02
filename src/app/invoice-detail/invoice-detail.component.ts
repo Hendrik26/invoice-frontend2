@@ -162,8 +162,9 @@ export class InvoiceDetailComponent implements OnInit {
         this.salesTaxPercentage = invoice.salesTaxPercentage;
         this.timespan = invoice.timeSpan;
 
-        this.items = [];
-        this.invoice.items.forEach((item) => {this.items.push({...item})});
+        // this.items = [];
+        // this.invoice.items.forEach((item) => {this.items.push({...item})});
+        this.items = invoice.items;
       });
     // Empfängt Daten aus einem Datenstream, d.h. wenn sich invoice ändert übernimmt this.invoice die Daten von invoice
 

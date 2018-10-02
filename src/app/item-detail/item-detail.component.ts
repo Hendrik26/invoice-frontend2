@@ -53,6 +53,10 @@ export class ItemDetailComponent implements OnInit {
         this.backUrl = '/invoice-detail/' + this.invoiceId;
     }
 
+    cancelItem(): void {
+      this.receiveItemByIds(this.invoiceId, this.itemId);
+    }
+
     createItemByInvoiceId(methInvoiceId: string): void {
         //  this.currentItem = itemReceived;
         this.itemName = '';
@@ -121,13 +125,4 @@ export class ItemDetailComponent implements OnInit {
     togglePayment() {
         this.currentItem.hourPayment = !this.currentItem.hourPayment;
     }
-
-
-
-
-
-    cancelItem(): void {
-        this.receiveItemByIds(this.invoiceId, this.itemId);
-    }
-
 }
