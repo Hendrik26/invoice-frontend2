@@ -82,11 +82,11 @@ export class InvoiceDetailComponent implements OnInit {
     this.bruttoSum = this.calculateBruttoSum(this.invoiceId);
     // this.wholeCost = this.bruttoSum;
     // this.invoiceCurrency = this.invoice.currency;
-    this.invoiceDate = new Date();
+    /* this.invoiceDate = new Date();
     console.log('this.invoiceDate: ' + this.invoiceDate.toString());
     this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(),
       this.invoiceDate.getDate() + 14, 12);
-    console.log('this.invoiceDueDate: ' + this.invoiceDueDate.toString());
+    console.log('this.invoiceDueDate: ' + this.invoiceDueDate.toString()); */
     // this.invoiceDueDate = new Date(this.invoiceDate.getTime() + 14 * 24 * 3600 * 1000);
   }
 
