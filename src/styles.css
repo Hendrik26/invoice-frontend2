@@ -57,6 +57,7 @@ a {
     border-radius: 4px;
     text-decoration: none;
     color: #000;
+    cursor: pointer;
 }
 
 a:hover {
