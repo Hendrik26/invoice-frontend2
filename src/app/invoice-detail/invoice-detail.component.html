@@ -2,7 +2,7 @@
     invoiceID: {{invoiceId}}
     <!-- shows invoiceId for testCases -->
     invoice-detail.component.currency: {{this.invoiceCurrency}}
-    invoice.currency: {{this.invoice.currency}}
+    <!-- invoice.currency: {{this.invoice.currency}} -->
 
 </div>
 
@@ -130,8 +130,8 @@
         </div>
           <a routerLink="/item-create/{{invoiceId}}">Posten hinzufügen</a>
             <button (click)="saveInvoice()">{{creatingInvoice ? 'Create' : 'Save'}}</button>
-            <button>Zurück</button>
-            <a routerLink="/invoice-list/">cancel  '/invoice-detail/' </a>
+            <button>cancel</button>
+            <a routerLink="/invoice-list/">zurück  </a>
             <p></p>
             <!-- dl>
                 <dt>USt-IdNr.:</dt>

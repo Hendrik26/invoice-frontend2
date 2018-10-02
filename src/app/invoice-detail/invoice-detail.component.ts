@@ -76,8 +76,9 @@ export class InvoiceDetailComponent implements OnInit {
     this.percentageString = this.invoiceService.getSalesTaxPercentageString(this.invoiceId);
     this.salesTax = this.calculateSalesTax(this.invoiceId); // hier
     this.bruttoSum = this.calculateBruttoSum(this.invoiceId);
-    this.invoice.wholeCost = this.bruttoSum;
-    this.invoiceCurrency = this.invoice.currency;
+    // this.wholeCost = this.bruttoSum;
+    // this.invoiceCurrency = this.invoice.currency;
+    this.invoiceDate = new Date();
     this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(),
       this.invoiceDate.getDate() + 14, 12);
     // this.invoiceDueDate = new Date(this.invoiceDate.getTime() + 14 * 24 * 3600 * 1000);
@@ -87,32 +88,32 @@ export class InvoiceDetailComponent implements OnInit {
     this.nettoSum = this.calculateNettoSum(this.invoiceId);
     this.salesTax = this.calculateSalesTax(this.invoiceId); // hier
     this.bruttoSum = this.calculateBruttoSum(this.invoiceId);
-    this.invoice.wholeCost = this.bruttoSum;
+    // this.invoice.wholeCost = this.bruttoSum;
     this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(),
       this.invoiceDate.getDate() + 14, 12);
     // this.invoiceDueDate = new Date(this.invoiceDate.getTime() + 14 * 24 * 3600 * 1000);
   }
 
   calculateBruttoSum(methId: string): number {
-    var methInvoice: Invoice;
-    methInvoice = this.invoice;
+    // var methInvoice: Invoice;
+    // methInvoice = this.invoice;
     return this.calculateNettoSum(methId) + this.calculateSalesTax(methId);
   }
 
   calculateNettoSum(methId: string): number {
-    var methInvoice: Invoice;
-    var methSum = 0;
-    methInvoice = this.invoice;
-    for (var i = 0; i < methInvoice.items.length; i++) {
-      methSum += methInvoice.items[i].wholeCost;
+    // var methInvoice: Invoice;
+    let methSum = 0;
+    // methInvoice = this.invoice;
+    for (let i = 0; i < this.items.length; i++) {
+      methSum += this.items[i].wholeCost;
     }
     return methSum;
   }
 
   calculateSalesTax(methId: string): number {
-    var methInvoice: Invoice;
-    methInvoice = this.invoice;
-    return this.calculateNettoSum(methId) * methInvoice.salesTaxPercentage / 100;
+    // var methInvoice: Invoice;
+    // methInvoice = this.invoice;
+    return this.calculateNettoSum(methId) * this.salesTaxPercentage / 100;
   }
 
   hasReceivedInvoiceId():
