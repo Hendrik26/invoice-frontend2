@@ -50,7 +50,7 @@ export class Invoice implements InvoiceType {
   }
 
   // static methods
-  private static createNewInvoiceId(): string {
+  public static createNewInvoiceId(): string {
     const methDate: Date = new Date();
     return 'Inv' + methDate.getTime();
   }

@@ -66,6 +66,8 @@ export class InvoiceDetailComponent implements OnInit {
     if (!this.creatingInvoice) {
       this.receiveInvoiceById(this.invoiceId);
       this.calculateInitialData();
+    } else {
+      this.invoiceId = Invoice.createNewInvoiceId();
     }
 
   }
