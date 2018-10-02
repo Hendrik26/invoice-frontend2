@@ -5,7 +5,7 @@
     <h2>Posten003:</h2>
     <form>
       <label><span>Leistungsbeschreibung</span><input type="text" name="itemName" [(ngModel)]="itemName"></label>
-      <label><span>Leistungsdatum</span><input type="date" name="itemDate" [(ngModel)]="itemDate"></label>
+      <label><span>Leistungsdatum</span><input type="text" name="itemDate" [(ngModel)]="itemDate"></label>
       <label><input type="checkbox" name="hourPayment" [checked]="hourPayment"
         (change)="togglePayment()"> Zeitposten</label>
       <label><span>Stunden-/Stückpreis</span><input type="number" name="partialCost" [(ngModel)]="partialCost"></label>
