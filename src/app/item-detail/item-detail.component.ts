@@ -109,6 +109,7 @@ export class ItemDetailComponent implements OnInit {
     }
 
     saveItem(): void {
+        // TODO Error if pressing saveButton in item-detail.component.html more then one time
         this.wholeCost = this.count * this.partialCost;
         if (this.creatingItem) {
             this.itemService.saveNewItemByInvoiceId(this.invoiceId, this.count, this.currency,

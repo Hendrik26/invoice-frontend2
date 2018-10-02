@@ -147,5 +147,10 @@ export class InvoiceService {
   }
 
 
-
+  createNewInvoiceId() {
+    let invoice: Invoice;
+    invoice = Invoice.createNewInvoice();
+    INVOICES.push(invoice);
+    return invoice.getID();
+  }
 }
