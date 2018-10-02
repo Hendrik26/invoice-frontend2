@@ -65,15 +65,17 @@ export class InvoiceDetailComponent implements OnInit {
     this.creatingInvoice = !this.hasReceivedInvoiceId();
     if (!this.creatingInvoice) {
       this.receiveInvoiceById(this.invoiceId);
-      this.calculateInitialData();
+      this.calculateInitialDataLoad();
     } else {
       this.invoiceId = this.invoiceService.createNewInvoiceId();
+      this.calculateInitialDataCreate();
     }
 
   }
 
 
-  calculateInitialData() {
+  calculateInitialDataLoad() {
+    console.log('method calculateInitialDataLoad() {...}');
     this.nettoSum = this.calculateNettoSum(this.invoiceId);
     this.percentageString = this.invoiceService.getSalesTaxPercentageString(this.invoiceId);
     this.salesTax = this.calculateSalesTax(this.invoiceId); // hier
@@ -81,9 +83,21 @@ export class InvoiceDetailComponent implements OnInit {
     // this.wholeCost = this.bruttoSum;
     // this.invoiceCurrency = this.invoice.currency;
     this.invoiceDate = new Date();
+    console.log('this.invoiceDate: ' + this.invoiceDate.toString());
     this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(),
       this.invoiceDate.getDate() + 14, 12);
+    console.log('this.invoiceDueDate: ' + this.invoiceDueDate.toString());
     // this.invoiceDueDate = new Date(this.invoiceDate.getTime() + 14 * 24 * 3600 * 1000);
+  }
+
+  calculateInitialDataCreate() {
+    console.log('method calculateInitialDataCreate() {...}');
+    this.invoiceDate = new Date();
+    console.log('this.invoiceDate: ' + this.invoiceDate.toString());
+    this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(),
+      this.invoiceDate.getDate() + 14, 12);
+    console.log('this.invoiceDueDate: ' + this.invoiceDueDate.toString());
+
   }
 
   calculateSavingData() {
