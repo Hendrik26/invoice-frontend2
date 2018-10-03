@@ -2,7 +2,7 @@ import {Invoice} from './invoice';
 import {Item} from './item';
 
 let invoice01 = new Invoice('In001', {
-  invoiceDate: '2016-02-04', invoiceNumber: '2018abcd', recipient: 'DumpfbackeGmbH',
+  invoiceDate: new Date('2016-02-04'), invoiceNumber: '2018abcd', recipient: 'DumpfbackeGmbH',
   invoiceState: 'Entwurf', wholeCost: 1111.11, countReminders: 0, timeSpan: '2017-01-01 bis 2017-12-31',
   currency: '€', salesTaxPercentage: 19
 });
@@ -17,7 +17,7 @@ invoice01.addNewItem({
 
 
 let invoice02 = new Invoice('In002', {
-  invoiceDate: '2016-04-01', invoiceNumber: '2018efgh', recipient: 'PlatinHuhn',
+  invoiceDate: new Date('2016-04-01'), invoiceNumber: '2018efgh', recipient: 'PlatinHuhn',
   invoiceState: 'Entwurf', wholeCost: 2222.221, countReminders: 0, timeSpan: '2016-01-01 bis 2016-12-31',
   currency: '€', salesTaxPercentage: 19
 });
@@ -32,7 +32,7 @@ invoice02.addNewItem({
 });
 
 let invoice03 = new Invoice('In003', {
-  invoiceDate: '2016-02-06', invoiceNumber: '2018ijkl', recipient: 'Schweizer Käse&Socken GmbH',
+  invoiceDate: new Date('2016-02-06'), invoiceNumber: '2018ijkl', recipient: 'Schweizer Käse&Socken GmbH',
   invoiceState: 'Entwurf', wholeCost: 333.3321, countReminders: 0, timeSpan: '2015-01-01 bis 2015-12-31',
   currency: '€', salesTaxPercentage: 19
 });
