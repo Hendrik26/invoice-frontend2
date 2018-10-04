@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Invoice} from '../invoice';
-import {Item} from '../item';
 import {InvoiceService} from '../invoice.service';
-import {InvoiceType} from '../invoice-type';
-import {ItemType} from '../item-type';
 
 @Component({
   selector: 'app-invoice-list',
@@ -19,6 +16,8 @@ export class InvoiceListComponent implements OnInit {
    // invoicesNew: Invoice[] = [new Invoice('In001', this.)]; // clones this.standardInvoice
 
   invoices: Invoice[];
+  filterStartDate: Date;
+  filterEndDate: Date;
 
   constructor(private invoiceService: InvoiceService) {
   }
@@ -28,6 +27,14 @@ export class InvoiceListComponent implements OnInit {
     /* if (this.invoices.length < 1) {
       this.invoices.push(new Invoice('Inn1', this.invoiceService.standardInvoice))
     } */
+  }
+
+  filter(invoices: Invoice[]): Invoice[]{
+      // TODO filter
+    return invoices
+      .filter(invoice => invoice.invoiceDate.getTime() >= this.filterStartDate.getTime())
+      .filter(invoice => invoice.invoiceDate.getTime() <= this.filterEndDate.getTime())
+      ;
   }
 
   receiveInvoices(): void {

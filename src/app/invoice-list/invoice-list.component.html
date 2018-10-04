@@ -3,8 +3,8 @@
   <h1> Rechnungsübersicht </h1>
 
   <div class="flex-container">
-    <div>Rechnungsdatum von<br><input type="date"></div>
-    <div>Rechnungsdatum bis<br><input type="date"></div>
+    <div>Rechnungsdatum von<br><input type="date" (ngModel)="filterStartDate"></div>
+    <div>Rechnungsdatum bis<br><input type="date" (ngModel)="filterEndDate"></div>
     <div>Status<br>
       <select>
         <option value="template">Entwurf</option>
@@ -37,7 +37,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let invoice of invoices">
+      <tr *ngFor="let invoice of filter(invoices)">
         <td>{{invoice.invoiceDate}}</td>
         <td>{{invoice.invoiceNumber}}</td>
         <td>{{invoice.recipient}}</td>
