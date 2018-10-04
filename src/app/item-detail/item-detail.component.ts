@@ -25,7 +25,7 @@ export class ItemDetailComponent implements OnInit {
     creatingItem: boolean;
     currency: string;
     currentItem: Item;
-    hourPayment: boolean;
+    hourPayment = true;
     item: Item;
     itemDate: string;
     itemName: string;
@@ -124,6 +124,7 @@ export class ItemDetailComponent implements OnInit {
 
 
     togglePayment() {
-        this.currentItem.hourPayment = !this.currentItem.hourPayment;
+        // this.currentItem.hourPayment = !this.currentItem.hourPayment;
+      this.hourPayment = !this.hourPayment;
     }
 }

@@ -26,6 +26,7 @@ export class Invoice implements InvoiceType {
   invoiceDate: Date; // <th>Rechnungsdatum</th>
   invoiceDueDate: Date; // Faelligkeitsdatum
   invoiceNumber: string; // <th>RechnungsNr</th>
+  invoiceIntendedUse; // Verwendungszweck
   invoiceState: string; // <th>Status (Entwurf, bezahlt, ...)</th>
   items: Item[];
   recipient: string; // <th>Empfänger</th>
