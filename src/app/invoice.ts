@@ -7,6 +7,7 @@ export class Invoice implements InvoiceType {
   // static properties
   private static emptyData: InvoiceType = {
     invoiceDate: new Date(),
+    invoiceDueDate: new Date(),
     invoiceNumber: '2018axbycz',
     recipient: '',
     invoiceState: 'Entwurf',

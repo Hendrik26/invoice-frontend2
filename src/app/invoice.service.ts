@@ -20,6 +20,7 @@ export class InvoiceService {
 
     standardInvoice: InvoiceType = {
         invoiceDate: new Date('04. Februar 2016'),
+        invoiceDueDate: new Date('24. Februar 2016'),
         invoiceNumber: '2018abcd',
         recipient: 'DusselGmbH',
         invoiceState: 'Entwurf',
