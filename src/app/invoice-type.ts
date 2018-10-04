@@ -2,6 +2,7 @@ import {Item} from './item';
 
 export interface InvoiceType {
   invoiceDate: Date;
+  invoiceDueDate: Date; // Faelligkeitsdatum
   invoiceNumber: string;
   recipient: string;
   invoiceState: string;

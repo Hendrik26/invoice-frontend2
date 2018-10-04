@@ -38,6 +38,7 @@ export class Invoice implements InvoiceType {
 
     // other properties
     this.invoiceDate = data.invoiceDate;
+    this.invoiceDueDate = data.invoiceDueDate;
     this.invoiceNumber = data.invoiceNumber;
     this.recipient = data.recipient;
     this.invoiceState = data.invoiceState;
