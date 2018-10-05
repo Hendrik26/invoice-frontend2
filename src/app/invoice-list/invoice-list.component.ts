@@ -35,9 +35,9 @@ export class InvoiceListComponent implements OnInit {
     }
 
     // other methods
-    changeFilterStartDate(e: Date) {
-        console.log('Methode changeFilterStartDate(...) aufgerufen mit: ' + e.toString());
-        this.filterStartDate = e;
+    changeFilterStartDate(e: string) {
+        console.log('Methode changeFilterStartDate(...) aufgerufen mit: ' + e);
+        this.filterStartDate = new Date(e);
        // this.filterInvoice(this.invoices);
     }
 
@@ -47,7 +47,7 @@ export class InvoiceListComponent implements OnInit {
         console.log('First DateComparison!');
         if (date2 == undefined) { return true; }
         console.log('Second DateComparison!');
-        let ret: boolean = (date1.valueOf() >= date2.valueOf());
+        let ret: boolean = (date1.getTime() >= date2.getTime());
         console.log('Third DateComparison!, ret=' + ret + ' Finish method');
         return ret;
     }
