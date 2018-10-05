@@ -43,7 +43,7 @@
       <tr *ngFor="let invoice of filterInvoice(invoices)">
         <td>{{invoice.invoiceDate}}</td>
         <td>{{invoice.invoiceNumber}}</td>
-        <td>{{invoice.recipient}}</td>
+        <td>{{invoice.companyName()}}</td>
         <td>{{invoice.invoiceState}}</td>
         <td>{{invoice.wholeCost}}{{invoice.currency}}</td>
         <td>{{invoice.countReminders}}</td>

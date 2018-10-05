@@ -64,6 +64,16 @@ export class Invoice implements InvoiceType {
     return methInvoice;
   }
 
+  public static firstLine(inString: string): string {
+    const lines = inString.split('\n');
+    return lines[0];
+  }
+
+  public companyName(): string {
+    return Invoice.firstLine(this.recipient);
+  }
+
+
   // getter
   public getID(): string {
     return this.id;
