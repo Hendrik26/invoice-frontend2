@@ -18,6 +18,7 @@ export class InvoiceListComponent implements OnInit {
     invoices: Invoice[];
     filterStartDate: Date;
     filterEndDate: Date;
+    invoiceFilterState: 'none';
 
     constructor(private invoiceService: InvoiceService) {
     }
@@ -57,6 +58,19 @@ export class InvoiceListComponent implements OnInit {
         return ret;
     }
 
+    private checkInvoiceState(invoice: Invoice, filterState: string): boolean {
+      if (filterState.trim() == '') return true;
+      if (filterState.trim().toLowerCase() == 'none') return true;
+      if (filterState.trim().toLocaleLowerCase() == 'kein') return true;
+      if (filterState.trim() == undefined) return true;
+      if (filterState.trim() == null) return true;
+      if (filterState.trim() == invoice.invoiceState) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
     filterInvoice(invoices: Invoice[]): Invoice[] {
         console.log('Start Method filterInvoice' +
           '');
@@ -65,6 +79,7 @@ export class InvoiceListComponent implements OnInit {
          .filter(invoice => this.dateGreaterEqualThen(invoice.invoiceDate, this.filterStartDate))
            // .filter(invoice => invoice.invoiceDate.getTime() >= this.getGreatPastDate().getTime())
              .filter(invoice => this.dateGreaterEqualThen(this.filterEndDate, invoice.invoiceDate))
+          .filter(invoice => this.checkInvoiceState(invoice, this.invoiceFilterState))
             ;
         // console.log('Finish Method Filter');
     }
