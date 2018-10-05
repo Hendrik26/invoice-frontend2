@@ -5,8 +5,8 @@
   <p>FilterEnde: {{filterEndDate}}</p>
 
   <div class="flex-container">
-    <div>Rechnungsdatum von<br><input type="date" [ngModel]="filterStartDate" (ngModelChange)="changeFilterStartDate($event)"></div>
-    <div>Rechnungsdatum bis<br><input type="date" [(ngModel)]="filterEndDate"></div>
+    <div>Rechnungsdatum von<br><input type="date" name="fStartDate" [ngModel]="filterStartDate" (ngModelChange)="changeFilterStartDate($event)"></div>
+    <div>Rechnungsdatum bis<br><input type="date" name="fEndDate" [(ngModel)]="filterEndDate" ></div>
     <div>Status<br>
       <select>
         <option value="template">Entwurf</option>

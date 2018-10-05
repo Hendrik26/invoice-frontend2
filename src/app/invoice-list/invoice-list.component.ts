@@ -41,6 +41,11 @@ export class InvoiceListComponent implements OnInit {
        // this.filterInvoice(this.invoices);
     }
 
+    changeFilterEndDate(e: string) {
+        console.log('Methode changeFilterEndDate(...) aufgerufen mit: ' + e);
+        this.filterEndDate = new Date(e);
+    }
+
     public dateGreaterEqualThen(date1: Date, date2: Date): boolean {
         console.log('Start method dateGreaterEqualThen(...){...}');
         if (date1 == undefined) { return true; }
@@ -58,7 +63,7 @@ export class InvoiceListComponent implements OnInit {
         return invoices
         .filter(invoice => this.dateGreaterEqualThen(invoice.invoiceDate, this.filterStartDate))
            // .filter(invoice => invoice.invoiceDate.getTime() >= this.getGreatPastDate().getTime())
-            // .filter(invoice => invoice.invoiceDate.getTime() <= this.filterEndDate.getTime())
+            // .filter(invoice => this.dateGreaterEqualThen(this.filterEndDate, invoice.invoiceDate))
             ;
         // console.log('Finish Method Filter');
     }
