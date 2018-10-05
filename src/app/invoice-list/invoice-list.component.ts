@@ -36,34 +36,35 @@ export class InvoiceListComponent implements OnInit {
 
     // other methods
     changeFilterStartDate(e: string) {
-        console.log('Methode changeFilterStartDate(...) aufgerufen mit: ' + e);
-        this.filterStartDate = new Date(e);
+        console.log('Methode changeFilterStartDate(...) aufgerufen mit: ', e);
+        this.filterStartDate = e ? new Date(e) : null;
        // this.filterInvoice(this.invoices);
     }
 
     changeFilterEndDate(e: string) {
         console.log('Methode changeFilterEndDate(...) aufgerufen mit: ' + e);
-        this.filterEndDate = new Date(e);
+        this.filterEndDate = e ? new Date(e) : null;
     }
 
     public dateGreaterEqualThen(date1: Date, date2: Date): boolean {
         console.log('Start method dateGreaterEqualThen(...){...}');
-        if (date1 == undefined) { return true; }
+        if (!date1) { return true; }
         console.log('First DateComparison!');
-        if (date2 == undefined) { return true; }
+        if (!date2) { return true; }
         console.log('Second DateComparison!');
-        let ret: boolean = (date1.getTime() >= date2.getTime());
+        const ret: boolean = (date1.getTime() >= date2.getTime());
         console.log('Third DateComparison!, ret=' + ret + ' Finish method');
         return ret;
     }
 
     filterInvoice(invoices: Invoice[]): Invoice[] {
-        console.log('Start Method filterInvoice');
+        console.log('Start Method filterInvoice' +
+          '');
         // TODO filter
         return invoices
-        .filter(invoice => this.dateGreaterEqualThen(invoice.invoiceDate, this.filterStartDate))
+         .filter(invoice => this.dateGreaterEqualThen(invoice.invoiceDate, this.filterStartDate))
            // .filter(invoice => invoice.invoiceDate.getTime() >= this.getGreatPastDate().getTime())
-            // .filter(invoice => this.dateGreaterEqualThen(this.filterEndDate, invoice.invoiceDate))
+             .filter(invoice => this.dateGreaterEqualThen(this.filterEndDate, invoice.invoiceDate))
             ;
         // console.log('Finish Method Filter');
     }
