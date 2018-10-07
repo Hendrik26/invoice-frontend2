@@ -100,7 +100,10 @@ export class InvoiceListComponent implements OnInit {
     }
 
     calculateCompanySelectOptions2(invoices: Invoice[]): string[] {
-        return Array.from(new Set(Invoice.companyNames(invoices))); // unique array
+        const companyNames = Array.from(new Set(Invoice.companyNames(invoices)));
+        // makes sure that all elements in array are unique
+        companyNames.push('--alle--');
+        return companyNames.sort();
     }
 
 
