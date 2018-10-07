@@ -20,6 +20,7 @@ export class InvoiceListComponent implements OnInit {
     filterEndDate: Date;
     invoiceFilterState: 'none';
     companySelectOptions: object[];
+    companySelectOptions2: string[];
     invoiceFilterCompany: string;
 
     constructor(private invoiceService: InvoiceService) {
@@ -28,6 +29,7 @@ export class InvoiceListComponent implements OnInit {
     ngOnInit() {
         this.receiveInvoices();
         this.companySelectOptions = this.calculateCompanySelectOptions(this.invoices);
+        this.companySelectOptions2 = this.calculateCompanySelectOptions2(this.invoices);
     }
 
     //region getter
@@ -66,11 +68,12 @@ export class InvoiceListComponent implements OnInit {
     }
 
     private checkInvoiceState(invoice: Invoice, filterState: string): boolean {
+        if (filterState == undefined) return true;
+        if (filterState == null) return true;
         if (filterState.trim() == '') return true;
         if (filterState.trim().toLowerCase() == 'none') return true;
         if (filterState.trim().toLocaleLowerCase() == 'kein') return true;
-        if (filterState.trim() == undefined) return true;
-        if (filterState.trim() == null) return true;
+
         if (filterState.trim() == invoice.invoiceState) {
             return true;
         } else {
@@ -96,9 +99,13 @@ export class InvoiceListComponent implements OnInit {
         return retList;
     }
 
+    calculateCompanySelectOptions2(invoices: Invoice[]): string[] {
+        return Array.from(new Set(Invoice.companyNames(invoices))); // unique array
+    }
+
+
     filterInvoice(invoices: Invoice[]): Invoice[] {
-        console.log('Start Method filterInvoice' +
-            '');
+        console.log('Start Method filterInvoice' + '');
         // TODO filter
         return invoices
             .filter(invoice => this.dateGreaterEqualThen(invoice.invoiceDate, this.filterStartDate))

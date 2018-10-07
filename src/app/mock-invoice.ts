@@ -18,7 +18,7 @@ invoice01.addNewItem({
 
 
 let invoice02 = new Invoice('In002', {
-  invoiceDate: new Date('2017-04-01'), invoiceNumber: '2018efgh', recipient: 'Goldbroiler',
+  invoiceDate: new Date('2017-04-01'), invoiceNumber: '2018efgh', recipient: 'Schweizer Käse&Socken GmbH', //'Goldbroiler',
   invoiceDueDate: new Date('2016-02-21'),
   invoiceState: 'Entwurf', wholeCost: 2222.221, countReminders: 0, timeSpan: '2016-01-01 bis 2016-12-31',
   currency: '€', salesTaxPercentage: 19

@@ -20,11 +20,11 @@
     </div>
     <div>Emfpänger<br>
       <select [(ngModel)]="invoiceFilterCompany">
-        <!-- option value="007">Mustermann GmbH</option>
+        <!--option value="007">Mustermann GmbH</option>
         <option value="008">Restaurant Goldbroiler</option>
         <option value="009">Carwash GmbH</option -->
-         <option *ngFor="let opt of companySelectOptions" [ngValue="opt.value"]>
-             {{opt.name}}
+         <option *ngFor="let opt of companySelectOptions2" [ngValue]="opt">
+             {{opt}}
          </option>
       </select>
     </div>
