@@ -4,7 +4,9 @@ import {ItemType} from './item-type';
 
 export class Invoice implements InvoiceType {
     // //////////////////////
-    // static properties
+
+
+    //region static properties
     private static emptyData: InvoiceType = {
         invoiceDate: new Date(),
         invoiceDueDate: new Date(),
@@ -16,11 +18,17 @@ export class Invoice implements InvoiceType {
         timeSpan: 'unknown',
         salesTaxPercentage: 19
     };
+    //endregion
 
-    // IDs
+
+
+    //region IDs
     private id: string; // <th>Ändern</th>
+    //endregion
 
-    // other properties
+
+
+    //region other properties
     countReminders: number; // <th>Anzahl der Mahnungen</th>
     currency = '€';
     invoiceDate: Date; // <th>Rechnungsdatum</th>
@@ -33,6 +41,7 @@ export class Invoice implements InvoiceType {
     salesTaxPercentage: number;
     timeSpan: string; // <th>Rechnungzeitraum</th>
     wholeCost: number; // <th>Gesamtpreis</th>
+    //endregion
 
     constructor(id: string, data: InvoiceType) {
         // IDs
@@ -52,7 +61,9 @@ export class Invoice implements InvoiceType {
         this.items = [];
     }
 
-    // static methods
+
+
+    //region static methods
     public static createNewInvoiceId(): string {
         const methDate: Date = new Date();
         return 'Inv' + methDate.getTime();
@@ -76,14 +87,13 @@ export class Invoice implements InvoiceType {
         });
         return companyNameList;
     }
+    //endregion
 
 
-    public companyName(): string {
-        return Invoice.firstLine(this.recipient);
-    }
 
 
-    // getter
+
+    //region getter
     public getID(): string {
         return this.id;
     }
@@ -98,10 +108,12 @@ export class Invoice implements InvoiceType {
             }, -1); // lambda-expression
         }
     }
+    //endregion
 
     // setter
 
-    // otherr methods
+
+    //region other methods
     public addNewItem(itemType: ItemType): number {
         // TODO add new Item
         console.log('invoice.addNewItem');
@@ -111,8 +123,14 @@ export class Invoice implements InvoiceType {
         return createdItem.getItemId();
     }
 
+    public companyName(): string {
+        return Invoice.firstLine(this.recipient);
+    }
+
+
     public computeNextItemId(): number {
         return this.getMaxItemId() + 1;
     }
+    //endregion
 
 }
