@@ -93,21 +93,37 @@ export class InvoiceListComponent implements OnInit {
     return companyNames.sort();
   }
 
-  filterInvoice(invoices: Invoice[]): Invoice[] {
+  sortInvoice(sortBy: string, ascending: boolean, invoices: Invoice[]): Invoice[] {
+    // sortBy: Groesse, nach der sortiert werden soll
+    let ascendingFactor = -1;
+    if (ascending) { ascendingFactor = +1; }
+    let retInvoices: Invoice[];
+
+    if (sortBy == 'Date') {retInvoices = invoices.sort(function (a, b) {
+      return ascendingFactor * a.invoiceDate.getTime() - ascendingFactor * b.invoiceDate.getTime();
+    })}
+
+      if (sortBy == 'DueDate') {retInvoices = invoices.sort(function (a, b) {
+        return ascendingFactor * a.invoiceDueDate.getTime() - ascendingFactor * b.invoiceDueDate.getTime();
+      })}
+
+    return invoices;
+  }
+
+
+    filterInvoice(invoices: Invoice[]): Invoice[] {
     console.log('Start Method filterInvoice' + '');
     // TODO filter
-    return invoices
+    let retInvoices = invoices
       .filter(invoice => this.dateGreaterEqualThen(invoice.invoiceDate, this.filterStartDate))
       .filter(invoice => this.dateGreaterEqualThen(this.filterEndDate, invoice.invoiceDate))
       .filter(invoice => this.dateGreaterEqualThen(invoice.invoiceDueDate, this.filterStartDueDate))
       .filter(invoice => this.dateGreaterEqualThen(this.filterEndDueDate, invoice.invoiceDueDate))
       .filter(invoice => this.checkInvoiceState(invoice, this.invoiceFilterState))
       .filter(invoice => this.checkInvoiceCompanyName(invoice, this.invoiceFilterCompany))
-      .sort(function (a, b) {
-        return b.invoiceDate.getTime() - a.invoiceDate.getTime();
-      })
       ;
     // console.log('Finish Method Filter');
+      return retInvoices;
   }
 
   receiveInvoices(): void {
