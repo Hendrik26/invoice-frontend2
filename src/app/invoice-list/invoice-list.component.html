@@ -33,34 +33,36 @@
   <div class="mobile-style">
     <table style="width:100%">
       <thead>
-      <tr>
-        <th>Rechnungsdatum</th>
-        <th>Rechnungsnr</th>
-        <th>Empfänger</th>
-        <th>Status (Entwurf, bezahlt, ...)</th>
-        <th>Gesamtpreis</th>
-        <th>Anzahl der Mahnungen</th>
-        <!--th>Rechnungzeitraum</th-->
-        <th>Ändern</th>
-      </tr>
+        <tr>
+          <th>Fälligkeitsdatum</th>
+          <th>Rechnungsdatum</th>
+          <th>Rechnungsnr</th>
+          <th>Empfänger</th>
+          <th>Status (Entwurf, bezahlt, ...)</th>
+          <th>Gesamtpreis</th>
+          <th>Anzahl der Mahnungen</th>
+          <!--th>Rechnungzeitraum</th-->
+          <th>Ändern</th>
+        </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let invoice of filterInvoice(invoices)">
-        <td>{{invoice.invoiceDate}}</td>
-        <td>{{invoice.invoiceNumber}}</td>
-        <td>{{invoice.companyName()}}</td>
-        <td>{{invoice.invoiceState}}</td>
-        <td>{{invoice.wholeCost}}{{invoice.currency}}</td>
-        <td>{{invoice.countReminders}}</td>
-        <!--td>{{invoice.timeSpan}}</td-->
-        <td>
-          <!-- button type="button">Rechnung bearbeiten</button -->
+        <tr *ngFor="let invoice of filterInvoice(invoices)">
+          <td>{{invoice.invoiceDueDate | date:'yyyy-MM-dd'}}</td>
+          <td>{{invoice.invoiceDate | date:'yyyy-MM-dd'}}</td>
+          <td>{{invoice.invoiceNumber}}</td>
+          <td>{{invoice.companyName()}}</td>
+          <td>{{invoice.invoiceState}}</td>
+          <td>{{invoice.wholeCost}}{{invoice.currency}}</td>
+          <td>{{invoice.countReminders}}</td>
+          <!--td>{{invoice.timeSpan}}</td-->
+          <td>
+            <!-- button type="button">Rechnung bearbeiten</button -->
 
-          <a routerLink="/invoice-detail/{{invoice.getID()}}">Rechnung bearbeiten</a>
-            <!-- link to the details of a dedicated invoice -->
+            <a routerLink="/invoice-detail/{{invoice.getID()}}">Rechnung bearbeiten</a>
+              <!-- link to the details of a dedicated invoice -->
 
-        </td>
-      </tr>
+          </td>
+        </tr>
       <!-- ///////////////////////////// -->
       </tbody>
     </table>
