@@ -17,7 +17,7 @@ export class ItemService {
     constructor() {
     }
 
-    // getter
+  //region getter
     getItemByItemId(methInvoiceId: string, methItemId: number): Observable<Item> {
         let methInvoice: Invoice;
         let methItem: Item;
@@ -43,11 +43,12 @@ export class ItemService {
         }
         return of(methInvoice.items);
     }
+  //endregion
 
     // setter
 
 
-    // other methods
+  //region other methods
     saveItemByIds(methInvoiceId: string, methItemId: number, count: number, currency: string,
                   hourPayment: boolean, itemDate: string, itemName: string, partialCost: number): void {
         let methInvoice: Invoice;
@@ -97,6 +98,7 @@ export class ItemService {
         methItem.partialCost = partialCost;
         methItem.wholeCost = count * partialCost;
     }
+  //endregion
 
 
 }

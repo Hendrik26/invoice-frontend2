@@ -3,11 +3,13 @@ import {ItemType} from './item-type';
 
 export class Item implements ItemType {
 
-  // IDs
+  //region IDs
   private itemId: number; // <th>Ändern</th>
   private invoiceId: string;
+  //endregion
 
-  // other properties
+
+  //region other properties
   itemDate: string; /// <th>Leistungsdatum</th>
   itemName: string;  // <th>Leistungsbeschreibung</th>
   partialCost: number; // <th>Stückpreis</th>
@@ -15,6 +17,7 @@ export class Item implements ItemType {
   wholeCost: number; // <th>Gesamtpreis</th>
   hourPayment = false;
   currency = '€';
+  //endregion
 
 
   public constructor(invoice: Invoice, data: ItemType) {
@@ -30,7 +33,7 @@ export class Item implements ItemType {
   }
 
 
-  // getter
+  //region getter
   public getData(): ItemType {
     let data: ItemType;
     data = {
@@ -51,6 +54,7 @@ export class Item implements ItemType {
   public getInvoiceId(): string {
     return this.invoiceId;
   }
+  //endregion
 
   // other methods
 

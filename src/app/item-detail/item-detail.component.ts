@@ -14,11 +14,12 @@ import {Location} from '@angular/common';
 })
 export class ItemDetailComponent implements OnInit {
 
-    // IDs
+  //region IDs
     invoiceId: string;
     itemId: number;
+  //endregion
 
-    // other properties
+  //region other properties
     backUrl: string;
     bruttoSum: number;
     count: number;
@@ -34,6 +35,7 @@ export class ItemDetailComponent implements OnInit {
     percentageString: string;
     salesTax: number;
     wholeCost: number;
+  //endregion
 
 
     constructor(
@@ -53,7 +55,8 @@ export class ItemDetailComponent implements OnInit {
         this.backUrl = '/invoice-detail/' + this.invoiceId;
     }
 
-    cancelItem(): void {
+  //region other methods
+  cancelItem(): void {
       this.receiveItemByIds(this.invoiceId, this.itemId);
     }
 
@@ -127,4 +130,5 @@ export class ItemDetailComponent implements OnInit {
         // this.currentItem.hourPayment = !this.currentItem.hourPayment;
       this.hourPayment = !this.hourPayment;
     }
+  //endregion
 }

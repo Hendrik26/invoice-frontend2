@@ -9,7 +9,14 @@ import {InvoiceType} from './invoice-type';
   providedIn: 'root'
 })
 export class InvoiceService {
+
+
+  //region IDs
   id: number;
+  //endregion
+
+
+  //region other properties
   currency: string; // for test-Cases
 
   standardItem: ItemType = {
@@ -28,6 +35,7 @@ export class InvoiceService {
     timeSpan: '2017-01-01 bis 2017-12-31',
     salesTaxPercentage: 19
   };
+  //endregion
 
 
   constructor() {
@@ -38,7 +46,7 @@ export class InvoiceService {
   } */
 
 
-  // getter
+  //region getter
   getInvoiceById(methId: string): Invoice {
     var methInvoice: Invoice;
     for (var i = 0; i < INVOICES.length; i++) {
@@ -74,10 +82,12 @@ export class InvoiceService {
     methInvoice = this.getInvoiceById(methId);
     return methInvoice.salesTaxPercentage + '%';
   }
+  //endregion
 
   // setter
 
-  // other methods
+
+  //region other methods
   calculateBruttoSum(methId: string): number {
     var methInvoice: Invoice;
     methInvoice = this.getInvoiceById(methId);
@@ -99,6 +109,14 @@ export class InvoiceService {
     methInvoice = this.getInvoiceById(methId);
     return this.calculateNettoSum(methId) * methInvoice.salesTaxPercentage / 100;
   }
+
+  createNewInvoiceId() {
+    let invoice: Invoice;
+    invoice = Invoice.createNewInvoice();
+    INVOICES.push(invoice);
+    return invoice.getID();
+  }
+
 
   saveInvoiceGlobalsByInvoiceId(methInvoiceId: string, countReminders: number, currency: string,
                                 invoiceDate: Date, invoiceDueDate: Date, invoiceNumber: string,
@@ -153,10 +171,5 @@ export class InvoiceService {
   }
 
 
-  createNewInvoiceId() {
-    let invoice: Invoice;
-    invoice = Invoice.createNewInvoice();
-    INVOICES.push(invoice);
-    return invoice.getID();
-  }
+  //endregion
 }
