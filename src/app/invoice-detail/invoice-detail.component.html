@@ -1,184 +1,184 @@
 <div class="test">
-    invoiceID: {{invoiceId}}<br>
-    invoiceDueDate: {{invoiceDueDate}}<br>
-    <!-- shows invoiceId for testCases -->
-    invoice-detail.component.currency: {{this.invoiceCurrency}}
-    <!-- invoice.currency: {{this.invoice.currency}} -->
+  invoiceID: {{invoiceId}}<br>
+  invoiceDueDate: {{invoiceDueDate}}<br>
+  <!-- shows invoiceId for testCases -->
+  invoice-detail.component.currency: {{this.invoiceCurrency}}
+  <!-- invoice.currency: {{this.invoice.currency}} -->
 
 </div>
 
 <div class="invoice-detail">
-    <header>
-        <div class="adress-window">
-            <div class="postage-info">
-                SednaSoft GbR, Biesnitzer Straße 8, 02826 Görlitz
-            </div><!-- class="postage-info" -->
-          <textarea name="message" rows="7" cols="100" [(ngModel)]="customerAdress"
-                    placeholder="BspFirma&#x0a;Ansprechpartner&#x0a;Straße + HausNr.&#x0a;PLZ Ort&#x0a;Land">
+  <header>
+    <div class="adress-window">
+      <div class="postage-info">
+        SednaSoft GbR, Biesnitzer Straße 8, 02826 Görlitz
+      </div><!-- class="postage-info" -->
+      <textarea name="message" rows="7" cols="100" [(ngModel)]="customerAdress"
+                placeholder="BspFirma&#x0a;Ansprechpartner&#x0a;Straße + HausNr.&#x0a;PLZ Ort&#x0a;Land">
 
           </textarea>
-        </div><!-- class="adress-window" -->
+    </div><!-- class="adress-window" -->
 
-        <div class="contact-block">
-            <div class="logo">
-                <img src="assets/logo.png" alt="SednaSoft" title="SednaSoft" />
-            </div><!-- class="logo" -->
-            <strong>SednaSoft GbR</strong>
-            <p>A. Schaffhirt & A. Wünsche</p>
-            <p>Biesnitzer Straße 8</p>
-            <p>02826 Görlitz</p>
-            <p>GERMANY</p>
-            <dl>
-                <dt>Fon</dt>
-                <dd>+49-3581-3221063</dd>
-                <dt>Fax</dt>
-                <dd>+49-3581-6858089</dd>
-                <dt>Mail</dt>
-                <dd>kontakt@sedna-soft.de</dd>
-                <dt>Web</dt>
-                <dd>http://sedna-soft.de</dd>
-            </dl>
-        </div><!-- class="contact-block" -->
+    <div class="contact-block">
+      <div class="logo">
+        <img src="assets/logo.png" alt="SednaSoft" title="SednaSoft"/>
+      </div><!-- class="logo" -->
+      <strong>SednaSoft GbR</strong>
+      <p>A. Schaffhirt & A. Wünsche</p>
+      <p>Biesnitzer Straße 8</p>
+      <p>02826 Görlitz</p>
+      <p>GERMANY</p>
+      <dl>
+        <dt>Fon</dt>
+        <dd>+49-3581-3221063</dd>
+        <dt>Fax</dt>
+        <dd>+49-3581-6858089</dd>
+        <dt>Mail</dt>
+        <dd>kontakt@sedna-soft.de</dd>
+        <dt>Web</dt>
+        <dd>http://sedna-soft.de</dd>
+      </dl>
+    </div><!-- class="contact-block" -->
 
-    </header>
+  </header>
 
 
-    <main>
-        <section>
-            <div class="city-date">Görlitz,
-                <input type="date" name="inDate" [ngModel]="invoiceDate | date:'yyyy-MM-dd'"
-                       (ngModelChange)="invoiceDateChange($event)">
-            </div>
+  <main>
+    <section>
+      <div class="city-date">Görlitz,
+        <input type="date" name="inDate" [ngModel]="invoiceDate | date:'yyyy-MM-dd'"
+               (ngModelChange)="invoiceDateChange($event)">
+      </div>
 
-                <h1 class="invoice-number">Rechnung
-                    <input class="invoice-number" [ngModel]="invoiceNumber"
-                           (ngModelChange)="invoiceNumberChange($event)">
-                </h1>
-                  <!-- p>Zeitraum: 2018-01-01 bis 2018-12-31 (12 Monate)</p>
-                <input class="timeSpan" class="inputLarge" [(ngModel)]="invoiceTimeSpan" -->
-        <div class="mobile-style">
-            <!-- span *ngFor="let invoice of invoices" *ngIf="invoice.id === invoiceId" -->
-            <table>
-                <!-- loop for all invoice - filter needed!!! -->
-                <thead>
-                    <tr>
-                      <th>Leistungsbeschreibung</th>
-                      <th>Leistungsdatum</th>
-                      <th>Anzahl</th>
-                      <th>Stückpreis</th>
-                      <th>Gesamtpreis</th>
-                      <th>Ändern</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let item of items">
-                      <!-- loop for all items -->
-                    <td>{{item.itemName}}</td>
-                    <td>{{item.itemDate}}</td>
-                    <td>{{item.count}}</td>
-                    <td>{{item.partialCost | number:'1.2-2'}}{{invoiceCurrency}}</td>
-                    <td>{{item.wholeCost | number:'1.2-2'}}{{invoiceCurrency}}</td>
-                    <td>
-                        <a routerLink="/item-detail/{{invoiceId}}/{{item.getItemId()}}">Posten bearbeiten</a>
-                    </td>
-                  </tr>
-              </tbody>
-              <tfoot>
+      <h1 class="invoice-number">Rechnung
+        <input class="invoice-number" [ngModel]="invoiceNumber"
+               (ngModelChange)="invoiceNumberChange($event)">
+      </h1>
+      <!-- p>Zeitraum: 2018-01-01 bis 2018-12-31 (12 Monate)</p>
+    <input class="timeSpan" class="inputLarge" [(ngModel)]="invoiceTimeSpan" -->
+      <div class="mobile-style">
+        <!-- span *ngFor="let invoice of invoices" *ngIf="invoice.id === invoiceId" -->
+        <table>
+          <!-- loop for all invoice - filter needed!!! -->
+          <thead>
+          <tr>
+            <th>Leistungsbeschreibung</th>
+            <th>Leistungsdatum</th>
+            <th>Anzahl</th>
+            <th>Stückpreis</th>
+            <th>Gesamtpreis</th>
+            <th>Ändern</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of items">
+            <!-- loop for all items -->
+            <td>{{item.itemName}}</td>
+            <td>{{item.itemDate}}</td>
+            <td>{{item.count}}</td>
+            <td>{{item.partialCost | number:'1.2-2'}}{{invoiceCurrency}}</td>
+            <td>{{item.wholeCost | number:'1.2-2'}}{{invoiceCurrency}}</td>
+            <td>
+              <a routerLink="/item-detail/{{invoiceId}}/{{item.getItemId()}}">Posten bearbeiten</a>
+            </td>
+          </tr>
+          </tbody>
+          <tfoot>
 
-                    <tr>
-                        <td colspan="3"></td>
-                        <td>Summe Netto</td>
-                        <td>{{nettoSum | number:'1.2-2'}}{{invoiceCurrency}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"></td>
-                        <td>{{percentageString}} MwSt.</td>
-                        <td> {{salesTax | number:'1.2-2'}}{{invoiceCurrency}} </td>
-                        <td>
-                            <button type="button">Mehrwertsteuer ändern</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"></td>
-                        <td>Rechnungsbetrag</td>
-                        <td> {{bruttoSum | number:'1.2-2'}}
-                            <select name="invoiceCurrency" [(ngModel)]="invoiceCurrency">
-                              <option value="€">€</option>
-                              <option value="USD">USD</option>
-                              <option value="GBP">GBP</option> <!-- Great -->
-                              <option value="CZK">CZK</option>
-                              <option value="PLN">PLN</option>
-                              <option value="CHF">CHF</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select name="invoiceState" [(ngModel)]="invoiceState">
-                              <option value="Entwurf">Entwurf</option>
-                              <option value="offen">offen</option>
-                              <option value="teilweise bezahlt">teilweise bezahlt</option>
-                              <option value="bezahlt">bezahlt</option>
-                            </select>
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-          <a routerLink="/item-create/{{invoiceId}}">Posten hinzufügen</a>
-            <button (click)="saveInvoice()">{{creatingInvoice ? 'Create' : 'Save'}}</button>
-            <button>cancel</button>
-            <a routerLink="/invoice-list/">zurück  </a>
-            <p></p>
-            <!-- dl>
-                <dt>USt-IdNr.:</dt>
-                <dd>DE243517710</dd>
-                <dt>USt-IdNr. des Kunden:</dt>
-                <dd>ATU xxxxx</dd>
-            </dl -->
-            <!-- p>Steuerschuldnerschaft des Leistungsempfängers (Reverse Charge)</p -->
-            <p></p>
-            <p>Bitte überweisen Sie den Rechnungsbetrag bis zum
-                <input type="date" name="inDueDate" [ngModel]="invoiceDueDate | date:'yyyy-MM-dd'"
-                       (ngModelChange)="invoiceDueDate = $event">
-                auf das unten angegebene Konto.</p>
-               <p> Als Verwendungszweck geben Sie bitte
-                   <input type="text" class="inputLarge" name="intendedUse" [(ngModel)]="invoiceIntendedUse">
-                   an.</p>
-        </section>
-    </main>
-    <footer>
-        <div class="address">
-            <p><strong>Adresse</strong></p>
-            <p>SednaSoft GbR</p>
-            <p>A.Schaffhirt & A.Wünsche</p>
-            <p>Biesnitzed Straße 8</p>
-            <p>02826 Görlitz</p>
-        </div>
-        <div class="contact">
-            <p><strong>Kontakt</strong></p>
-            <dl>
-                <dt>Fon</dt>
-                <dd>+49-3581-3221063</dd>
-                <dt>Fax</dt>
-                <dd>+49-3581-6858089</dd>
-                <dt>Mail</dt>
-                <dd>kontakt@sedna-soft.de</dd>
-                <dt>Web</dt>
-                <dd>http://sedna-soft.de</dd>
-            </dl>
-        </div>
-        <div class="bankconnection">
-            <p><strong>Bankverbindung</strong></p>
-            Commerzbank Dresden
-            <dl>
-                <dt>BIC</dt>
-                <dd>DRESDEFF850</dd>
-                <dt>IBAN</dt>
-                <dd>DE56 8508 0000 0265 0770 01</dd>
-            </dl>
-        </div>
-        <div class="tax-number">
-            <p><strong>USt-IdNr.</strong></p>
-            <p>DE243517710</p>
-        </div>
-    </footer>
+          <tr>
+            <td colspan="3"></td>
+            <td>Summe Netto</td>
+            <td>{{nettoSum | number:'1.2-2'}}{{invoiceCurrency}}</td>
+          </tr>
+          <tr>
+            <td colspan="3"></td>
+            <td>{{percentageString}} MwSt.</td>
+            <td> {{salesTax | number:'1.2-2'}}{{invoiceCurrency}}</td>
+            <td>
+              <button type="button">Mehrwertsteuer ändern</button>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3"></td>
+            <td>Rechnungsbetrag</td>
+            <td> {{bruttoSum | number:'1.2-2'}}
+              <select name="invoiceCurrency" [(ngModel)]="invoiceCurrency">
+                <option value="€">€</option>
+                <option value="USD">USD</option>
+                <option value="GBP">GBP</option> <!-- Great -->
+                <option value="CZK">CZK</option>
+                <option value="PLN">PLN</option>
+                <option value="CHF">CHF</option>
+              </select>
+            </td>
+            <td>
+              <select name="invoiceState" [(ngModel)]="invoiceState">
+                <option value="Entwurf">Entwurf</option>
+                <option value="offen">offen</option>
+                <option value="teilweise bezahlt">teilweise bezahlt</option>
+                <option value="bezahlt">bezahlt</option>
+              </select>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+      <a routerLink="/item-create/{{invoiceId}}">Posten hinzufügen</a>
+      <button (click)="saveInvoice()">{{creatingInvoice ? 'Create' : 'Save'}}</button>
+      <button>cancel</button>
+      <a routerLink="/invoice-list/">zurück </a>
+      <p></p>
+      <!-- dl>
+          <dt>USt-IdNr.:</dt>
+          <dd>DE243517710</dd>
+          <dt>USt-IdNr. des Kunden:</dt>
+          <dd>ATU xxxxx</dd>
+      </dl -->
+      <!-- p>Steuerschuldnerschaft des Leistungsempfängers (Reverse Charge)</p -->
+      <p></p>
+      <p>Bitte überweisen Sie den Rechnungsbetrag bis zum
+        <input type="date" name="inDueDate" [ngModel]="invoiceDueDate | date:'yyyy-MM-dd'"
+               (ngModelChange)="invoiceDueDate = $event">
+        auf das unten angegebene Konto.</p>
+      <p> Als Verwendungszweck geben Sie bitte
+        <input type="text" class="inputLarge" name="intendedUse" [(ngModel)]="invoiceIntendedUse">
+        an.</p>
+    </section>
+  </main>
+  <footer>
+    <div class="address">
+      <p><strong>Adresse</strong></p>
+      <p>SednaSoft GbR</p>
+      <p>A.Schaffhirt & A.Wünsche</p>
+      <p>Biesnitzed Straße 8</p>
+      <p>02826 Görlitz</p>
+    </div>
+    <div class="contact">
+      <p><strong>Kontakt</strong></p>
+      <dl>
+        <dt>Fon</dt>
+        <dd>+49-3581-3221063</dd>
+        <dt>Fax</dt>
+        <dd>+49-3581-6858089</dd>
+        <dt>Mail</dt>
+        <dd>kontakt@sedna-soft.de</dd>
+        <dt>Web</dt>
+        <dd>http://sedna-soft.de</dd>
+      </dl>
+    </div>
+    <div class="bankconnection">
+      <p><strong>Bankverbindung</strong></p>
+      Commerzbank Dresden
+      <dl>
+        <dt>BIC</dt>
+        <dd>DRESDEFF850</dd>
+        <dt>IBAN</dt>
+        <dd>DE56 8508 0000 0265 0770 01</dd>
+      </dl>
+    </div>
+    <div class="tax-number">
+      <p><strong>USt-IdNr.</strong></p>
+      <p>DE243517710</p>
+    </div>
+  </footer>
 </div>

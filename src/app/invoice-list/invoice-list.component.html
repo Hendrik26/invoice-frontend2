@@ -5,10 +5,11 @@
   <p>FilterEnde: {{filterEndDate}}</p>
 
   <div class="flex-container">
-    <div>Fälligkeitsdatum von<br><input type="date" name="fStartDueDate" [ngModel]="filterStartDueDate | date:'yyyy-MM-dd'"
-                                      (ngModelChange)="changeFilterStartDate($event)"></div>
+    <div>Fälligkeitsdatum von<br><input type="date" name="fStartDueDate"
+                                        [ngModel]="filterStartDueDate | date:'yyyy-MM-dd'"
+                                        (ngModelChange)="changeFilterStartDate($event)"></div>
     <div>Fälligkeitsdatum bis<br><input type="date" name="fEndDueDate" [ngModel]="filterEndDueDate | date:'yyyy-MM-dd'"
-                                      (ngModelChange)="changeFilterEndDate($event)"></div>
+                                        (ngModelChange)="changeFilterEndDate($event)"></div>
     <div>Rechnungsdatum von<br><input type="date" name="fStartDate" [ngModel]="filterStartDate | date:'yyyy-MM-dd'"
                                       (ngModelChange)="changeFilterStartDate($event)"></div>
     <div>Rechnungsdatum bis<br><input type="date" name="fEndDate" [ngModel]="filterEndDate | date:'yyyy-MM-dd'"
@@ -27,9 +28,9 @@
         <!--option value="007">Mustermann GmbH</option>
         <option value="008">Restaurant Goldbroiler</option>
         <option value="009">Carwash GmbH</option -->
-         <option *ngFor="let opt of companySelectOptions2" [ngValue]="opt">
-             {{opt}}
-         </option>
+        <option *ngFor="let opt of companySelectOptions2" [ngValue]="opt">
+          {{opt}}
+        </option>
       </select>
     </div>
 
@@ -37,36 +38,36 @@
   <div class="mobile-style">
     <table style="width:100%">
       <thead>
-        <tr>
-          <th>Fälligkeitsdatum</th>
-          <th>Rechnungsdatum</th>
-          <th>Rechnungsnr</th>
-          <th>Empfänger</th>
-          <th>Status (Entwurf, bezahlt, ...)</th>
-          <th>Gesamtpreis</th>
-          <th>Anzahl der Mahnungen</th>
-          <!--th>Rechnungzeitraum</th-->
-          <th>Ändern</th>
-        </tr>
+      <tr>
+        <th>Fälligkeitsdatum</th>
+        <th>Rechnungsdatum</th>
+        <th>Rechnungsnr</th>
+        <th>Empfänger</th>
+        <th>Status (Entwurf, bezahlt, ...)</th>
+        <th>Gesamtpreis</th>
+        <th>Anzahl der Mahnungen</th>
+        <!--th>Rechnungzeitraum</th-->
+        <th>Ändern</th>
+      </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let invoice of filterInvoice(invoices)">
-          <td>{{invoice.invoiceDueDate | date:'yyyy-MM-dd'}}</td>
-          <td>{{invoice.invoiceDate | date:'yyyy-MM-dd'}}</td>
-          <td>{{invoice.invoiceNumber}}</td>
-          <td>{{invoice.companyName()}}</td>
-          <td>{{invoice.invoiceState}}</td>
-          <td>{{invoice.wholeCost}}{{invoice.currency}}</td>
-          <td>{{invoice.countReminders}}</td>
-          <!--td>{{invoice.timeSpan}}</td-->
-          <td>
-            <!-- button type="button">Rechnung bearbeiten</button -->
+      <tr *ngFor="let invoice of filterInvoice(invoices)">
+        <td>{{invoice.invoiceDueDate | date:'yyyy-MM-dd'}}</td>
+        <td>{{invoice.invoiceDate | date:'yyyy-MM-dd'}}</td>
+        <td>{{invoice.invoiceNumber}}</td>
+        <td>{{invoice.companyName()}}</td>
+        <td>{{invoice.invoiceState}}</td>
+        <td>{{invoice.wholeCost}}{{invoice.currency}}</td>
+        <td>{{invoice.countReminders}}</td>
+        <!--td>{{invoice.timeSpan}}</td-->
+        <td>
+          <!-- button type="button">Rechnung bearbeiten</button -->
 
-            <a routerLink="/invoice-detail/{{invoice.getID()}}">Rechnung bearbeiten</a>
-              <!-- link to the details of a dedicated invoice -->
+          <a routerLink="/invoice-detail/{{invoice.getID()}}">Rechnung bearbeiten</a>
+          <!-- link to the details of a dedicated invoice -->
 
-          </td>
-        </tr>
+        </td>
+      </tr>
       <!-- ///////////////////////////// -->
       </tbody>
     </table>

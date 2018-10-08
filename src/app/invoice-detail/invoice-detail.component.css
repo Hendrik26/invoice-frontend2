@@ -1,73 +1,75 @@
 .invoice-detail {
-    margin: 50px;
+  margin: 50px;
 }
+
 header, main {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .logo {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .logo img {
-    width: 300px;
+  width: 300px;
 }
 
 .adress-window textarea {
-    width: 450px;
+  width: 450px;
 }
 
 .contact-block p {
-    margin: 0;
+  margin: 0;
 }
 
 .city-date {
-    text-align: right;
+  text-align: right;
 }
 
 .invoice-number {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .invoice-number input {
-    font-size: 32px;
-    font-weight: bold;
+  font-size: 32px;
+  font-weight: bold;
 }
 
 tbody tr:last-child {
-    border-bottom: 1px solid #000;
+  border-bottom: 1px solid #000;
 }
 
 th:nth-child(n+3), td:nth-child(n+3), tfoot td {
-    text-align: right;
+  text-align: right;
 }
+
 th:last-child, td:last-child, tfoot td:nth-child(n+4) {
-    text-align: left;
+  text-align: left;
 }
 
 tfoot tr:last-child td:nth-child(n+2) {
-    border-top: 1px solid #000;
-    border-bottom: 2px solid #000;
+  border-top: 1px solid #000;
+  border-bottom: 2px solid #000;
 }
 
 tfoot tr:last-child td:last-child {
-    border: 0 none;
+  border: 0 none;
 }
 
 footer {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .address p:first-of-type, .contact p:first-of-type, .bankconnection p:first-of-type, .tax-number p:first-of-type {
-    margin-bottom: 3px;
+  margin-bottom: 3px;
 }
 
 .address p, .contact dl, .bankconnection dl, .tax-number p {
-    margin: 0;
+  margin: 0;
 }

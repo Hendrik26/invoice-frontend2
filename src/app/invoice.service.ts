@@ -35,6 +35,7 @@ export class InvoiceService {
     timeSpan: '2017-01-01 bis 2017-12-31',
     salesTaxPercentage: 19
   };
+
   //endregion
 
 
@@ -82,6 +83,7 @@ export class InvoiceService {
     methInvoice = this.getInvoiceById(methId);
     return methInvoice.salesTaxPercentage + '%';
   }
+
   //endregion
 
   // setter

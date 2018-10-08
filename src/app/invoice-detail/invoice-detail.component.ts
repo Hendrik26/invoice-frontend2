@@ -51,6 +51,7 @@ export class InvoiceDetailComponent implements OnInit {
   timespan: string;
 
   testNumber = 100;
+
   //endregion
 
   constructor(
@@ -210,6 +211,7 @@ export class InvoiceDetailComponent implements OnInit {
         this.bruttoSum);
     }
   }
+
   //endregion
 
 

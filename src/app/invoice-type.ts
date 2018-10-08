@@ -1,5 +1,3 @@
-import {Item} from './item';
-
 export interface InvoiceType {
   invoiceDate: Date;
   invoiceDueDate: Date; // Faelligkeitsdatum

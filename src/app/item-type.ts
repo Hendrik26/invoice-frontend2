@@ -1,4 +1,4 @@
-export interface ItemType{
+export interface ItemType {
   itemDate: string; /// <th>Leistungsdatum</th>
   itemName: string;  // <th>Leistungsbeschreibung</th>
   partialCost: number; // <th>Stückpreis</th>

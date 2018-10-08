@@ -1,4 +1,4 @@
-import { InvoiceRouterModule } from './invoice-router.module';
+import {InvoiceRouterModule} from './invoice-router.module';
 
 describe('InvoiceRouterModule', () => {
   let invoiceRouterModule: InvoiceRouterModule;

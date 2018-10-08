@@ -1,5 +1,4 @@
 import {Invoice} from './invoice';
-import {Item} from './item';
 
 let invoice01 = new Invoice('In001', {
   invoiceDate: new Date('2016-02-04'), invoiceNumber: '2018abcd', recipient: 'DumpfbackeGmbH',

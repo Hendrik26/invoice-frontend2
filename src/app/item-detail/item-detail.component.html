@@ -1,19 +1,19 @@
-<div class="test">invoiceID: {{invoiceId}}   itemID: {{itemId}}; </div>
+<div class="test">invoiceID: {{invoiceId}} itemID: {{itemId}};</div>
 <!-- shows invoiceId for testCases -->
 
 <div class="item-detail">
-    <h2>Posten003:</h2>
-    <form>
-      <label><span>Leistungsbeschreibung</span><input type="text" name="itemName" [(ngModel)]="itemName"></label>
-      <label><span>Leistungsdatum</span><input type="text" name="itemDate" [(ngModel)]="itemDate"></label>
-      <label><input type="checkbox" name="hourPayment" [checked]="hourPayment"
-        (change)="togglePayment()"> Zeitposten</label>
-      <label><span>Stunden-/Stückpreis</span><input type="number" name="partialCost" [(ngModel)]="partialCost"></label>
-      <label><span>Anzahl</span><input type="number" name="count" [(ngModel)]="count"></label>
-      <p><span>total Cost:</span>{{wholeCost}}</p>
-      <button (click)="saveItem()">{{creatingItem ? 'Create' : 'Save'}}</button>
-        <!-- input type="submit" value="speichern" -->
-      <button (click)="cancelItem()">cancel</button>
-        <a routerLink="{{backUrl}}">back</a>
-    </form>
+  <h2>Posten003:</h2>
+  <form>
+    <label><span>Leistungsbeschreibung</span><input type="text" name="itemName" [(ngModel)]="itemName"></label>
+    <label><span>Leistungsdatum</span><input type="text" name="itemDate" [(ngModel)]="itemDate"></label>
+    <label><input type="checkbox" name="hourPayment" [checked]="hourPayment"
+                  (change)="togglePayment()"> Zeitposten</label>
+    <label><span>Stunden-/Stückpreis</span><input type="number" name="partialCost" [(ngModel)]="partialCost"></label>
+    <label><span>Anzahl</span><input type="number" name="count" [(ngModel)]="count"></label>
+    <p><span>total Cost:</span>{{wholeCost}}</p>
+    <button (click)="saveItem()">{{creatingItem ? 'Create' : 'Save'}}</button>
+    <!-- input type="submit" value="speichern" -->
+    <button (click)="cancelItem()">cancel</button>
+    <a routerLink="{{backUrl}}">back</a>
+  </form>
 </div>
