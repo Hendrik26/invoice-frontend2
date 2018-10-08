@@ -21,7 +21,7 @@ export class InvoiceListComponent implements OnInit {
     invoiceFilterState: 'none';
     companySelectOptions: object[];
     companySelectOptions2: string[];
-    invoiceFilterCompany: string;
+    invoiceFilterCompany: '--alle--';
 
     constructor(private invoiceService: InvoiceService) {
     }
@@ -81,7 +81,17 @@ export class InvoiceListComponent implements OnInit {
         }
     }
 
-    private checkInvoiveCompany(invoice: Invoice, companyNames: string[]): boolean {
+  private checkInvoiceCompanyName(invoice: Invoice, filterCompanyName: string): boolean {
+    if (filterCompanyName.trim().toLowerCase() == '--alle--') return true;
+    if (filterCompanyName.trim() == invoice.companyName()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+  private checkInvoiveCompany(invoice: Invoice, companyNames: string[]): boolean {
         let ret = false;
         companyNames.forEach(function (value) {
             if (value.trim().toLowerCase() == invoice.companyName().trim().toLowerCase()) {
@@ -115,7 +125,8 @@ export class InvoiceListComponent implements OnInit {
             // .filter(invoice => invoice.invoiceDate.getTime() >= this.getGreatPastDate().getTime())
             .filter(invoice => this.dateGreaterEqualThen(this.filterEndDate, invoice.invoiceDate))
             .filter(invoice => this.checkInvoiceState(invoice, this.invoiceFilterState))
-            ;
+          .filter(invoice => this.checkInvoiceCompanyName(invoice, this.invoiceFilterCompany))
+          ;
         // console.log('Finish Method Filter');
     }
 
