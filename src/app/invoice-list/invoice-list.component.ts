@@ -103,6 +103,9 @@ export class InvoiceListComponent implements OnInit {
       .filter(invoice => this.dateGreaterEqualThen(this.filterEndDueDate, invoice.invoiceDueDate))
       .filter(invoice => this.checkInvoiceState(invoice, this.invoiceFilterState))
       .filter(invoice => this.checkInvoiceCompanyName(invoice, this.invoiceFilterCompany))
+      .sort(function (a, b) {
+        return b.invoiceDate.getTime() - a.invoiceDate.getTime();
+      })
       ;
     // console.log('Finish Method Filter');
   }
