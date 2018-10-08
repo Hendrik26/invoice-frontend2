@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Invoice} from '../invoice';
 import {InvoiceService} from '../invoice.service';
+import {isNullOrUndefined} from 'util';
 
 @Component({
     selector: 'app-invoice-list',
@@ -21,10 +22,10 @@ export class InvoiceListComponent implements OnInit {
     filterEndDate: Date;
     filterStartDueDate: Date;
     filterEndDueDate: Date;
-    invoiceFilterState: 'none';
+    invoiceFilterState = 'none';
     companySelectOptions: object[];
     companySelectOptions2: string[];
-    invoiceFilterCompany: '--alle--';
+    invoiceFilterCompany = '--alle--';
   //endregion
 
     constructor(private invoiceService: InvoiceService) {
@@ -98,6 +99,10 @@ export class InvoiceListComponent implements OnInit {
     }
 
   private checkInvoiceCompanyName(invoice: Invoice, filterCompanyName: string): boolean {
+      // Fragezeichen vor Doppelpunkt in ParamListe: Dieser Parameter kann Null werden
+    if (isNullOrUndefined(filterCompanyName)) return true;
+    if (filterCompanyName.trim().toLowerCase() == '') return true;
+
     if (filterCompanyName.trim().toLowerCase() == '--alle--') return true;
     if (filterCompanyName.trim() == invoice.companyName()) {
       return true;
