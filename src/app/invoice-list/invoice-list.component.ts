@@ -15,13 +15,17 @@ export class InvoiceListComponent implements OnInit {
 
     // invoicesNew: Invoice[] = [new Invoice('In001', this.)]; // clones this.standardInvoice
 
-    invoices: Invoice[];
+  //region other properties
+  invoices: Invoice[];
     filterStartDate: Date;
     filterEndDate: Date;
+    filterStartDueDate: Date;
+    filterEndDueDate: Date;
     invoiceFilterState: 'none';
     companySelectOptions: object[];
     companySelectOptions2: string[];
     invoiceFilterCompany: '--alle--';
+  //endregion
 
     constructor(private invoiceService: InvoiceService) {
     }
@@ -52,7 +56,19 @@ export class InvoiceListComponent implements OnInit {
         this.filterEndDate = e ? new Date(e) : null;
     }
 
-    public dateGreaterEqualThen(date1: Date, date2: Date): boolean {
+    changeFilterStartDueDate(e: string) {
+      console.log('Methode changeFilterStartDueDate(...) aufgerufen mit: ', e);
+      this.filterStartDueDate = e ? new Date(e) : null;
+      // this.filterInvoice(this.invoices);
+    }
+
+    changeFilterEndDueDate(e: string) {
+      console.log('Methode changeFilterEndDueDate(...) aufgerufen mit: ' + e);
+      this.filterEndDueDate = e ? new Date(e) : null;
+    }
+
+
+  public dateGreaterEqualThen(date1: Date, date2: Date): boolean {
         console.log('Start method dateGreaterEqualThen(...){...}');
         if (!date1) {
             return true;
@@ -110,7 +126,7 @@ export class InvoiceListComponent implements OnInit {
     }
 
     calculateCompanySelectOptions2(invoices: Invoice[]): string[] {
-        const companyNames = Array.from(new Set(Invoice.companyNames(invoices)));
+        const companyNames = Array.from(new Set(Invoice.companyNames(invoices))); // array unique
         // makes sure that all elements in array are unique
         companyNames.push('--alle--');
         return companyNames.sort();
@@ -122,10 +138,11 @@ export class InvoiceListComponent implements OnInit {
         // TODO filter
         return invoices
             .filter(invoice => this.dateGreaterEqualThen(invoice.invoiceDate, this.filterStartDate))
-            // .filter(invoice => invoice.invoiceDate.getTime() >= this.getGreatPastDate().getTime())
             .filter(invoice => this.dateGreaterEqualThen(this.filterEndDate, invoice.invoiceDate))
+            .filter(invoice => this.dateGreaterEqualThen(invoice.invoiceDueDate, this.filterStartDueDate))
+            .filter(invoice => this.dateGreaterEqualThen(this.filterEndDueDate, invoice.invoiceDueDate))
             .filter(invoice => this.checkInvoiceState(invoice, this.invoiceFilterState))
-          .filter(invoice => this.checkInvoiceCompanyName(invoice, this.invoiceFilterCompany))
+           .filter(invoice => this.checkInvoiceCompanyName(invoice, this.invoiceFilterCompany))
           ;
         // console.log('Finish Method Filter');
     }
