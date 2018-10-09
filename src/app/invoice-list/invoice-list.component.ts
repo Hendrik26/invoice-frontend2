@@ -122,7 +122,8 @@ export class InvoiceListComponent implements OnInit {
       .filter(invoice => this.checkInvoiceState(invoice, this.invoiceFilterState))
       .filter(invoice => this.checkInvoiceCompanyName(invoice, this.invoiceFilterCompany))
       ;
-    // console.log('Finish Method Filter');
+    // console.log('Finish  Filtering Invoices');
+        retInvoices = this.sortInvoice('DueDate', true, retInvoices);
       return retInvoices;
   }
 
