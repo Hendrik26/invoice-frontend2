@@ -5,9 +5,15 @@
   <p>FilterEnde: {{filterEndDate}}</p>
 
   <div class="flex-container">
-    <div>Fälligkeitsdatum von<br><input type="date" name="fStartDueDate"
+    <div>
+      Fälligkeitsdatum von<br>
+      <input type="date" name="fStartDueDate"
                                         [ngModel]="filterStartDueDate | date:'yyyy-MM-dd'"
-                                        (ngModelChange)="changeFilterStartDate($event)"></div>
+                                        (ngModelChange)="changeFilterStartDate($event)">
+      <button name="sort" id="sortStartDueDate" (click)="sortStartDueDate.switch()">
+        Sortierung {{sortStartDueDate.getSortingOrderName()}}
+      </button>
+    </div>
     <div>Fälligkeitsdatum bis<br><input type="date" name="fEndDueDate" [ngModel]="filterEndDueDate | date:'yyyy-MM-dd'"
                                         (ngModelChange)="changeFilterEndDate($event)"></div>
     <div>Rechnungsdatum von<br><input type="date" name="fStartDate" [ngModel]="filterStartDate | date:'yyyy-MM-dd'"

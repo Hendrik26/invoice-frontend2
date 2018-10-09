@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Invoice} from '../invoice';
 import {InvoiceService} from '../invoice.service';
 import {isNullOrUndefined} from 'util';
+import {ThreeStateButton} from '../three-state-button';
 
 @Component({
   selector: 'app-invoice-list',
@@ -29,6 +30,13 @@ export class InvoiceListComponent implements OnInit {
 
   //endregion
 
+    //region ThreeStateButtons
+    sortStartDueDate: ThreeStateButton;
+    sortEndDueDate: ThreeStateButton;
+    sortStartDate: ThreeStateButton;
+    sortEndDate: ThreeStateButton;
+    //endregion
+
   constructor(private invoiceService: InvoiceService) {
   }
 
@@ -36,6 +44,7 @@ export class InvoiceListComponent implements OnInit {
     this.receiveInvoices();
     this.companySelectOptions = this.calculateCompanySelectOptions(this.invoices);
     this.companySelectOptions2 = this.calculateCompanySelectOptions2(this.invoices);
+    this.sortStartDueDate = new ThreeStateButton();
   }
 
   //region other methods
@@ -64,17 +73,17 @@ export class InvoiceListComponent implements OnInit {
   }
 
   public dateGreaterEqualThen(date1: Date, date2: Date): boolean {
-    console.log('Start method dateGreaterEqualThen(...){...}');
+    // console.log('Start method dateGreaterEqualThen(...){...}');
     if (!date1) {
       return true;
     }
-    console.log('First DateComparison!');
+    // console.log('First DateComparison!');
     if (!date2) {
       return true;
     }
-    console.log('Second DateComparison!');
+    // console.log('Second DateComparison!');
     const ret: boolean = (date1.getTime() >= date2.getTime());
-    console.log('Third DateComparison!, ret=' + ret + ' Finish method');
+    // console.log('Third DateComparison!, ret=' + ret + ' Finish method');
     return ret;
   }
 
