@@ -4,12 +4,18 @@ import {packageChunkSort} from '@angular-devkit/build-angular/src/angular-cli-fi
 export class ThreeStateButton {
 
     sortingOrderId = 0;
+    private sortBy: string;
 
-    constructor() {
+    constructor(sortBy: string) {
+        this.sortBy = sortBy;
     }
 
 
     //region getter
+    public getSortBy(){
+        return this.sortBy;
+    }
+
     public getSortingOrderId(): number {
         return this.sortingOrderId;
     }
