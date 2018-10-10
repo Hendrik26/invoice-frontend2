@@ -10,14 +10,20 @@
       <input type="date" name="fStartDueDate"
                                         [ngModel]="filterStartDueDate | date:'yyyy-MM-dd'"
                                         (ngModelChange)="changeFilterStartDate($event)">
-      <button name="sort" id="sortStartDueDate" (click)="sortStartDueDate.switch()">
+      <button name="sort" id="sortStartDueDate" (click)="sortStartDueDateClick()">
         Sortierung {{sortStartDueDate.getSortingOrderName()}}
       </button>
     </div>
     <div>Fälligkeitsdatum bis<br><input type="date" name="fEndDueDate" [ngModel]="filterEndDueDate | date:'yyyy-MM-dd'"
                                         (ngModelChange)="changeFilterEndDate($event)"></div>
-    <div>Rechnungsdatum von<br><input type="date" name="fStartDate" [ngModel]="filterStartDate | date:'yyyy-MM-dd'"
-                                      (ngModelChange)="changeFilterStartDate($event)"></div>
+    <div>
+      Rechnungsdatum von<br><input type="date" name="fStartDate" [ngModel]="filterStartDate | date:'yyyy-MM-dd'"
+                                      (ngModelChange)="changeFilterStartDate($event)">
+      <button name="sort" id="sortStartDate" (click)="sortStartDateClick()">
+        Sortierung {{sortStartDate.getSortingOrderName()}}
+      </button>
+
+    </div>
     <div>Rechnungsdatum bis<br><input type="date" name="fEndDate" [ngModel]="filterEndDate | date:'yyyy-MM-dd'"
                                       (ngModelChange)="changeFilterEndDate($event)"></div>
     <div>Status<br>
