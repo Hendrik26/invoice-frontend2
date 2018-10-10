@@ -154,6 +154,14 @@ export class InvoiceListComponent implements OnInit {
             retInvoices = this.sortInvoices(this.sortStartDueDate.getSortBy(), false, invoices);
         }
 
+        if (this.sortStartDate.getSortingOrderId() == 1) {
+            retInvoices = this.sortInvoices(this.sortStartDate.getSortBy(), true, invoices);
+        }
+        if (this.sortStartDate.getSortingOrderId() == 2) {
+            retInvoices = this.sortInvoices(this.sortStartDate.getSortBy(), false, invoices);
+        }
+
+
         /* sortButtons.forEach(function(sortButton){
             let yyy = sortButton.getSortingOrderId();
             console.log('xxxxxxx');
