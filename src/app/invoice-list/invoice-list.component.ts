@@ -143,10 +143,9 @@ export class InvoiceListComponent implements OnInit {
         let retInvoices: Invoice[] = invoices;
         if (!sortButtons) {
             return invoices;
-        }
-        ;
+        };
 
-
+        /*
         if (this.sortStartDueDate.getSortingOrderId() == 1) {
             retInvoices = this.sortInvoices(this.sortStartDueDate.getSortBy(), true, invoices);
         }
@@ -160,19 +159,24 @@ export class InvoiceListComponent implements OnInit {
         if (this.sortStartDate.getSortingOrderId() == 2) {
             retInvoices = this.sortInvoices(this.sortStartDate.getSortBy(), false, invoices);
         }
+        */
+        let sortBy: string;
+        let orderId: number;
 
-
-        /* sortButtons.forEach(function(sortButton){
-            let yyy = sortButton.getSortingOrderId();
+        sortButtons.forEach(function(sortButton){
+            orderId = sortButton.getSortingOrderId();
+            sortBy = sortButton.getSortBy();
             console.log('xxxxxxx');
-            console.log(yyy);
-            if (sortButton.getSortingOrderId() == 1){
-              retInvoices = this.sortInvoices(sortButton.getSortBy(), true , invoices);
+            console.log(sortBy);
+            console.log(orderId);
+            console.log(sortButton);
+             if (orderId == 1){
+              retInvoices = this.sortInvoices(sortBy, true , invoices);
             }
-            if (sortButton.getSortingOrderId() == 2){
-                retInvoices = this.sortInvoices(sortButton.getSortBy(), false , invoices);
+            if (orderId == 2){
+                retInvoices = this.sortInvoices(sortBy, false , invoices);
             }
-        }); */
+        });
         return retInvoices;
     }
 
@@ -190,7 +194,7 @@ export class InvoiceListComponent implements OnInit {
         ;
         // console.log('Finish  Filtering Invoices');
         // retInvoices = this.sortInvoices('DueDate', true, retInvoices);
-        let sortedInvoices = this.sortInvoicesByButtons([this.sortStartDueDate], retInvoices);
+        let sortedInvoices = this.sortInvoicesByButtons([this.sortStartDueDate, this.sortStartDate], retInvoices);
         return sortedInvoices;
     }
 
