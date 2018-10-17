@@ -118,13 +118,13 @@ export class InvoiceListComponent implements OnInit {
         let retInvoices: Invoice[];
 
         if (sortBy == 'Date') {
-            retInvoices = invoices.sort(function (a, b) {
+           invoices.sort(function (a, b) {
                 return ascendingFactor * a.invoiceDate.getTime() - ascendingFactor * b.invoiceDate.getTime();
             });
         }
 
         if (sortBy == 'DueDate') {
-            retInvoices = invoices.sort(function (a, b) {
+           invoices.sort(function (a, b) {
                 return ascendingFactor * a.invoiceDueDate.getTime() - ascendingFactor * b.invoiceDueDate.getTime();
             });
         }
