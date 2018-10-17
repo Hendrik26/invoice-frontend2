@@ -163,20 +163,22 @@ export class InvoiceListComponent implements OnInit {
         let sortBy: string;
         let orderId: number;
 
-        sortButtons.forEach(function(sortButton){
+        //sortButtons.forEach(function(sortButton){
+        for (const sortButton of sortButtons) {
             orderId = sortButton.getSortingOrderId();
             sortBy = sortButton.getSortBy();
             console.log('xxxxxxx');
             console.log(sortBy);
             console.log(orderId);
             console.log(sortButton);
+
              if (orderId == 1){
               retInvoices = this.sortInvoices(sortBy, true , invoices);
             }
             if (orderId == 2){
                 retInvoices = this.sortInvoices(sortBy, false , invoices);
             }
-        });
+        };
         return retInvoices;
     }
 
