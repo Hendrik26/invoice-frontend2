@@ -1,21 +1,23 @@
 <div class="invoice-list">
 
   <h1> Rechnungsübersicht </h1>
-  <p>FilterStart: {{filterStartDate}}</p>
-  <p>FilterEnde: {{filterEndDate}}</p>
+  <p>filterStartDate: {{filterStartDate}}</p>
+  <p>filterEndDate: {{filterEndDate}}</p>
+  <p>filterStartDueDate: {{filterStartDueDate}}</p>
+  <p>filterEndDueDate: {{filterEndDueDate}}</p>
 
   <div class="flex-container">
     <div>
       Fälligkeitsdatum von<br>
       <input type="date" name="fStartDueDate"
                                         [ngModel]="filterStartDueDate | date:'yyyy-MM-dd'"
-                                        (ngModelChange)="changeFilterStartDate($event)">
+                                        (ngModelChange)="changeFilterStartDueDate($event)">
       <button name="sort" id="sortStartDueDate" (click)="sortStartDueDateClick()">
         Sortierung {{sortStartDueDate.getSortingOrderName()}}
       </button>
     </div>
     <div>Fälligkeitsdatum bis<br><input type="date" name="fEndDueDate" [ngModel]="filterEndDueDate | date:'yyyy-MM-dd'"
-                                        (ngModelChange)="changeFilterEndDate($event)"></div>
+                                        (ngModelChange)="changeFilterEndDueDate($event)"></div>
     <div>
       Rechnungsdatum von<br><input type="date" name="fStartDate" [ngModel]="filterStartDate | date:'yyyy-MM-dd'"
                                       (ngModelChange)="changeFilterStartDate($event)">
