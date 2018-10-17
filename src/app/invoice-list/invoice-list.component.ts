@@ -117,16 +117,25 @@ export class InvoiceListComponent implements OnInit {
         }
 
         if (sortBy == 'Date') {
-           invoices.sort(function (a, b) {
+            invoices.sort(function (a, b) {
                 return ascendingFactor * a.invoiceDate.getTime() - ascendingFactor * b.invoiceDate.getTime();
             });
         }
 
         if (sortBy == 'DueDate') {
-           invoices.sort(function (a, b) {
+            invoices.sort(function (a, b) {
                 return ascendingFactor * a.invoiceDueDate.getTime() - ascendingFactor * b.invoiceDueDate.getTime();
             });
         }
+
+        /* if (sortBy == 'CompanyName()') {
+            invoices.sort(function (a, b) {
+                return ascendingFactor * a.invoiceDate.getTime() - ascendingFactor * b.invoiceDate.getTime();
+            });
+        } */
+
+
+
 
         return invoices;
     }
