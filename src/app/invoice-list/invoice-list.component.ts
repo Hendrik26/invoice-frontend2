@@ -115,7 +115,6 @@ export class InvoiceListComponent implements OnInit {
         if (ascending) {
             ascendingFactor = +1;
         }
-        let retInvoices: Invoice[];
 
         if (sortBy == 'Date') {
            invoices.sort(function (a, b) {
