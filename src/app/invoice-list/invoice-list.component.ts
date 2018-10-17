@@ -128,15 +128,11 @@ export class InvoiceListComponent implements OnInit {
             });
         }
 
-        /* if (sortBy == 'CompanyName()') {
+         if ( /* sortBy == 'CompanyName()' */ true) {
             invoices.sort(function (a, b) {
-                return ascendingFactor * a.invoiceDate.getTime() - ascendingFactor * b.invoiceDate.getTime();
+                return ascendingFactor * Invoice.compareInvoicesByCompanyName(a, b);
             });
-        } */
-
-
-
-
+        }
         return invoices;
     }
 

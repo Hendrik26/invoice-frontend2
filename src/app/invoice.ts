@@ -81,6 +81,15 @@ export class Invoice implements InvoiceType {
         return companyNameList;
     }
 
+    public static compareInvoicesByCompanyName(invoice01: Invoice, invoice02: Invoice): number {
+        console.log('Method compareInvoicesByCompanyName(...){...}');
+        if (invoice01.companyName().trim().toLowerCase() < invoice02.companyName().trim().toLowerCase()) {
+            return -1;
+        }
+        return 1;
+    }
+
+
     //endregion
 
 
@@ -103,12 +112,6 @@ export class Invoice implements InvoiceType {
 
     // setter
 
-    public static compareInvoicesByCompanyName(invoice01: Invoice, invoice02: Invoice): number {
-        if (invoice01.companyName().trim().toLowerCase() < invoice02.companyName().trim().toLowerCase()) {
-            return -1;
-        }
-        return 1;
-    }
 
     public companyName(): string {
         return Invoice.firstLine(this.recipient);
