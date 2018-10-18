@@ -46,6 +46,10 @@
           {{opt}}
         </option>
       </select>
+      <button name="sort" id="sortCompanyName" (click)="sortCompanyNameClick()">
+        Sortierung {{sortCompanyName.getSortingOrderName()}}
+      </button>
+
     </div>
 
   </div>

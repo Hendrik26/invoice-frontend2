@@ -35,6 +35,7 @@ export class InvoiceListComponent implements OnInit {
     sortEndDueDate: ThreeStateButton;
     sortStartDate: ThreeStateButton;
     sortEndDate: ThreeStateButton;
+    sortCompanyName: ThreeStateButton;
 
     //endregion
 
@@ -47,18 +48,28 @@ export class InvoiceListComponent implements OnInit {
         this.companySelectOptions2 = this.calculateCompanySelectOptions2(this.invoices);
         this.sortStartDueDate = new ThreeStateButton('DueDate');
         this.sortStartDate = new ThreeStateButton('Date');
+        this.sortCompanyName = new ThreeStateButton('CompanyName');
 
     }
 
     sortStartDueDateClick(): void {
         this.sortStartDate.reset();
+        this.sortCompanyName.reset();
         this.sortStartDueDate.switch();
     }
 
     sortStartDateClick(): void {
         this.sortStartDueDate.reset();
+        this.sortCompanyName.reset();
         this.sortStartDate.switch();
     }
+
+    sortCompanyNameClick(): void {
+        this.sortStartDueDate.reset();
+        this.sortStartDate.reset();
+        this.sortCompanyName.switch();
+    }
+
 
 
     //region other methods
@@ -111,6 +122,7 @@ export class InvoiceListComponent implements OnInit {
 
     sortInvoices(sortBy: string, ascending: boolean, invoices: Invoice[]): Invoice[] {
         // sortBy: Groesse, nach der sortiert werden soll
+        console.log('Sorting invoices by ' + sortBy);
         let ascendingFactor = -1;
         if (ascending) {
             ascendingFactor = +1;
@@ -128,7 +140,7 @@ export class InvoiceListComponent implements OnInit {
             });
         }
 
-         if ( /* sortBy == 'CompanyName()' */ true) {
+         if (sortBy == 'CompanyName') {
             invoices.sort(function (a, b) {
                 return ascendingFactor * Invoice.compareInvoicesByCompanyName(a, b);
             });
@@ -164,7 +176,8 @@ export class InvoiceListComponent implements OnInit {
             .filter(invoice => this.checkInvoiceState(invoice, this.invoiceFilterState))
             .filter(invoice => this.checkInvoiceCompanyName(invoice, this.invoiceFilterCompany))
         ;
-        let sortedInvoices = this.sortInvoicesByButtons([this.sortStartDueDate, this.sortStartDate], retInvoices);
+        let sortedInvoices = this.sortInvoicesByButtons([this.sortStartDueDate, this.sortStartDate, this.sortCompanyName],
+            retInvoices);
         return sortedInvoices;
     }
 
