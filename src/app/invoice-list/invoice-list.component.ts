@@ -120,33 +120,6 @@ export class InvoiceListComponent implements OnInit {
         return companyNames.sort();
     }
 
-    sortInvoices(sortBy: string, ascending: boolean, invoices: Invoice[]): Invoice[] {
-        // sortBy: Groesse, nach der sortiert werden soll
-        console.log('Sorting invoices by ' + sortBy);
-        let ascendingFactor = -1;
-        if (ascending) {
-            ascendingFactor = +1;
-        }
-
-        if (sortBy == 'Date') {
-            invoices.sort(function (a, b) {
-                return ascendingFactor * a.invoiceDate.getTime() - ascendingFactor * b.invoiceDate.getTime();
-            });
-        }
-
-        if (sortBy == 'DueDate') {
-            invoices.sort(function (a, b) {
-                return ascendingFactor * a.invoiceDueDate.getTime() - ascendingFactor * b.invoiceDueDate.getTime();
-            });
-        }
-
-         if (sortBy == 'CompanyName') {
-            invoices.sort(function (a, b) {
-                return ascendingFactor * Invoice.compareInvoicesByCompanyName(a, b);
-            });
-        }
-        return invoices;
-    }
 
     sortInvoicesByButtons(sortButtons: ThreeStateButton[], invoices: Invoice[]): Invoice[] {
         let retInvoices: Invoice[] = invoices;
@@ -158,7 +131,7 @@ export class InvoiceListComponent implements OnInit {
 
         for (const sortButton of sortButtons) {
             if (sortButton.getSortingOrderId() != 0) {
-                retInvoices = this.sortInvoices(sortButton.getSortBy(), (sortButton.getSortingOrderId() == 1), invoices);
+                retInvoices = Invoice.sortInvoices(sortButton.getSortBy(), (sortButton.getSortingOrderId() == 1), invoices);
             }
         }
         ;

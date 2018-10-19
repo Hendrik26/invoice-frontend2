@@ -89,6 +89,35 @@ export class Invoice implements InvoiceType {
         return 1;
     }
 
+    public static sortInvoices(sortBy: string, ascending: boolean, invoices: Invoice[]): Invoice[] {
+        // sortBy: Groesse, nach der sortiert werden soll
+        console.log('Sorting invoices by ' + sortBy);
+        let ascendingFactor = -1;
+        if (ascending) {
+            ascendingFactor = +1;
+        }
+
+        if (sortBy == 'Date') {
+            invoices.sort(function (a, b) {
+                return ascendingFactor * a.invoiceDate.getTime() - ascendingFactor * b.invoiceDate.getTime();
+            });
+        }
+
+        if (sortBy == 'DueDate') {
+            invoices.sort(function (a, b) {
+                return ascendingFactor * a.invoiceDueDate.getTime() - ascendingFactor * b.invoiceDueDate.getTime();
+            });
+        }
+
+        if (sortBy == 'CompanyName') {
+            invoices.sort(function (a, b) {
+                return ascendingFactor * Invoice.compareInvoicesByCompanyName(a, b);
+            });
+        }
+        return invoices;
+    }
+
+
 
     //endregion
 
@@ -133,5 +162,7 @@ export class Invoice implements InvoiceType {
     }
 
     //endregion
+
+
 
 }
