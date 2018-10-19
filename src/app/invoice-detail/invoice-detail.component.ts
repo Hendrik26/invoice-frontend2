@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {InvoiceService} from '../invoice.service';
 // new imports added
+import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 import {Invoice} from '../invoice';
@@ -39,7 +40,7 @@ export class InvoiceDetailComponent implements OnInit {
   invoiceDate: Date;
   invoiceDueDate: Date;
   invoiceTimeSpan = '2018-01-01 bis 2018-12-31';
-  invoiceState = 'template'; // <th>Status (Entwurf, bezahlt, ...)</th>
+  invoiceState = 'Entwurf'; // <th>Status (Entwurf, bezahlt, ...)</th>
 
   items: Item[];
 
@@ -55,6 +56,7 @@ export class InvoiceDetailComponent implements OnInit {
   //endregion
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private location: Location,
     private invoiceService: InvoiceService
@@ -211,6 +213,14 @@ export class InvoiceDetailComponent implements OnInit {
         this.bruttoSum);
     }
   }
+
+    backToInvoiceList(): void {
+        if (this.creatingInvoice) {
+            this.creatingInvoice = false;
+            this.invoiceService.removeLastInvoice();
+        }
+      this.router.navigateByUrl('/invoice-list');
+    }
 
   //endregion
 
