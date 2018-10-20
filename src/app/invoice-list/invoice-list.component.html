@@ -57,6 +57,7 @@
     <table style="width:100%">
       <thead>
       <tr>
+        <th>RechnungsId</th>
         <th>Fälligkeitsdatum</th>
         <th>Rechnungsdatum</th>
         <th>Rechnungsnr</th>
@@ -70,6 +71,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let invoice of filterInvoice(invoices)">
+        <td>{{invoice.getID()}}</td>
         <td>{{invoice.invoiceDueDate | date:'yyyy-MM-dd'}}</td>
         <td>{{invoice.invoiceDate | date:'yyyy-MM-dd'}}</td>
         <td>{{invoice.invoiceNumber}}</td>
