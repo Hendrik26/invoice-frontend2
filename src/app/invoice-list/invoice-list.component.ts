@@ -3,6 +3,10 @@ import {Invoice} from '../invoice';
 import {InvoiceService} from '../invoice.service';
 import {isNullOrUndefined} from 'util';
 import {ThreeStateButton} from '../three-state-button';
+import {INVOICES} from '../mock-invoice';
+import {Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
+
 
 @Component({
     selector: 'app-invoice-list',
@@ -39,7 +43,8 @@ export class InvoiceListComponent implements OnInit {
 
     //endregion
 
-    constructor(private invoiceService: InvoiceService) {
+    constructor(private invoiceService: InvoiceService,
+                private router: Router) {
     }
 
     ngOnInit() {
@@ -88,6 +93,13 @@ export class InvoiceListComponent implements OnInit {
 
     changeFilterEndDueDate(e: string) {
         this.filterEndDueDate = e ? new Date(e) : null;
+    }
+
+    public newInvoiceBtn(): void {
+        const invoice = Invoice.createNewInvoice();
+        INVOICES.push(invoice);
+        const invoiceId = invoice.getID();
+        this.router.navigateByUrl('invoice-detail/' + invoiceId);
     }
 
 

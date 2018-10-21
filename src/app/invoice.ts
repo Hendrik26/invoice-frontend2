@@ -21,6 +21,7 @@ export class Invoice implements InvoiceType {
     //endregion
     //region other properties
     countReminders: number; // <th>Anzahl der Mahnungen</th>
+    newCreatedInvoice: boolean;
     //endregion
     currency = '€';
     invoiceDate: Date; // <th>Rechnungsdatum</th>
@@ -42,6 +43,7 @@ export class Invoice implements InvoiceType {
         this.id = id; // New Commit after problems with merging
 
         // other properties
+        this.newCreatedInvoice = true;
         this.invoiceDate = data.invoiceDate;
         this.invoiceDueDate = data.invoiceDueDate;
         this.invoiceNumber = data.invoiceNumber;
@@ -74,7 +76,7 @@ export class Invoice implements InvoiceType {
     }
 
     public static companyNames(invoices: Invoice[]): string[] {
-        let companyNameList: string[] = [];
+        const companyNameList: string[] = [];
         invoices.forEach(function (value) {
             companyNameList.push(value.companyName());
         });
@@ -148,6 +150,10 @@ export class Invoice implements InvoiceType {
 
     public computeNextItemId(): number {
         return this.getMaxItemId() + 1;
+    }
+
+    public firstSave(): void {
+        this.newCreatedInvoice = false;
     }
 
     private getMaxItemId(): number {

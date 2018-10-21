@@ -24,6 +24,7 @@ export class InvoiceDetailComponent implements OnInit {
   bruttoSum: number;
   countReminders: number;
   creatingInvoice: boolean;
+  creatingInvoiceBtn: boolean;
 
   customerFirm = 'BspFirma';
   customerContactPerson = 'Ansprechpartner';
@@ -177,6 +178,7 @@ export class InvoiceDetailComponent implements OnInit {
       .subscribe(invoice => {
         // TODO remove this.invoice.....
         this.countReminders = invoice.countReminders;
+        this.creatingInvoiceBtn = invoice.newCreatedInvoice;
         this.invoiceCurrency = invoice.currency;
         this.invoiceDate = invoice.invoiceDate;
         this.invoiceDueDate = invoice.invoiceDueDate;
@@ -197,6 +199,7 @@ export class InvoiceDetailComponent implements OnInit {
 
   saveInvoice(): void {
     console.log('invoice-detail.component.ts: method saveInvoice');
+    this.creatingInvoiceBtn = false;
     this.calculateSavingData();
     if (this.creatingInvoice) {
       /* this.invoiceService.saveNewItemByInvoiceId(this.invoiceId, this.count, this.currency,
@@ -205,6 +208,7 @@ export class InvoiceDetailComponent implements OnInit {
         this.invoiceNumber, this.invoiceIntendedUse, this.invoiceState, this.customerAdress, this.salesTaxPercentage, 'unknown',
         this.bruttoSum);
       this.creatingInvoice = false;
+      this.creatingInvoiceBtn = false;
     } else {
       console.log('invoice-detail.component.ts this.invoiceCurrency: ' + this.invoiceCurrency);
       this.invoiceService.saveInvoiceGlobalsByInvoiceId(this.invoiceId, this.countReminders, this.invoiceCurrency, this.invoiceDate,
@@ -215,8 +219,9 @@ export class InvoiceDetailComponent implements OnInit {
   }
 
     backToInvoiceList(): void {
-        if (this.creatingInvoice) {
+        if (this.creatingInvoice || this.creatingInvoiceBtn) {
             this.creatingInvoice = false;
+            this.creatingInvoiceBtn = false;
             this.invoiceService.removeLastInvoice();
         }
       this.router.navigateByUrl('/invoice-list');
