@@ -124,6 +124,7 @@
         </table>
       </div>
       <a routerLink="/item-create/{{invoiceId}}">Posten hinzufügen</a>
+      <button (click)="addItemBtn()">Posten hinzufügen Btn</button>
       <button (click)="saveInvoice()">{{(creatingInvoice || creatingInvoiceBtn) ? 'Create' : 'Save'}}</button>
       <button>cancel</button>
       <button (click)="backToInvoiceList()">zurückBtn</button>

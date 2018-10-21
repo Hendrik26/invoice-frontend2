@@ -6,6 +6,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 import {Invoice} from '../invoice';
 import {Item} from '../item';
+import {INVOICES} from '../mock-invoice';
 
 @Component({
   selector: 'app-invoice-detail',
@@ -79,7 +80,14 @@ export class InvoiceDetailComponent implements OnInit {
   }
 
 
-  //region other properties
+  //region other methods
+    public addItemBtn(): void {
+        const invoice = Invoice.createNewInvoice();
+        /* INVOICES.push(invoice);
+        const invoiceId = invoice.getID();
+        this.router.navigateByUrl('invoice-detail/' + invoiceId); */
+    }
+
   calculateInitialDataLoad() {
     console.log('method calculateInitialDataLoad() {...}');
     this.nettoSum = this.calculateNettoSum(this.invoiceId);
