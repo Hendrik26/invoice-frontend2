@@ -72,7 +72,7 @@ export class ItemService {
   }
 
   saveNewItemByInvoiceId(methInvoiceId: string, count: number, currency: string,
-                         hourPayment: boolean, itemDate: string, itemName: string, partialCost: number): void {
+                         hourPayment: boolean, itemDate: string, itemName: string, partialCost: number): number {
     let methInvoice: Invoice;
     let methItemId: number;
     let methItem: Item;
@@ -96,6 +96,7 @@ export class ItemService {
     methItem.itemName = itemName;
     methItem.partialCost = partialCost;
     methItem.wholeCost = count * partialCost;
+    return methItemId;
   }
 
   //endregion
