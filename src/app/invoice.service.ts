@@ -133,10 +133,10 @@ export class InvoiceService {
             }
         }
 
+        methInvoice.newCreatedInvoice = false;
         methInvoice.countReminders = countReminders;
         methInvoice.currency = currency;
         this.currency = methInvoice.currency;
-        console.log('invoice.service.currency: ' + this.currency);
         methInvoice.invoiceDate = invoiceDate;
         methInvoice.invoiceDueDate = invoiceDueDate;
         methInvoice.invoiceNumber = invoiceNumber;
