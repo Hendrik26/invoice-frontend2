@@ -2,9 +2,9 @@
   invoiceID: {{invoiceId}}<br>
   invoiceDueDate: {{invoiceDueDate}}<br>
   <!-- shows invoiceId for testCases -->
-  invoice-detail.component.currency: {{this.invoiceCurrency}}
+  invoice-detail.component.currency: {{this.invoiceCurrency}};;;
   <!-- invoice.currency: {{this.invoice.currency}} -->
-
+    invoiceKind homeCountryInvoice()": {{invoiceKind.getHomeCountryInvoice()}};;;
 </div>
 
 <div class="invoice-detail">
@@ -17,7 +17,16 @@
                 placeholder="BspFirma&#x0a;Ansprechpartner&#x0a;Straße + HausNr.&#x0a;PLZ Ort&#x0a;Land">
 
           </textarea>
+        <br>
+        <br>
+        <label><input type="checkbox" name="homeCountryInvoice" [checked]="invoiceKind.getHomeCountryInvoice()"
+                      (change)="invoiceKind.changeHomeCountryInvoice()"> Inlandsrechnung</label>
+
     </div><!-- class="adress-window" -->
+
+    <div>
+
+    </div>
 
     <div class="contact-block">
       <div class="logo">

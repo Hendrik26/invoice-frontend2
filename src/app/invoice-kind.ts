@@ -2,7 +2,13 @@ export class InvoiceKind {
 
     private homeCountryInvoice: boolean; // Inlandsrechnung
     private timeSpanBased: boolean; // UZeitraumbasierter Rechnung
-    private isSEPA: booean; // ist SEPA-Lastschrift
+    private isSEPA: boolean; // ist SEPA-Lastschrift
+
+    constructor() {
+        this.homeCountryInvoice = true;
+        this.timeSpanBased = false
+    }
+
 
 
 
@@ -32,6 +38,11 @@ export class InvoiceKind {
     public setHomeCountryInvoice(inValue: boolean): void {
         this.homeCountryInvoice = inValue;
     }
+
+    public changeHomeCountryInvoice(): void {
+        this.homeCountryInvoice = !this.homeCountryInvoice;
+    }
+
 
     public setAbroadInvoice(inValue: boolean): void {
         this.homeCountryInvoice = !inValue;

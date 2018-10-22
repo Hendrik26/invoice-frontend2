@@ -6,6 +6,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 import {Invoice} from '../invoice';
 import {Item} from '../item';
+import {InvoiceKind} from '../invoice-kind';
 import {INVOICES} from '../mock-invoice';
 
 @Component({
@@ -44,6 +45,8 @@ export class InvoiceDetailComponent implements OnInit {
   invoiceTimeSpan = '2018-01-01 bis 2018-12-31';
   invoiceState = 'Entwurf'; // <th>Status (Entwurf, bezahlt, ...)</th>
 
+  invoiceKind: InvoiceKind;
+
   items: Item[];
 
   nettoSum: number;
@@ -65,6 +68,7 @@ export class InvoiceDetailComponent implements OnInit {
   ) {
     this.invoiceDate = new Date();
     console.log('constDate: ' + this.invoiceDate.toString());
+    this.invoiceKind = new InvoiceKind();
   }
 
   ngOnInit() {
