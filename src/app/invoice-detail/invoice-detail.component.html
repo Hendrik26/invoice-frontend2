@@ -146,7 +146,9 @@
           <dt>USt-IdNr. des Kunden:</dt>
           <dd>ATU xxxxx</dd>
       </dl -->
-      <!-- p>Steuerschuldnerschaft des Leistungsempfängers (Reverse Charge)</p -->
+       <div *ngIf="invoiceKind.getAbroadInvoice()">
+            <p>Steuerschuldnerschaft des Leistungsempfängers (Reverse Charge)</p>
+       </div>
       <p></p>
       <p>Bitte überweisen Sie den Rechnungsbetrag bis zum
         <input type="date" name="inDueDate" [ngModel]="invoiceDueDate | date:'yyyy-MM-dd'"

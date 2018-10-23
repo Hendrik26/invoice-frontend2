@@ -1,5 +1,6 @@
 import {Item} from './item';
 import {InvoiceType} from './invoice-type';
+import {InvoiceKind} from './invoice-kind';
 import {ItemType} from './item-type';
 
 export class Invoice implements InvoiceType {
@@ -28,12 +29,13 @@ export class Invoice implements InvoiceType {
     invoiceDueDate: Date; // Faelligkeitsdatum
     invoiceNumber: string; // <th>RechnungsNr</th>
     invoiceIntendedUse; // Verwendungszweck
+    invoiceKind: InvoiceKind;
     invoiceState: string; // <th>Status (Entwurf, bezahlt, ...)</th>
     items: Item[];
     recipient: string; // <th>Empfänger</th>
     salesTaxPercentage: number;
     timeSpan: string; // <th>Rechnungzeitraum</th>
-    type: string;
+    // type: string;
     wholeCost: number; // <th>Gesamtpreis</th>
     //region IDs
     private id: string; // <th>Ändern</th>
@@ -47,6 +49,7 @@ export class Invoice implements InvoiceType {
         this.newCreatedInvoice = true;
         this.invoiceDate = data.invoiceDate;
         this.invoiceDueDate = data.invoiceDueDate;
+        this.invoiceKind = new InvoiceKind();
         this.invoiceNumber = data.invoiceNumber;
         this.recipient = data.recipient;
         this.invoiceState = data.invoiceState;
