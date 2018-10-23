@@ -31,6 +31,10 @@ header {
   text-align: right;
 }
 
+.checkboxfield label {
+  display: block;
+}
+
 .invoice-number {
   margin-top: 0;
 }

@@ -4,7 +4,9 @@
   <!-- shows invoiceId for testCases -->
   invoice-detail.component.currency: {{this.invoiceCurrency}};;;
   <!-- invoice.currency: {{this.invoice.currency}} -->
-    invoiceKind homeCountryInvoice()": {{invoiceKind.getHomeCountryInvoice()}};;;
+  invoiceKind international()": {{invoiceKind.international}};;;
+  invoiceKind timeSpanBased()": {{invoiceKind.timeSpanBased}};;;
+
 </div>
 
 <div class="invoice-detail">
@@ -17,12 +19,17 @@
                 placeholder="BspFirma&#x0a;Ansprechpartner&#x0a;Straße + HausNr.&#x0a;PLZ Ort&#x0a;Land">
 
           </textarea>
-        <br>
-        <br>
-        <label><input type="checkbox" name="homeCountryInvoice" [checked]="invoiceKind.getHomeCountryInvoice()"
-                      (change)="invoiceKind.changeHomeCountryInvoice()"> Inlandsrechnung</label>
-
     </div><!-- class="adress-window" -->
+
+    <div class="checkboxfield">
+      <label><input type="checkbox" name="international" [checked]="invoiceKind.international"
+                    (change)="invoiceKind.changeInternational()"> Auslandsrechnung</label>
+      <label><input type="checkbox" name="timeSpanBased" [checked]="invoiceKind.timeSpanBased"
+                    (change)="invoiceKind.changeTimeSpanBased()"> Zeitraumbasiert</label>
+      <label><input type="checkbox" name="isSEPA" [checked]="invoiceKind.isSEPA"
+                    (change)="invoiceKind.changeIsSEPA()"> SEPA-Lastschriftmandat</label>
+    </div>
+
 
     <div>
 
@@ -140,14 +147,14 @@
       <button (click)="backToInvoiceList()">zurückBtn</button>
       <a routerLink="/invoice-list/">zurück </a>
       <p></p>
-      <!-- dl>
-          <dt>USt-IdNr.:</dt>
-          <dd>DE243517710</dd>
-          <dt>USt-IdNr. des Kunden:</dt>
-          <dd>ATU xxxxx</dd>
-      </dl -->
-       <div *ngIf="invoiceKind.getAbroadInvoice()">
-            <p>Steuerschuldnerschaft des Leistungsempfängers (Reverse Charge)</p>
+       <div *ngIf="invoiceKind.international">
+         <dl>
+            <dt>USt-IdNr.:</dt>
+             <dd>DE243517710</dd>
+              <dt>USt-IdNr. des Kunden:</dt>
+               <dd>ATU xxxxx</dd>
+          </dl>
+         <p>Steuerschuldnerschaft des Leistungsempfängers (Reverse Charge)</p>
        </div>
       <p></p>
       <p>Bitte überweisen Sie den Rechnungsbetrag bis zum

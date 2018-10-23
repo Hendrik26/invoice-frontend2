@@ -1,12 +1,43 @@
 export class InvoiceKind {
+  get international(): boolean {
+    return this._international;
+  }
 
-    private homeCountryInvoice: boolean; // Inlandsrechnung
-    private timeSpanBased: boolean; // UZeitraumbasierter Rechnung
-    private isSEPA: boolean; // ist SEPA-Lastschrift
+  get national(): boolean {
+    return !this._international;
+  }
+
+
+  set international(value: boolean) {
+    this._international = value;
+  }
+
+  get timeSpanBased(): boolean {
+    return this._timeSpanBased;
+  }
+
+  set timeSpanBased(value: boolean) {
+    this._timeSpanBased = value;
+  }
+
+  get isSEPA(): boolean {
+    return this._isSEPA;
+  }
+
+  set isSEPA(value: boolean) {
+    this._isSEPA = value;
+  }
+
+    private _international: boolean; // Inlandsrechnung, Bit0
+    private _timeSpanBased: boolean; // UZeitraumbasierter Rechnung, Bit1
+    private _isSEPA: boolean; // ist SEPA-Lastschrift, Bit2
+
+    private packedDataNumber: number;
 
     constructor() {
-        this.homeCountryInvoice = true;
-        this.timeSpanBased = false
+        this._international = false;
+        this._timeSpanBased = false;
+        this._isSEPA = false;
     }
 
 
@@ -14,20 +45,13 @@ export class InvoiceKind {
 
     // getter
     public getHomeCountryInvoice(): boolean {
-        return this.homeCountryInvoice;
+        return this._international;
     }
 
     public getAbroadInvoice(): boolean {
-        return !this.homeCountryInvoice;
+        return !this._international;
     }
 
-    public getTimeSpanBased(): boolean {
-        return this.timeSpanBased;
-    }
-
-    public getSEPA(): boolean {
-        return this.isSEPA;
-    }
 
     public getPackedDataNumber(): number{
         return -1;
@@ -35,26 +59,21 @@ export class InvoiceKind {
 
 
     // settet
-    public setHomeCountryInvoice(inValue: boolean): void {
-        this.homeCountryInvoice = inValue;
+
+    public changeInternational(): void {
+        this._international = !this._international;
     }
 
-    public changeHomeCountryInvoice(): void {
-        this.homeCountryInvoice = !this.homeCountryInvoice;
-    }
+  public changeTimeSpanBased(): void {
+    this._timeSpanBased = !this._timeSpanBased;
+  }
+
+  public changeIsSEPA(): void {
+    this._isSEPA = !this._isSEPA;
+  }
 
 
-    public setAbroadInvoice(inValue: boolean): void {
-        this.homeCountryInvoice = !inValue;
-    }
 
-    public setTimeSpanBased(inValue: boolean): void {
-        this.timeSpanBased = inValue;
-    }
-
-    public setSEPA(inValue: boolean): void {
-        this.isSEPA = inValue;
-    }
 
 
 
