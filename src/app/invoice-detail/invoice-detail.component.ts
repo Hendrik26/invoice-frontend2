@@ -155,10 +155,10 @@ export class InvoiceDetailComponent implements OnInit {
   hasReceivedInvoiceId():
     boolean {
     if (this.route.snapshot.paramMap.has('invoiceId')) {
-      this.invoiceId = this.route.snapshot.paramMap.get('invoiceId');  // get itemID from URL
+      this.invoiceId = this.route.snapshot.paramMap.get('invoiceId');  // get itemID???? invoiceId from URL
       return true;
     } else {
-      this.invoiceId = null; // stands for the creation of a new item
+      this.invoiceId = null; // stands for the creation of a new item???? invoice
       return false;
     }
   }
