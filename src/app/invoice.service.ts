@@ -148,7 +148,7 @@ export class InvoiceService {
         methInvoice.wholeCost = wholeCost;
     }
 
-    saveNewInvoice(countReminders: number, currency: string,
+    saveNewInvoice(countReminders: number, currency: string, // can probably be deleted
                    invoiceDate: Date, invoiceDueDate: Date, invoiceNumber: string,
                    invoiceIntendedUse: string,
                    invoiceState: string, recipient: string,

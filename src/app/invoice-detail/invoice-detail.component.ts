@@ -85,8 +85,9 @@ export class InvoiceDetailComponent implements OnInit {
 
 
   //region other methods
-    public addItemBtn(): void {
-        const invoice = Invoice.createNewInvoice();
+    public addItemBtn(): void { // can probably be deleted
+      const i = 1;
+        // const invoice = Invoice.createNewInvoice();
         /* INVOICES.push(invoice);
         const invoiceId = invoice.getID();
         this.router.navigateByUrl('invoice-detail/' + invoiceId); */
@@ -152,7 +153,7 @@ export class InvoiceDetailComponent implements OnInit {
     return this.calculateNettoSum(methId) * this.salesTaxPercentage / 100;
   }
 
-  hasReceivedInvoiceId():
+  hasReceivedInvoiceId(): // can NOT be deleted
     boolean {
     if (this.route.snapshot.paramMap.has('invoiceId')) {
       this.invoiceId = this.route.snapshot.paramMap.get('invoiceId');  // get itemID???? invoiceId from URL
