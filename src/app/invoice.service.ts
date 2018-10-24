@@ -42,9 +42,6 @@ export class InvoiceService {
     constructor() {
     }
 
-    /* getInvoices(): Invoice[] { // Returns the whole array of all Invoices
-        return INVOICES;
-    } */
 
 
     //region getter

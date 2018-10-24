@@ -101,14 +101,6 @@ export class InvoiceDetailComponent implements OnInit {
     this.percentageString = this.invoiceService.getSalesTaxPercentageString(this.invoiceId);
     this.salesTax = this.calculateSalesTax(this.invoiceId); // hier
     this.bruttoSum = this.calculateBruttoSum(this.invoiceId);
-    // this.wholeCost = this.bruttoSum;
-    // this.invoiceCurrency = this.invoice.currency;
-    /* this.invoiceDate = new Date();
-    console.log('this.invoiceDate: ' + this.invoiceDate.toString());
-    this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(),
-      this.invoiceDate.getDate() + 14, 12);
-    console.log('this.invoiceDueDate: ' + this.invoiceDueDate.toString()); */
-    // this.invoiceDueDate = new Date(this.invoiceDate.getTime() + 14 * 24 * 3600 * 1000);
   }
 
   calculateInitialDataCreate() {
@@ -132,15 +124,11 @@ export class InvoiceDetailComponent implements OnInit {
   }
 
   calculateBruttoSum(methId: string): number {
-    // var methInvoice: Invoice;
-    // methInvoice = this.invoice;
     return this.calculateNettoSum(methId) + this.calculateSalesTax(methId);
   }
 
   calculateNettoSum(methId: string): number {
-    // var methInvoice: Invoice;
     let methSum = 0;
-    // methInvoice = this.invoice;
     if (this.items !== undefined) {
       for (let i = 0; i < this.items.length; i++) {
         methSum += this.items[i].wholeCost;

@@ -123,7 +123,6 @@ export class ItemDetailComponent implements OnInit {
 
 
   togglePayment() {
-    // this.currentItem.hourPayment = !this.currentItem.hourPayment;
     this.hourPayment = !this.hourPayment;
   }
 
