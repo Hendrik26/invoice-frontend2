@@ -51,6 +51,7 @@ export class InvoiceDetailComponent implements OnInit {
 
   nettoSum: number;
   percentageString: string;
+  receivingInvoiceIdError: boolean;
   salesTax: number;
   salesTaxPercentage = 19;
 
@@ -72,7 +73,8 @@ export class InvoiceDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.creatingInvoice = !this.hasReceivedInvoiceId();
+    this.creatingInvoice = false;
+      this.receivingInvoiceIdError = !this.hasReceivedInvoiceId();
     if (!this.creatingInvoice) {
       this.receiveInvoiceById(this.invoiceId);
       this.calculateInitialDataLoad();
