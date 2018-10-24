@@ -213,21 +213,11 @@ export class InvoiceDetailComponent implements OnInit {
     console.log('invoice-detail.component.ts: method saveInvoice');
     this.creatingInvoiceBtn = false;
     this.calculateSavingData();
-    if (this.creatingInvoice) {
-      /* this.invoiceService.saveNewItemByInvoiceId(this.invoiceId, this.count, this.currency,
-          this.hourPayment, this.itemDate, this.itemName, this.partialCost); */
-      this.invoiceService.saveNewInvoice(this.countReminders, this.invoiceCurrency, this.invoiceDate, this.invoiceDueDate,
-        this.invoiceNumber, this.invoiceIntendedUse, this.invoiceState, this.customerAdress, this.salesTaxPercentage, 'unknown',
-        this.bruttoSum);
-      this.creatingInvoice = false;
-      this.creatingInvoiceBtn = false;
-    } else {
       console.log('invoice-detail.component.ts this.invoiceCurrency: ' + this.invoiceCurrency);
       this.invoiceService.saveInvoiceGlobalsByInvoiceId(this.invoiceId, this.countReminders, this.invoiceCurrency, this.invoiceDate,
         this.invoiceDueDate, this.invoiceNumber, this.invoiceIntendedUse, this.invoiceState, this.customerAdress,
         this.salesTaxPercentage, 'unknown',
         this.bruttoSum);
-    }
   }
 
     backToInvoiceList(): void {
