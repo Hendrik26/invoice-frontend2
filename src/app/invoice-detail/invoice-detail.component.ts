@@ -37,6 +37,7 @@ export class InvoiceDetailComponent implements OnInit {
   customerCountry = 'Land';
   customerAdress: string;
 
+  customerBIC = 'Invoice-Bsp-BIC';
   customerIBAN = 'Invoice-Bsp-IBAN';
   mandateIdentification = 'Invoice-Bsp-Mandat'; // Mandatsreferenz fuer SEPA-Lastschriftverfahren
 

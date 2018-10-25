@@ -166,8 +166,14 @@
       </div>
       <div *ngIf="invoiceKind.isSEPA">
           <p>Die Forderung von {{bruttoSum | number:'1.2-2'}}{{invoiceCurrency}} ziehen wir mit der SEPA Basislastschrift
-          zum Mandat {{mandateIdentification}} zu der Gläubigeridentifikationsnummer {{creditorIdentificationNunber}}
-          von Ihrem Konto {{customerIBAN}} zum Fälligkeitsdatum {{invoiceDueDate}} ein. Wir bitten Sie,
+          zum Mandat
+          <input type="text" class="inputLarge" name="mandateIdentification" [(ngModel)]="mandateIdentification">
+          zu der Gläubigeridentifikationsnummer {{creditorIdentificationNunber}}
+          von Ihrem Konto
+          <input type="text" class="inputLarge" name="customerIBAN" [(ngModel)]="customerIBAN">
+            bei der Bank
+          <input type="text" class="inputLarge" name="customerBIC" [(ngModel)]="customerBIC">
+          zum Fälligkeitsdatum {{invoiceDueDate}} ein. Wir bitten Sie,
           für Kontodeckung zu sorgen.</p>
       </div>
     </section>
