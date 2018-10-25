@@ -57,7 +57,7 @@ export class InvoiceDetailComponent implements OnInit {
 
   nettoSum: number;
   percentageString: string;
-  receivingInvoiceIdError: boolean;
+  receivedInvoiceIdError: boolean;
   salesTax: number;
   salesTaxPercentage = 19;
 
@@ -80,12 +80,20 @@ export class InvoiceDetailComponent implements OnInit {
 
   ngOnInit() {
     this.creatingInvoice = false;
-      this.receivingInvoiceIdError = !this.hasReceivedInvoiceId();
-    if (!this.creatingInvoice) {
-      this.receiveInvoiceById(this.invoiceId);
+      this.receivedInvoiceIdError = !this.hasReceivedInvoiceId();
+      if (!this.receivedInvoiceIdError) {
+        console.log('receivedInvoiceId==' + this.invoiceId + ';;;', "color:Blue");
+        this.receiveInvoiceById(this.invoiceId);
+      }
+
+    if (!this.creatingInvoiceBtn) {
+      console.log('this.creatingInvoiceBtn=='+this.creatingInvoiceBtn);
+      // this.receiveInvoiceById(this.invoiceId);
       this.calculateInitialDataLoad();
+      console.log('this.creatingInvoiceBtn=='+this.creatingInvoiceBtn);
     } else {
-      this.invoiceId = this.invoiceService.createNewInvoiceId();
+      console.log('this.creatingInvoiceBtn=='+this.creatingInvoiceBtn + '  elseZweig');
+      // this.invoiceId = this.invoiceService.createNewInvoiceId();
       this.calculateInitialDataCreate();
     }
 
@@ -123,10 +131,8 @@ export class InvoiceDetailComponent implements OnInit {
     this.nettoSum = this.calculateNettoSum(this.invoiceId);
     this.salesTax = this.calculateSalesTax(this.invoiceId); // hier
     this.bruttoSum = this.calculateBruttoSum(this.invoiceId);
-    // this.invoice.wholeCost = this.bruttoSum;
-    this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(),
-      this.invoiceDate.getDate() + 14, 12);
-    // this.invoiceDueDate = new Date(this.invoiceDate.getTime() + 14 * 24 * 3600 * 1000);
+    // this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(),
+     //  this.invoiceDate.getDate() + 14, 12);
   }
 
   calculateBruttoSum(methId: string): number {
