@@ -108,8 +108,8 @@
           </tr>
           <tr>
             <td colspan="3"></td>
-            <td>{{percentageString}} MwSt.</td>
-            <td> {{salesTax | number:'1.2-2'}}{{invoiceCurrency}}</td>
+            <td>{{invoiceKind.national ? percentageString : ''}} MwSt.</td>
+            <td> {{invoiceKind.national ? (salesTax | number:'1.2-2') : 'Brutto == Netto '}}{{invoiceCurrency}}</td>
             <td>
               <button type="button">Mehrwertsteuer ändern</button>
             </td>

@@ -25,6 +25,9 @@ export class Invoice implements InvoiceType {
     newCreatedInvoice: boolean;
     //endregion
     currency = '€';
+
+    customerIBAN: string;
+
     invoiceDate: Date; // <th>Rechnungsdatum</th>
     invoiceDueDate: Date; // Faelligkeitsdatum
     invoiceNumber: string; // <th>RechnungsNr</th>

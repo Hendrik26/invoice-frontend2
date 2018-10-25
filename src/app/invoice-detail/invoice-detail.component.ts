@@ -124,7 +124,7 @@ export class InvoiceDetailComponent implements OnInit {
   }
 
   calculateBruttoSum(methId: string): number {
-    return this.calculateNettoSum(methId) + this.calculateSalesTax(methId);
+    return this.invoiceKind.national ? (this.calculateNettoSum(methId) + this.calculateSalesTax(methId)) : this.calculateNettoSum(methId);
   }
 
   calculateNettoSum(methId: string): number {
