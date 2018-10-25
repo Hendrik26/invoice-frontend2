@@ -155,13 +155,21 @@
          <p>Steuerschuldnerschaft des Leistungsempfängers (Reverse Charge)</p>
        </div>
       <p></p>
-      <p>Bitte überweisen Sie den Rechnungsbetrag bis zum
-        <input type="date" name="inDueDate" [ngModel]="invoiceDueDate | date:'yyyy-MM-dd'"
-               (ngModelChange)="invoiceDueDate = $event">
-        auf das unten angegebene Konto.</p>
-      <p> Als Verwendungszweck geben Sie bitte
-        <input type="text" class="inputLarge" name="intendedUse" [(ngModel)]="invoiceIntendedUse">
-        an.</p>
+      <div *ngIf="!invoiceKind.isSEPA">
+        <p>Bitte überweisen Sie den Rechnungsbetrag bis zum
+          <input type="date" name="inDueDate" [ngModel]="invoiceDueDate | date:'yyyy-MM-dd'"
+                 (ngModelChange)="invoiceDueDate = $event">
+          auf das unten angegebene Konto.</p>
+        <p> Als Verwendungszweck geben Sie bitte
+          <input type="text" class="inputLarge" name="intendedUse" [(ngModel)]="invoiceIntendedUse">
+          an.</p>
+      </div>
+      <div *ngIf="!invoiceKind.isSEPA">
+          <!--  p>Die Forderung von {{bruttoSum | number:'1.2-2'}}{{invoiceCurrency}} ziehen wir mit der SEPA Basislastschrift
+          zum Mandat {{mandateIdentification}} zu der Gläubigeridentifikationsnummer }{{creditorIdentificationNunber}}
+          von Ihrem Konto {{customerIBAN}} zum Fälligkeitsdatum {{invoiceDueDate}} ein. Wir bitten Sie,
+          für Kontodeckung zu sorgen.</p -->
+      <div>
     </section>
   </main>
   <footer>

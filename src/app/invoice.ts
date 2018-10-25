@@ -26,9 +26,11 @@ export class Invoice implements InvoiceType {
     //endregion
     currency = '€';
 
-    customerIBAN: string;
+    customerIBAN = 'Invoice-Bsp-IBAN';
+    mandateIdentification = 'Invoice-Bsp-Mandat'; // Mandatsreferenz fuer SEPA-Lastschriftverfahren
 
-    invoiceDate: Date; // <th>Rechnungsdatum</th>
+
+  invoiceDate: Date; // <th>Rechnungsdatum</th>
     invoiceDueDate: Date; // Faelligkeitsdatum
     invoiceNumber: string; // <th>RechnungsNr</th>
     invoiceIntendedUse; // Verwendungszweck

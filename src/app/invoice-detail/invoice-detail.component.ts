@@ -27,6 +27,7 @@ export class InvoiceDetailComponent implements OnInit {
   countReminders: number;
   creatingInvoice: boolean;
   creatingInvoiceBtn: boolean;
+  creditorIdentificationNunber = 'DE55ZZZ00001275596';
 
   customerFirm = 'BspFirma';
   customerContactPerson = 'Ansprechpartner';
@@ -35,6 +36,10 @@ export class InvoiceDetailComponent implements OnInit {
   customerCity = 'Ort';
   customerCountry = 'Land';
   customerAdress: string;
+
+  customerIBAN = 'Invoice-Bsp-IBAN';
+  mandateIdentification = 'Invoice-Bsp-Mandat'; // Mandatsreferenz fuer SEPA-Lastschriftverfahren
+
 
   invoice: Invoice;
   invoiceCurrency = '€';
