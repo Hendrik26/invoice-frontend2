@@ -96,7 +96,7 @@ export class InvoiceDetailComponent implements OnInit {
       // this.invoiceId = this.invoiceService.createNewInvoiceId();
       this.calculateInitialDataCreate();
     }
-
+    this.calculateSums();
   }
 
 
@@ -111,10 +111,8 @@ export class InvoiceDetailComponent implements OnInit {
 
   calculateInitialDataLoad() {
     console.log('method calculateInitialDataLoad() {...}');
-    this.nettoSum = this.calculateNettoSum(this.invoiceId);
     this.percentageString = this.invoiceService.getSalesTaxPercentageString(this.invoiceId);
-    this.salesTax = this.calculateSalesTax(this.invoiceId); // hier
-    this.bruttoSum = this.calculateBruttoSum(this.invoiceId);
+    this.calculateSums();
   }
 
   calculateInitialDataCreate() {
@@ -127,10 +125,14 @@ export class InvoiceDetailComponent implements OnInit {
 
   }
 
-  calculateSavingData() {
+  calculateSums(): void {
     this.nettoSum = this.calculateNettoSum(this.invoiceId);
     this.salesTax = this.calculateSalesTax(this.invoiceId); // hier
     this.bruttoSum = this.calculateBruttoSum(this.invoiceId);
+  }
+
+  calculateSavingData() {
+    this.calculateSums();
     // this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(),
      //  this.invoiceDate.getDate() + 14, 12);
   }
