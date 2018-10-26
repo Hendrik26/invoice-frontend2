@@ -19,7 +19,8 @@ export class Invoice implements InvoiceType {
         wholeCost: 0,
         countReminders: 0,
         timeSpan: 'unknown',
-        salesTaxPercentage: 19
+        salesTaxPercentage: 19,
+        customerTaxNumber: 'standardCustomerTaxNumber'
     };
     //endregion
     //region other properties
@@ -31,8 +32,8 @@ export class Invoice implements InvoiceType {
     customerIBAN = 'Invoice-Bsp-IBAN';
     mandateIdentification = 'Invoice-Bsp-Mandat'; // Mandatsreferenz fuer SEPA-Lastschriftverfahren
 
-
-  invoiceDate: Date; // <th>Rechnungsdatum</th>
+    customerTaxNumber = 'myCustomerTaxNumber';
+    invoiceDate: Date; // <th>Rechnungsdatum</th>
     invoiceDueDate: Date; // Faelligkeitsdatum
     invoiceNumber: string; // <th>RechnungsNr</th>
     invoiceIntendedUse; // Verwendungszweck
@@ -67,6 +68,7 @@ export class Invoice implements InvoiceType {
         this.currency = data.currency || '€';
         this.salesTaxPercentage = data.salesTaxPercentage;
         this.items = [];
+        this.customerTaxNumber = data.customerTaxNumber;
     }
 
 

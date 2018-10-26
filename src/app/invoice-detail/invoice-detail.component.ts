@@ -39,6 +39,7 @@ export class InvoiceDetailComponent implements OnInit {
 
   customerBIC = 'Invoice-Bsp-BIC';
   customerIBAN = 'Invoice-Bsp-IBAN';
+  customerTaxNumber = 'murx';
   mandateIdentification = 'Invoice-Bsp-Mandat'; // Mandatsreferenz fuer SEPA-Lastschriftverfahren
 
 
@@ -202,6 +203,8 @@ export class InvoiceDetailComponent implements OnInit {
         this.customerAdress = invoice.recipient;
         this.salesTaxPercentage = invoice.salesTaxPercentage;
         this.timespan = invoice.timeSpan;
+        // -----------------------------
+        this.customerTaxNumber = invoice.customerTaxNumber;
 
         // this.items = [];
         // this.invoice.items.forEach((item) => {this.items.push({...item})});
@@ -215,10 +218,21 @@ export class InvoiceDetailComponent implements OnInit {
     console.log('invoice-detail.component.ts: method saveInvoice');
     this.creatingInvoiceBtn = false;
     this.calculateSavingData();
-      this.invoiceService.saveInvoiceGlobalsByInvoiceId(this.invoiceId, this.countReminders, this.invoiceCurrency, this.invoiceDate,
-        this.invoiceDueDate, this.invoiceNumber, this.invoiceIntendedUse, this.invoiceState, this.customerAdress,
-        this.salesTaxPercentage, 'unknown',
-        this.bruttoSum);
+      this.invoiceService.saveInvoiceGlobalsByInvoiceId(
+        this.invoiceId,
+        this.countReminders,
+        this.invoiceCurrency,
+        this.invoiceDate,
+        this.invoiceDueDate,
+        this.invoiceNumber,
+        this.invoiceIntendedUse,
+        this.invoiceState,
+        this.customerAdress,
+        this.salesTaxPercentage,
+        'unknown',
+        this.bruttoSum,
+        this.customerTaxNumber
+      );
   }
 
     backToInvoiceList(): void {

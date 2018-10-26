@@ -34,7 +34,8 @@ export class InvoiceService {
     wholeCost: 1111.11,
     countReminders: 0,
     timeSpan: '2017-01-01 bis 2017-12-31',
-    salesTaxPercentage: 19
+    salesTaxPercentage: 19,
+    customerTaxNumber: 'standardCustomerTaxNumber'
   };
 
   //endregion
@@ -129,7 +130,7 @@ export class InvoiceService {
                                 invoiceDate: Date, invoiceDueDate: Date, invoiceNumber: string,
                                 invoiceIntendedUse: string,
                                 invoiceState: string, recipient: string,
-                                salesTaxPercentage: number, timeSpan: string, wholeCost: number): void {
+                                salesTaxPercentage: number, timeSpan: string, wholeCost: number, customerTaxNumber: string): void {
     let methInvoice: Invoice;
     console.log('invoice.service.ts: method saveInvoiceGlobalsByInvoiceId((...){...}');
     for (let i = 0; i < INVOICES.length; i++) { // identifies the correct invpice
