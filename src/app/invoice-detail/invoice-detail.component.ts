@@ -225,7 +225,7 @@ export class InvoiceDetailComponent implements OnInit {
         if (this.creatingInvoice || this.creatingInvoiceBtn) {
             this.creatingInvoice = false;
             this.creatingInvoiceBtn = false;
-            this.invoiceService.removeLastInvoice();
+            this.invoiceService.removeInvoiceById(this.invoiceId);
         }
       this.router.navigateByUrl('/invoice-list');
     }
