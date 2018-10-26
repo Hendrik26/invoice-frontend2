@@ -2,6 +2,7 @@ import {Item} from './item';
 import {InvoiceType} from './invoice-type';
 import {InvoiceKind} from './invoice-kind';
 import {ItemType} from './item-type';
+import {INVOICES} from './mock-invoice';
 
 export class Invoice implements InvoiceType {
     // //////////////////////
@@ -93,16 +94,15 @@ export class Invoice implements InvoiceType {
     }
 
     public static compareInvoicesByCompanyName(invoice01: Invoice, invoice02: Invoice): number {
-        console.log('Method compareInvoicesByCompanyName(...){...}');
         if (invoice01.companyName().trim().toLowerCase() < invoice02.companyName().trim().toLowerCase()) {
             return -1;
         }
         return 1;
     }
 
+
     public static sortInvoices(sortBy: string, ascending: boolean, invoices: Invoice[]): Invoice[] {
         // sortBy: Groesse, nach der sortiert werden soll
-        console.log('Sorting invoices by ' + sortBy);
         let ascendingFactor = -1;
         if (ascending) {
             ascendingFactor = +1;
@@ -141,7 +141,6 @@ export class Invoice implements InvoiceType {
     //region other methods
     public addNewItem(itemType: ItemType): number {
         // TODO add new Item
-        console.log('invoice.addNewItem');
         const createdItem = new Item(this, itemType);
         this.items.push(createdItem);
         // return new Item(this, item);
@@ -166,7 +165,6 @@ export class Invoice implements InvoiceType {
     }
 
     private getMaxItemId(): number {
-        console.log('invoice.getMaxItemId');
         if (this.items === undefined) {
             return -1;
         } else {

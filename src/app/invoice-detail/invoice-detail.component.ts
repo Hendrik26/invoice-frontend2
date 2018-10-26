@@ -74,11 +74,11 @@ export class InvoiceDetailComponent implements OnInit {
     private invoiceService: InvoiceService
   ) {
     this.invoiceDate = new Date();
-    console.log('constDate: ' + this.invoiceDate.toString());
     this.invoiceKind = new InvoiceKind();
   }
 
   ngOnInit() {
+    console.log('ngOnInit ');
     this.creatingInvoice = false;
       this.receivedInvoiceIdError = !this.hasReceivedInvoiceId();
       if (!this.receivedInvoiceIdError) {
@@ -86,11 +86,14 @@ export class InvoiceDetailComponent implements OnInit {
         this.receiveInvoiceById(this.invoiceId);
       }
 
+    console.log('this.creatingInvoiceBtn=='+this.creatingInvoiceBtn);
+
+
     if (!this.creatingInvoiceBtn) {
-      console.log('this.creatingInvoiceBtn=='+this.creatingInvoiceBtn);
+      console.log('this.creatingInvoiceBtn=='+this.creatingInvoiceBtn + '  ifZweig');
       // this.receiveInvoiceById(this.invoiceId);
       this.calculateInitialDataLoad();
-      console.log('this.creatingInvoiceBtn=='+this.creatingInvoiceBtn);
+      console.log('this.creatingInvoiceBtn=='+this.creatingInvoiceBtn + '  ifZweig');
     } else {
       console.log('this.creatingInvoiceBtn=='+this.creatingInvoiceBtn + '  elseZweig');
       // this.invoiceId = this.invoiceService.createNewInvoiceId();
@@ -118,10 +121,8 @@ export class InvoiceDetailComponent implements OnInit {
   calculateInitialDataCreate() {
     console.log('method calculateInitialDataCreate() {...}');
     this.invoiceDate = new Date();
-    console.log('this.invoiceDate: ' + this.invoiceDate.toString());
     this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(),
       this.invoiceDate.getDate() + 14, 12);
-    console.log('this.invoiceDueDate: ' + this.invoiceDueDate.toString());
 
   }
 
@@ -169,11 +170,7 @@ export class InvoiceDetailComponent implements OnInit {
   }
 
   invoiceDateChange(methEvent: string) {
-    console.log('Methode invoiceDateChange(...) aufgerufen mit: ' + methEvent);
     this.invoiceDate = new Date(methEvent);
-    console.log(typeof this.testNumber);
-    console.log(typeof this.invoiceDate);
-    console.log('Neuer Wert invoiceDate: ' + this.invoiceDate.toString());
     this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(),
       this.invoiceDate.getDate() + 14, 12);
   }
@@ -218,7 +215,6 @@ export class InvoiceDetailComponent implements OnInit {
     console.log('invoice-detail.component.ts: method saveInvoice');
     this.creatingInvoiceBtn = false;
     this.calculateSavingData();
-      console.log('invoice-detail.component.ts this.invoiceCurrency: ' + this.invoiceCurrency);
       this.invoiceService.saveInvoiceGlobalsByInvoiceId(this.invoiceId, this.countReminders, this.invoiceCurrency, this.invoiceDate,
         this.invoiceDueDate, this.invoiceNumber, this.invoiceIntendedUse, this.invoiceState, this.customerAdress,
         this.salesTaxPercentage, 'unknown',
