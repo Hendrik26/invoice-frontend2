@@ -43,7 +43,7 @@
       <p>A. Schaffhirt & A. Wünsche</p>
       <p>Biesnitzer Straße 8</p>
       <p>02826 Görlitz</p>
-      <p>GERMANY</p>
+      <p *ngIf="invoiceKind.international">GERMANY</p>
       <dl>
         <dt>Fon</dt>
         <dd>+49-3581-3221063</dd>
@@ -106,7 +106,7 @@
             <td>Summe Netto</td>
             <td>{{nettoSum | number:'1.2-2'}}{{invoiceCurrency}}</td>
           </tr>
-          <tr>
+          <tr *ngIf="invoiceKind.national">
             <td colspan="3"></td>
             <td>{{invoiceKind.national ? percentageString : ''}} MwSt.</td>
             <td> {{invoiceKind.national ? (salesTax | number:'1.2-2') : 'Brutto == Netto '}}{{invoiceCurrency}}</td>
@@ -167,13 +167,13 @@
       <div *ngIf="invoiceKind.isSEPA">
           <p>Die Forderung von {{bruttoSum | number:'1.2-2'}}{{invoiceCurrency}} ziehen wir mit der SEPA Basislastschrift
           zum Mandat
-          <input type="text" class="inputLarge" name="mandateIdentification" [(ngModel)]="mandateIdentification">
+          <input type="text" name="mandateIdentification" size="27" [(ngModel)]="mandateIdentification">
           zu der Gläubigeridentifikationsnummer {{creditorIdentificationNunber}}
           von Ihrem Konto
-          <input type="text" class="inputLarge" name="customerIBAN" [(ngModel)]="customerIBAN">
+          <input type="text" name="customerIBAN" size="27" [(ngModel)]="customerIBAN">
             bei der Bank
-          <input type="text" class="inputLarge" name="customerBIC" [(ngModel)]="customerBIC">
-          zum Fälligkeitsdatum {{invoiceDueDate}} ein. Wir bitten Sie,
+          <input type="text"  name="customerBIC" size="27" [(ngModel)]="customerBIC">
+          zum Fälligkeitsdatum {{invoiceDueDate | date:'yyyy-MM-dd'}} ein. Wir bitten Sie,
           für Kontodeckung zu sorgen.</p>
       </div>
     </section>
