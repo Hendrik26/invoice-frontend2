@@ -1,6 +1,7 @@
 export interface InvoiceType {
   invoiceDate: Date;
   invoiceDueDate: Date; // Faelligkeitsdatum
+  invoiceIntendedUse: string;
   invoiceNumber: string;
   recipient: string;
   invoiceState: string;

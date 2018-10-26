@@ -28,6 +28,7 @@ export class InvoiceService {
     invoiceDate: new Date('04. Februar 2016'),
     invoiceDueDate: new Date('24. Februar 2016'),
     invoiceNumber: '2018abcd',
+    invoiceIntendedUse: 'die Rechnungsnummer 2018',
     recipient: 'DusselGmbH',
     invoiceState: 'Entwurf',
     wholeCost: 1111.11,

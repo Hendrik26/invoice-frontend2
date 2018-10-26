@@ -32,12 +32,16 @@ header {
 }
 
 .checkboxfield {
-  text-align: center;
+  text-align: left;
 
 }
 
 .checkboxfield label {
   display: block;
+}
+
+.inputLarge {
+  width: 70%;
 }
 
 .invoice-number {

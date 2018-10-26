@@ -45,7 +45,7 @@ export class InvoiceDetailComponent implements OnInit {
   invoice: Invoice;
   invoiceCurrency = '€';
   invoiceNumber = '201800xx';
-  invoiceIntendedUse = 'die RechnungsNr. 201800xx';
+  invoiceIntendedUse = 'die Rechnungsnummer 201800xx';
   invoiceDate: Date;
   invoiceDueDate: Date;
   invoiceTimeSpan = '2018-01-01 bis 2018-12-31';
@@ -177,7 +177,7 @@ export class InvoiceDetailComponent implements OnInit {
 
   invoiceNumberChange(e: string) {
     this.invoiceNumber = e;
-    this.invoiceIntendedUse = 'die RechnungsNr. ' + this.invoiceNumber;
+    this.invoiceIntendedUse = 'die Rechnungsnummer. ' + this.invoiceNumber;
   }
 
 

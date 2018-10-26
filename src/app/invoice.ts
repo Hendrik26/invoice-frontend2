@@ -12,7 +12,8 @@ export class Invoice implements InvoiceType {
     private static emptyData: InvoiceType = {
         invoiceDate: new Date(),
         invoiceDueDate: new Date(),
-        invoiceNumber: '2018axbycz',
+        invoiceIntendedUse: 'die Rechnungsnummer 2018',
+        invoiceNumber: '2018',
         recipient: '',
         invoiceState: 'Entwurf',
         wholeCost: 0,
@@ -55,6 +56,7 @@ export class Invoice implements InvoiceType {
         this.newCreatedInvoice = true;
         this.invoiceDate = data.invoiceDate;
         this.invoiceDueDate = data.invoiceDueDate;
+        this.invoiceIntendedUse = data.invoiceIntendedUse;
         this.invoiceKind = new InvoiceKind();
         this.invoiceNumber = data.invoiceNumber;
         this.recipient = data.recipient;
