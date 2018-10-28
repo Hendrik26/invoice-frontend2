@@ -77,7 +77,7 @@
                 (ngModelChange)="invoiceTimespanBeginChange($event)">
         <input type="date" name="inStartDate" [ngModel]="timespanEnd | date:'yyyy-MM-dd'"
                 (ngModelChange)="invoiceTimespanEndChange($event)">
-        startDate: {{timespanBegin}};;; endDate: {{timespanEnd}}
+         {{timespan()}}
       </div>
 
 

@@ -264,7 +264,8 @@ export class InvoiceDetailComponent implements OnInit {
     }
 
     private timespan(): string {
-        return 'myTimeSpan';
+        const diffMonth: number = Math.round((this.timespanEnd.getTime()-this.timespanBegin.getTime()) / 1000 / 3600 / 24 / 30);
+        return '(' + diffMonth + 'Monate)';
     }
 
     //endregion
