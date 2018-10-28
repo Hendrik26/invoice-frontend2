@@ -132,7 +132,7 @@ export class InvoiceService {
                                 invoiceIntendedUse: string,
                                 invoiceState: string, recipient: string,
                                 salesTaxPercentage: number, timeSpan: string, wholeCost: number, invoiceKind: InvoiceKind,
-                                customerTaxNumber: string): void {
+                                customerTaxNumber: string, timespanBegin: Date, timespanEnd: Date): void {
     let methInvoice: Invoice;
     console.log('invoice.service.ts: method saveInvoiceGlobalsByInvoiceId((...){...}');
     for (let i = 0; i < INVOICES.length; i++) { // identifies the correct invpice
@@ -158,7 +158,8 @@ export class InvoiceService {
     console.log('invoiceService.saveInvoiceGlobalsByInvoiceId.invoiceKind == ' + methInvoice.invoiceKind.toString());
     methInvoice.customerTaxNumber = customerTaxNumber;
     console.log('invoiceService.saveInvoiceGlobalsByInvoiceId.customerTaxNumber == ' + methInvoice.customerTaxNumber);
-
+    methInvoice.timespanBegin = timespanBegin;
+    methInvoice.timespanEnd = timespanEnd;
   }
 
   saveNewInvoice(countReminders: number, currency: string, // can probably be deleted

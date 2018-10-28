@@ -43,6 +43,10 @@ export class Invoice implements InvoiceType {
     recipient: string; // <th>Empfänger</th>
     salesTaxPercentage: number;
     timeSpan: string; // <th>Rechnungzeitraum</th>
+
+    timespanBegin: Date;
+    timespanEnd: Date;
+
     // type: string;
     wholeCost: number; // <th>Gesamtpreis</th>
     //region IDs

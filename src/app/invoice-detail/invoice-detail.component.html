@@ -72,6 +72,15 @@
       </h1>
       <!-- p>Zeitraum: 2018-01-01 bis 2018-12-31 (12 Monate)</p>
     <input class="timeSpan" class="inputLarge" [(ngModel)]="invoiceTimeSpan" -->
+      <div class="timespan">Görlitz,
+        <input type="date" name="inStartDate" [ngModel]="timespanBegin | date:'yyyy-MM-dd'"
+                (ngModelChange)="invoiceTimespanBeginChange($event)">
+        <input type="date" name="inStartDate" [ngModel]="timespanEnd | date:'yyyy-MM-dd'"
+                (ngModelChange)="invoiceTimespanEndChange($event)">
+        startDate: {{timespanBegin}};;; endDate: {{timespanEnd}}
+      </div>
+
+
       <div class="mobile-style">
         <!-- span *ngFor="let invoice of invoices" *ngIf="invoice.id === invoiceId" -->
         <table>
