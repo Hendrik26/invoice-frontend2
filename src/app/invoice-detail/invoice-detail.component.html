@@ -150,7 +150,10 @@
             <dt>USt-IdNr.:</dt>
              <dd>DE243517710</dd>
               <dt>USt-IdNr. des Kunden:</dt>
-               <dd>ATU xxxxx {{customerTaxNumber}}</dd>
+               <dd>
+                 ATU xxxxx <input type="text" name="customerTaxNumber" size="27" [(ngModel)]="customerTaxNumber">
+                 yyyyyyyyyyyyyyyyyyyyyyyyyy {{customerTaxNumber}}
+               </dd>
           </dl>
          <p>Steuerschuldnerschaft des Leistungsempfängers (Reverse Charge)</p>
        </div>

@@ -4,6 +4,7 @@ import {INVOICES} from './mock-invoice';
 import {Observable, of} from 'rxjs';
 import {ItemType} from './item-type';
 import {InvoiceType} from './invoice-type';
+import {InvoiceKind} from './invoice-kind';
 
 @Injectable({
   providedIn: 'root'
@@ -130,7 +131,8 @@ export class InvoiceService {
                                 invoiceDate: Date, invoiceDueDate: Date, invoiceNumber: string,
                                 invoiceIntendedUse: string,
                                 invoiceState: string, recipient: string,
-                                salesTaxPercentage: number, timeSpan: string, wholeCost: number, customerTaxNumber: string): void {
+                                salesTaxPercentage: number, timeSpan: string, wholeCost: number, invoiceKind: InvoiceKind,
+                                customerTaxNumber: string): void {
     let methInvoice: Invoice;
     console.log('invoice.service.ts: method saveInvoiceGlobalsByInvoiceId((...){...}');
     for (let i = 0; i < INVOICES.length; i++) { // identifies the correct invpice
@@ -152,6 +154,11 @@ export class InvoiceService {
     methInvoice.salesTaxPercentage = salesTaxPercentage;
     methInvoice.timeSpan = timeSpan;
     methInvoice.wholeCost = wholeCost;
+    methInvoice.invoiceKind = invoiceKind;
+    console.log('invoiceService.saveInvoiceGlobalsByInvoiceId.invoiceKind == ' + methInvoice.invoiceKind.toString());
+    methInvoice.customerTaxNumber = customerTaxNumber;
+    console.log('invoiceService.saveInvoiceGlobalsByInvoiceId.customerTaxNumber == ' + methInvoice.customerTaxNumber);
+
   }
 
   saveNewInvoice(countReminders: number, currency: string, // can probably be deleted

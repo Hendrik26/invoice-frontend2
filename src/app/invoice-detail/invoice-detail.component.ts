@@ -204,6 +204,7 @@ export class InvoiceDetailComponent implements OnInit {
         this.salesTaxPercentage = invoice.salesTaxPercentage;
         this.timespan = invoice.timeSpan;
         // -----------------------------
+        this.invoiceKind = invoice.invoiceKind;
         this.customerTaxNumber = invoice.customerTaxNumber;
 
         // this.items = [];
@@ -231,6 +232,7 @@ export class InvoiceDetailComponent implements OnInit {
         this.salesTaxPercentage,
         'unknown',
         this.bruttoSum,
+        this.invoiceKind,
         this.customerTaxNumber
       );
   }
