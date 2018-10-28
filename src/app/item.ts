@@ -53,6 +53,15 @@ export class Item implements ItemType {
     return this.invoiceId;
   }
 
+    public countString(): string {
+        return this.hourPayment ? (this.count.toString() + ' Stunden') : (this.count.toString() + ' Stueck');
+    }
+
+
+    public partialCostString(currency: string): string {
+      return this.hourPayment ? (this.partialCost.toString() + currency + ' pro Stunde') : (this.partialCost.toString() + currency);
+  }
+
   //endregion
 
   // other methods

@@ -100,8 +100,9 @@
             <!-- loop for all items -->
             <td>{{item.itemName}}</td>
             <td>{{item.itemDate}}</td>
-            <td>{{item.count}}</td>
-            <td>{{item.partialCost | number:'1.2-2'}}{{invoiceCurrency}}</td>
+            <td>{{item.countString()}}</td>
+            <!-- td>{{item.partialCost | number:'1.2-2'}}{{invoiceCurrency}}</td -->
+            <td>{{item.partialCostString(invoiceCurrency)}}</td>
             <td>{{item.wholeCost | number:'1.2-2'}}{{invoiceCurrency}}</td>
             <td>
               <a routerLink="/item-detail/{{invoiceId}}/{{item.getItemId()}}">Posten bearbeiten</a>
