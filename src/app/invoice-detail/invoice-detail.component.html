@@ -75,7 +75,7 @@
       <!-- p>Zeitraum: 2018-01-01 bis 2018-12-31 (12 Monate)</p>
     <input class="timeSpan" class="inputLarge" [(ngModel)]="invoiceTimeSpan" -->
       <div class="timespan" *ngIf="timeSpanBased">
-        Zeitraum
+        Zeitraum:
         <input type="date" name="inStartDate" [ngModel]="timespanBegin | date:'yyyy-MM-dd'"
                 (ngModelChange)="invoiceTimespanBeginChange($event)">
         bis
@@ -200,8 +200,9 @@
       <p><strong>Adresse</strong></p>
       <p>SednaSoft GbR</p>
       <p>A.Schaffhirt & A.Wünsche</p>
-      <p>Biesnitzed Straße 8</p>
+      <p>Biesnitzer Straße 8</p>
       <p>02826 Görlitz</p>
+      <p *ngIf="international">GERMANY</p>
     </div>
     <div class="contact">
       <p><strong>Kontakt</strong></p>
