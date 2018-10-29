@@ -55,7 +55,7 @@ export class InvoiceDetailComponent implements OnInit {
     items: Item[];
 
     nettoSum: number;
-    percentageString: string;
+    percentageString = '19%';
     receivedInvoiceIdError: boolean;
     salesTax: number;
     salesTaxPercentage = 19;
@@ -68,7 +68,6 @@ export class InvoiceDetailComponent implements OnInit {
   public isSEPA = false; // ist SEPA-Lastschrift, Bit2
 
 
-  testNumber = 100;
 
     //endregion
 
