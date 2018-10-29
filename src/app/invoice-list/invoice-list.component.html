@@ -12,18 +12,13 @@
       <input type="date" name="fStartDueDate"
                                         [ngModel]="filterStartDueDate | date:'yyyy-MM-dd'"
                                         (ngModelChange)="changeFilterStartDueDate($event)">
-      <button name="sort" id="sortStartDueDate" (click)="sortStartDueDateClick()">
-        Sortierung {{sortStartDueDate.getSortingOrderName()}}
-      </button>
+
     </div>
     <div>Fälligkeitsdatum bis<br><input type="date" name="fEndDueDate" [ngModel]="filterEndDueDate | date:'yyyy-MM-dd'"
                                         (ngModelChange)="changeFilterEndDueDate($event)"></div>
     <div>
-      Rechnungsdatum von<br><input type="date" name="fStartDate" [ngModel]="filterStartDate | date:'yyyy-MM-dd'"
+      Rechnungsdatum von <br><input type="date" name="fStartDate" [ngModel]="filterStartDate | date:'yyyy-MM-dd'"
                                       (ngModelChange)="changeFilterStartDate($event)">
-      <button name="sort" id="sortStartDate" (click)="sortStartDateClick()">
-        Sortierung {{sortStartDate.getSortingOrderName()}}
-      </button>
 
     </div>
     <div>Rechnungsdatum bis<br><input type="date" name="fEndDate" [ngModel]="filterEndDate | date:'yyyy-MM-dd'"
@@ -46,9 +41,6 @@
           {{opt}}
         </option>
       </select>
-      <button name="sort" id="sortCompanyName" (click)="sortCompanyNameClick()">
-        Sortierung {{sortCompanyName.getSortingOrderName()}}
-      </button>
 
     </div>
 
@@ -58,10 +50,27 @@
       <thead>
       <tr>
         <th>RechnungsId</th>
-        <th>Fälligkeitsdatum</th>
-        <th>Rechnungsdatum</th>
+        <th>
+          Fälligkeitsdatum
+          <button name="sort" id="sortStartDueDate" (click)="sortStartDueDateClick()">
+            Sortierung {{sortStartDueDate.getSortingOrderName()}}
+          </button>
+        </th>
+        <th>
+          Rechnungsdatum
+          <button name="sort" id="sortStartDate" (click)="sortStartDateClick()">
+            Sortierung {{sortStartDate.getSortingOrderName()}}
+          </button>
+
+        </th>
         <th>Rechnungsnr</th>
-        <th>Empfänger</th>
+        <th>
+          Empfänger
+          <button name="sort" id="sortCompanyName" (click)="sortCompanyNameClick()">
+            Sortierung {{sortCompanyName.getSortingOrderName()}}
+          </button>
+
+        </th>
         <th>Status (Entwurf, bezahlt, ...)</th>
         <th>Gesamtpreis</th>
         <th>Anzahl der Mahnungen</th>
