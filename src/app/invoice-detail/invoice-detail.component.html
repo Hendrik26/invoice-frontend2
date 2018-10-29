@@ -5,7 +5,7 @@
   invoice-detail.component.currency: {{this.invoiceCurrency}};;;<br>
   creatingInvoiceBtn: {{creatingInvoiceBtn}};;,;<br>
    international(): {{international}};;;<br>
-  timeSpanBased(): {{timeSpanBased}};;;;<br>
+  timeSpanBased(): {{timeSpanBased}};;;<br>
   isSEPA(): {{isSEPA}};;;;<br>
 
 
@@ -119,10 +119,10 @@
             <td>Summe Netto</td>
             <td>{{nettoSum | number:'1.2-2'}}{{invoiceCurrency}}</td>
           </tr>
-          <tr *ngIf="national">
+          <tr *ngIf="!international">
             <td colspan="3"></td>
-            <td>{{national ? percentageString : ''}} MwSt.</td>
-            <td> {{national ? (salesTax | number:'1.2-2') : 'Brutto == Netto '}}{{invoiceCurrency}}</td>
+            <td>{{!international ? percentageString : ''}} MwSt.</td>
+            <td> {{!international ? (salesTax | number:'1.2-2') : 'Brutto == Netto '}}{{invoiceCurrency}}</td>
             <td>
               <button type="button">Mehrwertsteuer ändern</button>
             </td>
