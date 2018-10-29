@@ -160,6 +160,11 @@ export class InvoiceDetailComponent implements OnInit {
         return this.calculateNettoSum(methId) * this.salesTaxPercentage / 100;
     }
 
+    changeInternational(): void {
+      this.invoiceKind.changeInternational();
+      this.calculateSums();
+    }
+
     hasReceivedInvoiceId(): // can NOT be deleted
         boolean {
         if (this.route.snapshot.paramMap.has('invoiceId')) {

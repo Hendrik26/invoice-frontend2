@@ -23,7 +23,7 @@
 
     <div class="checkboxfield">
       <label><input type="checkbox" name="international" [checked]="invoiceKind.international"
-                    (change)="invoiceKind.changeInternational()"> Auslandsrechnung</label>
+                    (change)="changeInternational()"> Auslandsrechnung</label>
       <label><input type="checkbox" name="timeSpanBased" [checked]="invoiceKind.timeSpanBased"
                     (change)="invoiceKind.changeTimeSpanBased()"> Zeitraumbasiert</label>
       <label><input type="checkbox" name="isSEPA" [checked]="invoiceKind.isSEPA"
