@@ -75,8 +75,10 @@
       <!-- p>Zeitraum: 2018-01-01 bis 2018-12-31 (12 Monate)</p>
     <input class="timeSpan" class="inputLarge" [(ngModel)]="invoiceTimeSpan" -->
       <div class="timespan" *ngIf="timeSpanBased">
+        Zeitraum
         <input type="date" name="inStartDate" [ngModel]="timespanBegin | date:'yyyy-MM-dd'"
                 (ngModelChange)="invoiceTimespanBeginChange($event)">
+        bis
         <input type="date" name="inStartDate"
                [ngModel]="timespanEnd ? (timespanEnd | date:'yyyy-MM-dd') : ''"
                (ngModelChange)="invoiceTimespanEndChange($event)">
@@ -164,8 +166,7 @@
              <dd>DE243517710</dd>
               <dt>USt-IdNr. des Kunden:</dt>
                <dd>
-                 ATU xxxxx <input type="text" name="customerTaxNumber" size="27" [(ngModel)]="customerTaxNumber">
-                 yyyyyyyyyyyyyyyyyyyyyyyyyy {{customerTaxNumber}}
+                 <input type="text" name="customerTaxNumber" size="27" [(ngModel)]="customerTaxNumber">
                </dd>
           </dl>
          <p>Steuerschuldnerschaft des Leistungsempfängers (Reverse Charge)</p>
@@ -185,9 +186,9 @@
           zum Mandat
           <input type="text" name="mandateIdentification" size="27" [(ngModel)]="mandateIdentification">
           zu der Gläubigeridentifikationsnummer {{creditorIdentificationNunber}}
-          von Ihrem Konto
+          von Ihrem Konto IBAN
           <input type="text" name="customerIBAN" size="27" [(ngModel)]="customerIBAN">
-            bei der Bank
+            bei der Bank BIC
           <input type="text"  name="customerBIC" size="27" [(ngModel)]="customerBIC">
           zum Fälligkeitsdatum {{invoiceDueDate | date:'yyyy-MM-dd'}} ein. Wir bitten Sie,
           für Kontodeckung zu sorgen.</p>
