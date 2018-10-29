@@ -40,7 +40,13 @@ export class InvoiceKind {
         this._isSEPA = false;
     }
 
-
+    public static create(international: boolean, timeSpanBased: boolean, isSEPA:boolean): InvoiceKind {
+      const invoiceKind = new InvoiceKind();
+      invoiceKind.international = international;
+      invoiceKind.timeSpanBased = timeSpanBased;
+      invoiceKind.isSEPA = isSEPA;
+      return invoiceKind;
+    }
 
 
     // getter

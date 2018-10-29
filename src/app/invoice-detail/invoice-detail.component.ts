@@ -1,13 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {InvoiceService} from '../invoice.service';
 // new imports added
-import {Router} from '@angular/router';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {Invoice} from '../invoice';
 import {Item} from '../item';
 import {InvoiceKind} from '../invoice-kind';
-import {INVOICES} from '../mock-invoice';
 
 @Component({
     selector: 'app-invoice-detail',
@@ -62,10 +60,15 @@ export class InvoiceDetailComponent implements OnInit {
     salesTax: number;
     salesTaxPercentage = 19;
 
-    timespanBegin: Date;
-    timespanEnd: Date;
+  timespanBegin: Date = null;
+  timespanEnd: Date = null;
 
-    testNumber = 100;
+  public international = false; // Inlandsrechnung, Bit0
+  public timeSpanBased = false; // UZeitraumbasierter Rechnung, Bit1
+  public isSEPA = false; // ist SEPA-Lastschrift, Bit2
+
+
+  testNumber = 100;
 
     //endregion
 
@@ -141,7 +144,7 @@ export class InvoiceDetailComponent implements OnInit {
     }
 
     calculateBruttoSum(methId: string): number {
-     return this.invoiceKind.national ? (this.calculateNettoSum(methId) + this.calculateSalesTax(methId)) : this.calculateNettoSum(methId);
+      return !this.international ? (this.calculateNettoSum(methId) + this.calculateSalesTax(methId)) : this.calculateNettoSum(methId);
     }
 
     calculateNettoSum(methId: string): number {
@@ -161,9 +164,24 @@ export class InvoiceDetailComponent implements OnInit {
     }
 
     changeInternational(): void {
-      this.invoiceKind.changeInternational();
+      this.international = !this.international;
+      console.log('invoice-detail.component.ts.changeInternational()');
       this.calculateSums();
     }
+
+
+  public changeTimeSpanBased(): void {
+    console.log('invoice-detail.component.ts.changeTimeSpanBased(), T1');
+    this.timeSpanBased = !this.timeSpanBased;
+    console.log('invoice-detail.component.ts.changeTimeSpanBased(), T2');
+
+  }
+
+  public changeIsSEPA(): void {
+    this.isSEPA = !this.isSEPA;
+    console.log('invoice-detail.component.ts.changeISSEPAs()');
+
+  }
 
     hasReceivedInvoiceId(): // can NOT be deleted
         boolean {
@@ -227,7 +245,12 @@ export class InvoiceDetailComponent implements OnInit {
                 this.timespanBegin = invoice.timespanBegin;
                 this.timespanEnd = invoice.timespanEnd;
 
-                // this.items = [];
+              this.international = invoice.invoiceKind.international;
+              this.timeSpanBased = invoice.invoiceKind.timeSpanBased;
+              this.isSEPA = invoice.invoiceKind.isSEPA;
+
+
+              // this.items = [];
                 // this.invoice.items.forEach((item) => {this.items.push({...item})});
                 this.items = invoice.items;
             });
@@ -239,6 +262,7 @@ export class InvoiceDetailComponent implements OnInit {
         console.log('invoice-detail.component.ts: method saveInvoice');
         this.creatingInvoiceBtn = false;
         this.calculateSavingData();
+      this.invoiceKind = InvoiceKind.create(this.international, this.timeSpanBased, this.isSEPA);
         this.invoiceService.saveInvoiceGlobalsByInvoiceId(
             this.invoiceId,
             this.countReminders,
@@ -269,8 +293,11 @@ export class InvoiceDetailComponent implements OnInit {
     }
 
     private timespan(): string {
-        const diffMonth: number = Math.round((this.timespanEnd.getTime()-this.timespanBegin.getTime()) / 1000 / 3600 / 24 / 30);
-        return '(' + diffMonth + 'Monate)';
+      if (!this.timespanEnd || !this.timespanBegin) {
+        return 'Ungueltiges Datum';
+      }
+      const diffMonth: number = Math.round((this.timespanEnd.getTime() - this.timespanBegin.getTime()) / 1000 / 3600 / 24 / 30);
+      return '(' + diffMonth + ' Monate)';
     }
 
     //endregion

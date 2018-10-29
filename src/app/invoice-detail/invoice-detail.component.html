@@ -4,8 +4,10 @@
   invoiceDueDate: {{invoiceDueDate}}<br>
   invoice-detail.component.currency: {{this.invoiceCurrency}};;;<br>
   creatingInvoiceBtn: {{creatingInvoiceBtn}};;,;<br>
-  invoiceKind international()": {{invoiceKind.international}};;;<br>
-  invoiceKind timeSpanBased()": {{invoiceKind.timeSpanBased}};;;;<br>
+   international(): {{international}};;;<br>
+  timeSpanBased(): {{timeSpanBased}};;;;<br>
+  isSEPA(): {{isSEPA}};;;;<br>
+
 
 </div>
 
@@ -22,12 +24,12 @@
     </div><!-- class="adress-window" -->
 
     <div class="checkboxfield">
-      <label><input type="checkbox" name="international" [checked]="invoiceKind.international"
+      <label><input type="checkbox" name="international" [checked]="international"
                     (change)="changeInternational()"> Auslandsrechnung</label>
-      <label><input type="checkbox" name="timeSpanBased" [checked]="invoiceKind.timeSpanBased"
-                    (change)="invoiceKind.changeTimeSpanBased()"> Zeitraumbasiert</label>
-      <label><input type="checkbox" name="isSEPA" [checked]="invoiceKind.isSEPA"
-                    (change)="invoiceKind.changeIsSEPA()"> SEPA-Lastschriftmandat</label>
+      <label><input type="checkbox" name="timeSpanBased" [checked]="timeSpanBased"
+                    (change)="changeTimeSpanBased()"> Zeitraumbasiert</label>
+      <label><input type="checkbox" name="isSEPA" [checked]="isSEPA"
+                    (change)="changeIsSEPA()"> SEPA-Lastschriftmandat</label>
     </div>
 
 
@@ -43,7 +45,7 @@
       <p>A. Schaffhirt & A. Wünsche</p>
       <p>Biesnitzer Straße 8</p>
       <p>02826 Görlitz</p>
-      <p *ngIf="invoiceKind.international">GERMANY</p>
+      <p *ngIf="international">GERMANY</p>
       <dl>
         <dt>Fon</dt>
         <dd>+49-3581-3221063</dd>
@@ -72,11 +74,12 @@
       </h1>
       <!-- p>Zeitraum: 2018-01-01 bis 2018-12-31 (12 Monate)</p>
     <input class="timeSpan" class="inputLarge" [(ngModel)]="invoiceTimeSpan" -->
-      <div class="timespan" *ngIf="invoiceKind.timeSpanBased">
+      <div class="timespan" *ngIf="timeSpanBased">
         <input type="date" name="inStartDate" [ngModel]="timespanBegin | date:'yyyy-MM-dd'"
                 (ngModelChange)="invoiceTimespanBeginChange($event)">
-        <input type="date" name="inStartDate" [ngModel]="timespanEnd | date:'yyyy-MM-dd'"
-                (ngModelChange)="invoiceTimespanEndChange($event)">
+        <input type="date" name="inStartDate"
+               [ngModel]="timespanEnd ? (timespanEnd | date:'yyyy-MM-dd') : ''"
+               (ngModelChange)="invoiceTimespanEndChange($event)">
          {{timespan()}}
       </div>
 
@@ -116,10 +119,10 @@
             <td>Summe Netto</td>
             <td>{{nettoSum | number:'1.2-2'}}{{invoiceCurrency}}</td>
           </tr>
-          <tr *ngIf="invoiceKind.national">
+          <tr *ngIf="national">
             <td colspan="3"></td>
-            <td>{{invoiceKind.national ? percentageString : ''}} MwSt.</td>
-            <td> {{invoiceKind.national ? (salesTax | number:'1.2-2') : 'Brutto == Netto '}}{{invoiceCurrency}}</td>
+            <td>{{national ? percentageString : ''}} MwSt.</td>
+            <td> {{national ? (salesTax | number:'1.2-2') : 'Brutto == Netto '}}{{invoiceCurrency}}</td>
             <td>
               <button type="button">Mehrwertsteuer ändern</button>
             </td>
@@ -155,7 +158,7 @@
       <button>cancel</button>
       <button (click)="backToInvoiceList()">zurückBtn</button>
       <p></p>
-       <div *ngIf="invoiceKind.international">
+       <div *ngIf="international">
          <dl>
             <dt>USt-IdNr.:</dt>
              <dd>DE243517710</dd>
@@ -168,7 +171,7 @@
          <p>Steuerschuldnerschaft des Leistungsempfängers (Reverse Charge)</p>
        </div>
       <p></p>
-      <div *ngIf="!invoiceKind.isSEPA">
+      <div *ngIf="!isSEPA">
         <p>Bitte überweisen Sie den Rechnungsbetrag bis zum
           <input type="date" name="inDueDate" [ngModel]="invoiceDueDate | date:'yyyy-MM-dd'"
                  (ngModelChange)="invoiceDueDate = $event">
@@ -177,7 +180,7 @@
           <input type="text" class="inputLarge" name="intendedUse" [(ngModel)]="invoiceIntendedUse">
           an.</p>
       </div>
-      <div *ngIf="invoiceKind.isSEPA">
+      <div *ngIf="isSEPA">
           <p>Die Forderung von {{bruttoSum | number:'1.2-2'}}{{invoiceCurrency}} ziehen wir mit der SEPA Basislastschrift
           zum Mandat
           <input type="text" name="mandateIdentification" size="27" [(ngModel)]="mandateIdentification">
