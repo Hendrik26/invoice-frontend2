@@ -7,13 +7,15 @@ import {InvoiceDetailComponent} from './invoice-detail/invoice-detail.component'
 import {ItemDetailComponent} from './item-detail/item-detail.component';
 import {InvoiceRouterModule} from './/invoice-router.module';
 import {FormsModule} from '@angular/forms';
+import { CustomerListComponent } from './customer-list/customer-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InvoiceListComponent,
     InvoiceDetailComponent,
-    ItemDetailComponent
+    ItemDetailComponent,
+    CustomerListComponent
   ],
   imports: [
     BrowserModule,
