@@ -8,5 +8,5 @@ export interface CustomerType {
     addressLine2:  string;
     addressLine3:  string;
     customerSalesTaxNumber:  string;
-    creationTime: string;
+    creationTime: Date;
 }
