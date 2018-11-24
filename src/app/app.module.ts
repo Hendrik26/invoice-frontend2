@@ -8,6 +8,7 @@ import {ItemDetailComponent} from './item-detail/item-detail.component';
 import {InvoiceRouterModule} from './/invoice-router.module';
 import {FormsModule} from '@angular/forms';
 import { CustomerListComponent } from './customer-list/customer-list.component';
+import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
     InvoiceListComponent,
     InvoiceDetailComponent,
     ItemDetailComponent,
-    CustomerListComponent
+    CustomerListComponent,
+    CustomerDetailComponent
   ],
   imports: [
     BrowserModule,
