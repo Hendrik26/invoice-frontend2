@@ -1,3 +1,20 @@
-<p>
-  customer-detail works!
-</p>
+<div class="item-detail">
+  <h1>Kundenverwaltung</h1>
+  <h2>cutomer_0815</h2>
+  <form>
+    <label><span>Kundennummer</span><input type="text" name="customerNumber" [(ngModel)]="customerNumber"></label>
+    <label><span>Kundenname</span><input type="text" name="customerName" [(ngModel)]="customerName"></label>
+    <label><span>Land</span><input type="text" name="country" [(ngModel)]="country"></label>
+    <label><span>Postleitzahl</span><input type="text" name="postalCode" [(ngModel)]="postalCode"></label>
+    <label><span>Stadt</span><input type="text" name="city" [(ngModel)]="city"></label>
+    <label><span>Adresse 1</span><input type="text" name="addressLine1" [(ngModel)]="addressLine1"></label>
+    <label><span>Adresse 2</span><input type="text" name="addressLine2" [(ngModel)]="addressLine2"></label>
+    <label><span>Adresse 3</span><input type="text" name="addressLine3" [(ngModel)]="addressLine3"></label>
+    <label><span>Umsatzsteuernummer</span><input type="text" name="•	customerSalesTaxNumber" [(ngModel)]="customerSalesTaxNumber"></label>
+    <br>
+    <button>save</button>
+    <button>cancel</button>
+    <button>back</button>
+  </form>
+</div>
+
