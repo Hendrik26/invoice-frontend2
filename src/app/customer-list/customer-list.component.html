@@ -7,7 +7,7 @@
         <table style="width:100%">
             <thead>
             <tr>
-                <th>KundenId</th>
+                <th>KundenNummer</th>
                 <th>Kundenname</th>
                 <th>Land</th>
                 <th>Postleitzahl</th>
@@ -16,6 +16,7 @@
                 <th>Adresse 2</th>
                 <th>Adresse 3</th>
                 <th>Umsatzsteuernummer</th>
+                <th>erstellt am</th>
                 <th>Ändern</th>
             </tr>
             </thead>
@@ -30,6 +31,7 @@
                 <td>{{customer.addressLine2}}</td>
                 <td>{{customer.addressLine3}}</td>
                 <td>{{customer.customerSalesTaxNumber}}</td>
+                <td>{{customer.creationTime | date:'yyyy-MM-dd'}}</td>
                 <td>
                     <a routerLink="/customer-list">Kunden bearbeiten</a>
                 </td>
