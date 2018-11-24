@@ -10,14 +10,14 @@ import {INVOICES} from './mock-invoice';
 
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CustomerService {
 
-  constructor() { }
+    constructor() { }
 
 
-  // region getter
+    // region getter
     getCustomers(): Observable<Customer[]> {
         return of(CUSTOMERS);
     }
@@ -33,6 +33,6 @@ export class CustomerService {
     }
 
 
-  // endregion
+    // endregion
 
 }

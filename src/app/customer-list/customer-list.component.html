@@ -33,14 +33,14 @@
                 <td>{{customer.customerSalesTaxNumber}}</td>
                 <td>{{customer.creationTime | date:'yyyy-MM-dd'}}</td>
                 <td>
-                    <a routerLink="/customer-detail/{{customer.getCustomerId()}}">Kunden bearbeiten</a>
+                    <a routerLink="/customer-detail/{{customer.getCustomerId()}}/false">Kunden bearbeiten</a>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
 
-    <a routerLink="/customer-list">neuer KundeKunden</a>
+    <button (click)="newCustomereBtn()">Neuer Kunde</button>
     <a routerLink="/invoice-list">Rechnungen bearbeiten</a>
 
 

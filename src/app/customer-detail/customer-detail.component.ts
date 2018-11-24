@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Customer} from '../customer';
 import {CustomerService} from '../customer.service';
 import {Location} from '@angular/common';
 
@@ -16,8 +15,9 @@ export class CustomerDetailComponent implements OnInit {
     // endregion
 
     // region other properties
-    creatingCustomer: boolean;
-    creatingCustomerBtn: boolean;
+    //creatingCustomer: boolean;
+    //creatingCustomerBtn: boolean;
+    newCustomer; // Type?????????????
     receivedCustomerIdError: boolean;
     customerNumber: string; // Kundennummer
     customerName: string;  // Kundenname
@@ -39,7 +39,7 @@ export class CustomerDetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.creatingCustomer = false;
+        this.newCustomer = false;
         this.receivedCustomerIdError = !this.hasReceivedCustomerId();
         if (!this.receivedCustomerIdError) {
             this.receiveCustomerById(this.customerId);
@@ -48,8 +48,9 @@ export class CustomerDetailComponent implements OnInit {
 
     hasReceivedCustomerId(): // can NOT be deleted
         boolean {
-        if (this.route.snapshot.paramMap.has('customerId')) {
+        if (this.route.snapshot.paramMap.has('customerId') && this.route.snapshot.paramMap.has('newCustomer')) {
             this.customerId = this.route.snapshot.paramMap.get('customerId');  // get customerID???? customerId from URL
+            this.newCustomer = this.route.snapshot.paramMap.get('newCustomer');
             return true;
         } else {
             this.customerId = null; // stands for the creation of a new customer
