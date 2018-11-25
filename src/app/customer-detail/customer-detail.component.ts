@@ -62,17 +62,17 @@ export class CustomerDetailComponent implements OnInit {
 
     receiveCustomerById(methId: string): void {
         this.customerService.getCustomerObservableById(methId)
-            .subscribe(invoice => {
-                this.customerNumber = invoice.customerNumber;
-                this.customerName = invoice.customerName;
-                this.country = invoice.country;
-                this.postalCode = invoice.postalCode;
-                this.city = invoice.city;
-                this.addressLine1 = invoice.addressLine1;
-                this.addressLine2 = invoice.addressLine2;
-                this.addressLine3 = invoice.addressLine3;
-                this.customerSalesTaxNumber = invoice.customerSalesTaxNumber;
-                this.creationTime = invoice.creationTime;
+            .subscribe(customer => {
+                this.customerNumber = customer.customerNumber;
+                this.customerName = customer.customerName;
+                this.country = customer.country;
+                this.postalCode = customer.postalCode;
+                this.city = customer.city;
+                this.addressLine1 = customer.addressLine1;
+                this.addressLine2 = customer.addressLine2;
+                this.addressLine3 = customer.addressLine3;
+                this.customerSalesTaxNumber = customer.customerSalesTaxNumber;
+                this.creationTime = customer.creationTime;
             });
     }
 

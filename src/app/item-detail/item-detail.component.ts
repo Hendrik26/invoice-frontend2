@@ -28,9 +28,7 @@ export class ItemDetailComponent implements OnInit {
   item: Item;
   itemDate: string;
   itemName: string;
-  nettoSum: number;
   partialCost: number;
-  percentageString: string;
   salesTax: number;
   wholeCost: number;
 
