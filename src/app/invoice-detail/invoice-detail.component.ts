@@ -27,12 +27,6 @@ export class InvoiceDetailComponent implements OnInit {
     creatingInvoiceBtn: boolean;
     creditorIdentificationNunber = 'DE55ZZZ00001275596';
 
-    customerFirm = 'BspFirma';
-    customerContactPerson = 'Ansprechpartner';
-    customerStreet = 'Straße + HausNr.';
-    customerPostCode = 'PLZ';
-    customerCity = 'Ort';
-    customerCountry = 'Land';
     customerAdress: string;
 
     customerBIC = 'Invoice-Bsp-BIC';
@@ -108,21 +102,14 @@ export class InvoiceDetailComponent implements OnInit {
 
 
     //region other methods
-    public addItemBtn(): void { // can probably be deleted
-        const i = 1;
-        // const invoice = Invoice.createNewInvoice();
-        /* INVOICES.push(invoice);
-        const invoiceId = invoice.getID();
-        this.router.navigateByUrl('invoice-detail/' + invoiceId); */
-    }
 
-    calculateInitialDataLoad() {
+  private calculateInitialDataLoad() {
         console.log('method calculateInitialDataLoad() {...}');
         this.percentageString = this.invoiceService.getSalesTaxPercentageString(this.invoiceId);
         this.calculateSums();
     }
 
-    calculateInitialDataCreate() {
+  private calculateInitialDataCreate() {
         console.log('method calculateInitialDataCreate() {...}');
         this.invoiceDate = new Date();
         this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(),
@@ -130,23 +117,23 @@ export class InvoiceDetailComponent implements OnInit {
 
     }
 
-    calculateSums(): void {
+  private calculateSums(): void {
         this.nettoSum = this.calculateNettoSum(this.invoiceId);
         this.salesTax = this.calculateSalesTax(this.invoiceId); // hier
         this.bruttoSum = this.calculateBruttoSum(this.invoiceId);
     }
 
-    calculateSavingData() {
+  private calculateSavingData() {
         this.calculateSums();
         // this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(),
         //  this.invoiceDate.getDate() + 14, 12);
     }
 
-    calculateBruttoSum(methId: string): number {
+  private calculateBruttoSum(methId: string): number {
       return !this.international ? (this.calculateNettoSum(methId) + this.calculateSalesTax(methId)) : this.calculateNettoSum(methId);
     }
 
-    calculateNettoSum(methId: string): number {
+  private calculateNettoSum(methId: string): number {
         let methSum = 0;
         if (this.items !== undefined) {
             for (let i = 0; i < this.items.length; i++) {
@@ -156,13 +143,13 @@ export class InvoiceDetailComponent implements OnInit {
         return methSum;
     }
 
-    calculateSalesTax(methId: string): number {
+  private calculateSalesTax(methId: string): number {
         // var methInvoice: Invoice;
         // methInvoice = this.invoice;
         return this.calculateNettoSum(methId) * this.salesTaxPercentage / 100;
     }
 
-    changeInternational(): void {
+    private changeInternational(): void {
       this.international = !this.international;
       console.log('invoice-detail.component.ts.changeInternational()');
       this.calculateSums();
@@ -182,7 +169,7 @@ export class InvoiceDetailComponent implements OnInit {
 
   }
 
-    hasReceivedInvoiceId(): // can NOT be deleted
+    private hasReceivedInvoiceId(): // can NOT be deleted
         boolean {
         if (this.route.snapshot.paramMap.has('invoiceId')) {
             this.invoiceId = this.route.snapshot.paramMap.get('invoiceId');  // get itemID???? invoiceId from URL
@@ -193,36 +180,29 @@ export class InvoiceDetailComponent implements OnInit {
         }
     }
 
-    invoiceDateChange(methEvent: string) {
+    private invoiceDateChange(methEvent: string) {
         this.invoiceDate = new Date(methEvent);
         this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(),
             this.invoiceDate.getDate() + 14, 12);
     }
 
-    invoiceTimespanBeginChange(methEvent: string) {
+    private invoiceTimespanBeginChange(methEvent: string) {
         this.timespanBegin = new Date(methEvent);
         // this.invoiceDueDate = new Date(this.invoiceDate.getFullYear(), this.invoiceDate.getMonth(),
         //   this.invoiceDate.getDate() + 14, 12);
     }
 
-    invoiceTimespanEndChange(methEvent: string) {
+    private invoiceTimespanEndChange(methEvent: string) {
         this.timespanEnd = new Date(methEvent);
     }
 
 
-    invoiceNumberChange(e: string) {
+    private invoiceNumberChange(e: string) {
         this.invoiceNumber = e;
         this.invoiceIntendedUse = 'die Rechnungsnummer. ' + this.invoiceNumber;
     }
 
-
-    receiveInvoiceId():
-        void {
-        this.invoiceId = this.route.snapshot.paramMap.get('invoiceId');  // get invoiceID from URL
-        // this.invoiceId = +this.route.snapshot.paramMap.get('invoiceId');  // + converts string to number
-    }
-
-    receiveInvoiceById(methId: string): void {
+    private receiveInvoiceById(methId: string): void {
         this.invoiceService.getInvoiceObservableById(methId)
             .subscribe(invoice => {
                 // TODO remove this.invoice.....
@@ -257,7 +237,7 @@ export class InvoiceDetailComponent implements OnInit {
 
     }
 
-    saveInvoice(): void {
+    private saveInvoice(): void {
         console.log('invoice-detail.component.ts: method saveInvoice');
         this.creatingInvoiceBtn = false;
         this.calculateSavingData();
@@ -282,7 +262,7 @@ export class InvoiceDetailComponent implements OnInit {
         );
     }
 
-    backToInvoiceList(): void {
+    private backToInvoiceList(): void {
         if (this.creatingInvoice || this.creatingInvoiceBtn) {
             this.creatingInvoice = false;
             this.creatingInvoiceBtn = false;

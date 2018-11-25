@@ -19,7 +19,6 @@ export class ItemDetailComponent implements OnInit {
 
   //region other properties
   backUrl: string;
-  bruttoSum: number;
   count: number;
   creatingItem: boolean;
   currency: string;
@@ -53,27 +52,11 @@ export class ItemDetailComponent implements OnInit {
   }
 
   //region other methods
-  cancelItem(): void {
+  private cancelItem(): void {
     this.receiveItemByIds(this.invoiceId, this.itemId);
   }
 
-  createItemByInvoiceId(methInvoiceId: string): void {
-    //  this.currentItem = itemReceived;
-    this.itemName = '';
-    this.itemDate = new Date().getDate().toString();
-    this.hourPayment = true;
-    this.partialCost = 0;
-    this.count = 0;
-    this.currency = '€';
-    this.wholeCost = 0;
-    // Empfängt Daten aus einem Datenstream, d.h. wenn sich invoice ändert übernimmt this.invoice die Daten von invoice
-  }
-
-  goBack(): void {
-    this.location.back();
-  }
-
-  hasReceivedItemId():
+  private hasReceivedItemId():
     boolean {
     if (this.route.snapshot.paramMap.has('itemId')) {
       this.itemId = +this.route.snapshot.paramMap.get('itemId');  // get itemID from URL
@@ -85,13 +68,13 @@ export class ItemDetailComponent implements OnInit {
     }
   }
 
-  receiveInvoiceId():
+  private receiveInvoiceId():
     void {
     this.invoiceId = this.route.snapshot.paramMap.get('invoiceId');  // get invoiceID from URL
   }
 
 
-  receiveItemByIds(methInvoiceId: string, methItemId: number): void {
+  private receiveItemByIds(methInvoiceId: string, methItemId: number): void {
     this.itemService.getItemByItemId(methInvoiceId, methItemId)
       .subscribe((itemReceived: Item) => { // Lambda-Expression
         this.currentItem = itemReceived;
@@ -106,7 +89,7 @@ export class ItemDetailComponent implements OnInit {
     // Empfängt Daten aus einem Datenstream, d.h. wenn sich invoice ändert übernimmt this.invoice die Daten von invoice
   }
 
-  saveItem(): void {
+  private saveItem(): void {
     // TODO Error if pressing saveButton in item-detail.component.html more then one time
     this.wholeCost = this.count * this.partialCost;
     if (this.creatingItem) {
@@ -120,7 +103,7 @@ export class ItemDetailComponent implements OnInit {
   }
 
 
-  togglePayment() {
+  private togglePayment() {
     this.hourPayment = !this.hourPayment;
   }
 
