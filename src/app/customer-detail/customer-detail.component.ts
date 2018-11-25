@@ -15,9 +15,9 @@ export class CustomerDetailComponent implements OnInit {
     // endregion
 
     // region other properties
-    //creatingCustomer: boolean;
-    //creatingCustomerBtn: boolean;
-    newCustomer; // Type?????????????
+    // creatingCustomer: boolean;
+    // creatingCustomerBtn: boolean;
+    newCustomer: boolean; // Type?????????????
     receivedCustomerIdError: boolean;
     customerNumber: string; // Kundennummer
     customerName: string;  // Kundenname
@@ -29,8 +29,15 @@ export class CustomerDetailComponent implements OnInit {
     addressLine3: string;
     customerSalesTaxNumber: string;
     creationTime: Date;
-
     // endregion
+
+    private myStringToBoolean(input: string): boolean {
+        if (input.toLowerCase() === 'true') {
+            return true;
+        } else {
+            return false;
+        }
+    }
     constructor(
         private router: Router,
         private route: ActivatedRoute,
@@ -50,7 +57,7 @@ export class CustomerDetailComponent implements OnInit {
         boolean {
         if (this.route.snapshot.paramMap.has('customerId') && this.route.snapshot.paramMap.has('newCustomer')) {
             this.customerId = this.route.snapshot.paramMap.get('customerId');  // get customerID???? customerId from URL
-            this.newCustomer = this.route.snapshot.paramMap.get('newCustomer');
+            this.newCustomer = this.myStringToBoolean(this.route.snapshot.paramMap.get('newCustomer'));
             return true;
         } else {
             this.customerId = null; // stands for the creation of a new customer
