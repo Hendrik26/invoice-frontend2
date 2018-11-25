@@ -7,7 +7,7 @@
         <table style="width:100%">
             <thead>
             <tr>
-                <th>KundenNummer</th>
+                <th>Kundennummer</th>
                 <th>Kundenname</th>
                 <th>Land</th>
                 <th>Postleitzahl</th>
@@ -34,14 +34,12 @@
                 <td>{{customer.creationTime | date:'yyyy-MM-dd'}}</td>
                 <td>
                     <a routerLink="/customer-detail/{{customer.getCustomerId()}}/false">Kunden bearbeiten</a>
+                    <button (click)="deleteCustomer(customer.getCustomerId())">löschen</button>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
-
+    <a routerLink="/invoice-list">Rechnungsübersicht</a>
     <button (click)="newCustomereBtn()">Neuer Kunde</button>
-    <a routerLink="/invoice-list">Rechnungen bearbeiten</a>
-
-
 </div>

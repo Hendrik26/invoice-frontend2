@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 // import {isNullOrUndefined} from 'util';
 import {Customer} from '../customer';
@@ -21,11 +21,13 @@ export class CustomerListComponent implements OnInit {
     // endregion
 
     constructor(private customerService: CustomerService,
-                private router: Router)  {  }
+                private router: Router) {
+    }
 
     ngOnInit() {
         this.receiveCustomers();
     }
+
     receiveCustomers(): void {
         this.customerService.getCustomers().subscribe(customers => this.customers = customers);
     }
@@ -35,6 +37,12 @@ export class CustomerListComponent implements OnInit {
         CUSTOMERS.push(methCustomer);
         const customerId = methCustomer.getCustomerId();
         this.router.navigateByUrl('customer-detail/' + customerId + '/true');
+    }
+
+    deleteCustomer(customerId): void {
+        if (confirm("wirklich löschen?")) {
+            this.customerService.removeCustomerById(customerId);
+        }
     }
 
 

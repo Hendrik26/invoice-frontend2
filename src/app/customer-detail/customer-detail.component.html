@@ -1,8 +1,7 @@
 <div class="item-detail">
   <h1>Kundenverwaltung</h1>
-  <h2>{{customerId}}</h2>
+  <h2>{{customerId}}</h2> <!-- muss das sein-->
   <p>erstellt am: {{creationTime | date:'yyyy-MM-dd'}}</p>
-  <p>neu?: {{newCustomer}}</p>
   <form>
     <label><span>Kundennummer</span><input type="text" name="customerNumber" [(ngModel)]="customerNumber"></label>
     <label><span>Kundenname</span><input type="text" name="customerName" [(ngModel)]="customerName"></label>
@@ -12,11 +11,11 @@
     <label><span>Adresse 1</span><input type="text" name="addressLine1" [(ngModel)]="addressLine1"></label>
     <label><span>Adresse 2</span><input type="text" name="addressLine2" [(ngModel)]="addressLine2"></label>
     <label><span>Adresse 3</span><input type="text" name="addressLine3" [(ngModel)]="addressLine3"></label>
-    <label><span>Umsatzsteuernummer</span><input type="text" name="•	customerSalesTaxNumber" [(ngModel)]="customerSalesTaxNumber"></label>
+    <label><span>Umsatzsteuernummer</span><input type="text" name="•	customerSalesTaxNumber"
+                                                 [(ngModel)]="customerSalesTaxNumber"></label>
     <br>
-    <button>save</button>
-    <button>cancel</button>
-    <button>back</button>
+    <button (click)="saveCustomer()">{{newCustomer ? 'erstellen' : 'speichern'}}</button>
+    <button (click)="backToCustomerList()">{{newCustomer ? 'verwerfen' : 'zurück'}}</button>
   </form>
 </div>
 
