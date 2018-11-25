@@ -32,12 +32,13 @@ export class CustomerDetailComponent implements OnInit {
     // endregion
 
     private myStringToBoolean(input: string): boolean {
-        if (input.toLowerCase() === 'true') {
+        if (input.trim().toLowerCase() === 'true') {
             return true;
         } else {
             return false;
         }
     }
+
     constructor(
         private router: Router,
         private route: ActivatedRoute,
