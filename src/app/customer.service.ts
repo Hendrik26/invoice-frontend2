@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
 import {Customer} from './customer';
 import {CUSTOMERS} from './mock-customer';
-import {CustomerType} from './customer-type';
-import {Invoice} from './invoice';
-import {INVOICES} from './mock-invoice';
-import {InvoiceKind} from './invoice-kind';
+import {Apollo} from 'apollo-angular';
+import gql from 'graphql-tag';
+import {ApolloQueryResult} from 'apollo-client';
+import {map} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
 
 
 @Injectable({
@@ -13,13 +13,38 @@ import {InvoiceKind} from './invoice-kind';
 })
 export class CustomerService {
 
-    constructor() {
+    constructor(private graphqlClient: Apollo) {
     }
-
 
     // region getter
     public getCustomers(): Observable<Customer[]> {
-        return of(CUSTOMERS);
+      return this.graphqlClient
+      .query({
+        query: gql`
+          {
+            customers { customerId customerSalesTaxNumber name
+              billingAddress { addressLine1 addressLine2 addressLine3 city countryCode postalCode }
+            }
+          }
+        `
+      })
+      .pipe(
+        map((result: ApolloQueryResult<{ customers: any[] }>): Customer[] =>
+          result.data.customers.map(customer =>
+            new Customer(
+              customer.customerId,
+              {
+                ...customer.billingAddress,
+                country: customer.billingAddress.countryCode,
+                creationTime: null,
+                customerName: customer.name,
+                customerNumber: null,
+                customerSalesTaxNumber: customer.customerSalesTaxNumber
+              }
+            )
+          )
+        )
+      );
     }
 
     public getCustomerObservableById(methCostumerId: string): Observable<Customer> {
