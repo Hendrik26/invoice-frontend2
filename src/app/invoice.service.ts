@@ -5,6 +5,11 @@ import {Observable, of} from 'rxjs';
 import {ItemType} from './item-type';
 import {InvoiceType} from './invoice-type';
 import {InvoiceKind} from './invoice-kind';
+import {Customer} from './customer';
+import gql from 'graphql-tag';
+import {map} from 'rxjs/operators';
+import {ApolloQueryResult} from 'apollo-client';
+import {Apollo} from 'apollo-angular';
 
 @Injectable({
   providedIn: 'root'
@@ -42,11 +47,41 @@ export class InvoiceService {
   //endregion
 
 
-  constructor() {
+  constructor(private graphqlClient: Apollo) {
   }
 
+    public getCustomers(): Observable<Customer[]> {
+        return this.graphqlClient
+            .query({
+                query: gql`
+        {
+          invoices {aggregateId customerSalesTaxNumber name
+            billingAddress { addressLine1 addressLine2 addressLine3 city countryCode postalCode }
+          }
+        }
+      `
+            })
+            .pipe(
+                map((result: ApolloQueryResult<{ customers: any[] }>): Customer[] =>
+                    result.data.customers.map(customer =>
+                        new Customer(
+                            customer.customerId,
+                            {
+                                ...customer.billingAddress,
+                                country: customer.billingAddress.countryCode,
+                                creationTime: null,
+                                customerName: customer.name,
+                                customerNumber: null,
+                                customerSalesTaxNumber: customer.customerSalesTaxNumber
+                            }
+                        )
+                    )
+                )
+            );
+    }
 
-  //region getter
+
+    //region getter
   getInvoiceById(methId: string): Invoice {
     var methInvoice: Invoice;
     for (var i = 0; i < INVOICES.length; i++) {
