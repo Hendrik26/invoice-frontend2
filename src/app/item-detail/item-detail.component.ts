@@ -73,7 +73,6 @@ export class ItemDetailComponent implements OnInit {
     this.invoiceId = this.route.snapshot.paramMap.get('invoiceId');  // get invoiceID from URL
   }
 
-
   private receiveItemByIds(methInvoiceId: string, methItemId: number): void {
     this.itemService.getItemByItemId(methInvoiceId, methItemId)
       .subscribe((itemReceived: Item) => { // Lambda-Expression
