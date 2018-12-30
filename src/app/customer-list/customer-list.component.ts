@@ -14,6 +14,7 @@ import {INVOICES} from '../mock-invoice';
     styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
+    // Test Comment!!!
 
     // region other properties
     customers: Customer[];
@@ -40,7 +41,7 @@ export class CustomerListComponent implements OnInit {
     }
 
     deleteCustomer(customerId): void {
-        if (confirm("wirklich löschen?")) {
+        if (confirm('wirklich löschen?')) {
             this.customerService.removeCustomerById(customerId);
         }
     }
