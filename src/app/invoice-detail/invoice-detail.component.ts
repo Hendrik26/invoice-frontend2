@@ -7,6 +7,7 @@ import {Invoice} from '../invoice';
 import {Item} from '../item';
 import {InvoiceKind} from '../invoice-kind';
 
+///
 @Component({
     selector: 'app-invoice-detail',
     templateUrl: './invoice-detail.component.html',
