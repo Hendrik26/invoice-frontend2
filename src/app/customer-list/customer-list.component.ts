@@ -14,7 +14,6 @@ import {INVOICES} from '../mock-invoice';
     styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-    // Test Comment!!!
 
     // region other properties
     customers: Customer[];
